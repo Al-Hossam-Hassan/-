@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>4 – 4.5 سنوات | AL-Hossam Hassn</title>
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <style>
+      .wrap { max-width: 1000px; margin: 0 auto; }
+
+      .stage-hero{
+        display:grid;
+        grid-template-columns: 1.2fr .8fr;
+        gap: 14px;
+        align-items: center;
+        margin-bottom: 14px;
+        padding: 14px;
+        border-radius: 18px;
+        border: 1px solid rgba(255,255,255,0.14);
+        background: rgba(255,255,255,0.06);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      }
+      .stage-hero-text h1{ margin:0 0 6px; }
+      .stage-hero-text p{ margin:0; opacity:.9; line-height:1.9; }
+      .stage-hero-img img{
+        width:100%;
+        border-radius: 16px;
+        border: 1px solid rgba(255,255,255,0.14);
+        aspect-ratio: 16/10;
+        object-fit: cover;
+      }
+      @media(max-width:900px){ .stage-hero{ grid-template-columns: 1fr; } }
+
+      .grid{
+        display:grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .prob-card{
+        grid-column: span 6;
+        border: 1px solid rgba(255,255,255,0.14);
+        background: rgba(255,255,255,0.06);
+        border-radius: 16px;
+        padding: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      }
+
+      .acc-head{
+        width: 100%;
+        background: transparent;
+        border: 0;
+        color: inherit;
+        cursor: pointer;
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 0;
+        text-align: right;
+      }
+
+      .acc-left{
+        display:flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+      }
+      .thumb{
+        width: 74px;
+        height: 56px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.14);
+        background: rgba(255,255,255,0.04);
+        flex: 0 0 auto;
+      }
+      .thumb img{ width:100%; height:100%; object-fit: cover; }
+
+      .acc-title{ min-width:0; }
+      .acc-title h3{ margin:0 0 6px; font-size: 18px; line-height: 1.35; }
+      .acc-title p{ margin:0; opacity:.85; line-height: 1.8; font-size: 14px; }
+
+      .acc-arrow{
+        font-size: 20px;
+        opacity: .85;
+        transition: 200ms ease;
+        user-select: none;
+        flex: 0 0 auto;
+      }
+      .prob-card.open .acc-arrow{ transform: rotate(180deg); }
+
+      .acc-body{ display:none; margin-top: 12px; }
+
+      .acc-content{
+        display:grid;
+        grid-template-columns: 1fr 1.6fr;
+        gap: 14px;
+        align-items: start;
+      }
+
+      .acc-img img{
+        width: 100%;
+        border-radius: 16px;
+        border: 1px solid rgba(255,255,255,0.14);
+        background: rgba(255,255,255,0.04);
+        aspect-ratio: 16/10;
+        object-fit: cover;
+      }
+
+      .acc-text h4{ margin: 10px 0 8px; }
+      .acc-text ul, .acc-text ol{
+        padding-right: 18px;
+        margin: 0;
+        line-height: 1.9;
+      }
+
+      @media(max-width:900px){
+        .prob-card{ grid-column: span 12; }
+        .acc-content{ grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="logo" href="../index.html">AL-Hossam Hassn</a>
+        <ul class="nav-links">
+          <li><a href="../index.html">الرئيسية</a></li>
+          <li><a href="../stages.html">المراحل العمرية</a></li>
+          <li><a href="../activities.html">الأنشطة</a></li>
+          <li><a href="../about.html">من أنا</a></li>
+          <li><a href="../contact.html">تواصل</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section wrap">
+        <a class="btn btn-secondary" href="../stages.html" style="margin-bottom:14px;">رجوع للمراحل</a>
+
+        <section class="stage-hero">
+          <div class="stage-hero-text">
+            <h1>4 – 4.5 سنوات</h1>
+            <p>
+              تركيز الطفل بيبقى أحسن لو البيئة منظمة، والتعليم قصير وواضح، ومع طاقة
+              مُفرَّغة بطريقة صح. أهم مفاتيح المرحلة: روتين ثابت + انتقالات هادية.
+            </p>
+          </div>
+          <div class="stage-hero-img">
+            <img src="../images/stage-4-4_5.png" alt="4-4.5 Years - focus, routine, energy" />
+          </div>
+        </section>
+
+        <div class="callout" style="margin-top:16px;">
+          <strong>قاعدة ذهبية:</strong> 10 دقائق تدريب يوميًا (بلا شاشة) تعمل فرق أكبر من ساعة مرة واحدة.
+        </div>
+
+        <h2 style="margin-top:26px;">مشاكل شائعة في المرحلة</h2>
+        <div class="grid" id="problemsGrid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> AL-Hossam Hassn — جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const PROBLEMS = [
+        {
+          id: "focus-training-4-4_5",
+          title: "تقوية التركيز: تمارين بسيطة في البيت",
+          excerpt: "تدرّج من 5 دقائق لحد 15 دقيقة + بيئة منظمة.",
+          thumb: "../images/focus-training-4-4_5-cover.png",
+          cover: "../images/focus-training-4-4_5-cover.png",
+          symptoms: [
+            "يتشتت بسرعة ويترك النشاط",
+            "يطلب تغيير اللعبة كل دقيقتين",
+            "صعب يكمل تلوين/بازل أو واجب بسيط"
+          ],
+          why: [
+            "التركيز مهارة بتتقوّى بالتدريب والتدرج",
+            "المشتتات (شاشة/ضوضاء/ألعاب كتير قدامه) بتكسر الانتباه",
+            "التعب أو الجوع يخلي التركيز أسوأ"
+          ],
+          solution: [
+            "اختار نشاط واحد: بازل/مطابقة/تلوين داخل حدود",
+            "ابدأ 5 دقائق فقط + مؤقّت (Timer) ثم مدح وراحة دقيقة",
+            "زوّد دقيقة كل 2–3 أيام لحد 15 دقيقة",
+            "قلّل المشتتات: مكان ثابت + طاولة فاضية + لا شاشة",
+            "أنهِي قبل ما يزهق قوي: “خلاص كفاية شغل ممتاز”"
+          ],
+          note: "الهدف مش الكمال… الهدف “يكمل” حتى لو بجودة أقل."
+        },
+
+        {
+          id: "morning-routine-4-4_5",
+          title: "روتين صباحي بدون خناق",
+          excerpt: "خطوات ثابتة + اختيارات محدودة + تجهيز من بالليل.",
+          thumb: "../images/morning-routine-4-4_5-cover.png",
+          cover: "../images/morning-routine-4-4_5-cover.png",
+          symptoms: [
+            "تأخير يومي قبل الخروج",
+            "يرفض اللبس/الفطار",
+            "خناقات متكررة صباحًا"
+          ],
+          why: [
+            "الطفل بيتوتر من الأوامر الكتير السريعة",
+            "لو مفيش تسلسل ثابت… كل يوم يبقى مفاوضات",
+            "قلة النوم تخلّي الصباح أصعب"
+          ],
+          solution: [
+            "جهّز من بالليل: هدوم/شنطة/جزمة في مكان واحد",
+            "خلي الروتين 4 خطوات بس (صورة أو ورقة): حمام → لبس → فطار → خروج",
+            "اختيارات محدودة: “التيشيرت الأحمر ولا الأزرق؟” (اختيارين فقط)",
+            "مؤقّت 10 دقائق لكل خطوة + مدح الالتزام",
+            "لو تأخر: نتيجة طبيعية بسيطة (وقت لعب أقل قبل الخروج) بدون تهديد"
+          ],
+          note: "أثبت على نفس الترتيب 10 أيام… هتشوف فرق واضح."
+        },
+
+        {
+          id: "high-energy-4-4_5",
+          title: "طاقة زايدة ولا فرط حركة؟ تنظيم اليوم",
+          excerpt: "تفريغ طاقة + قواعد حركة + نوم كفاية.",
+          thumb: "../images/high-energy-4-4_5-cover.png",
+          cover: "../images/high-energy-4-4_5-cover.png",
+          symptoms: [
+            "حركة مستمرة داخل البيت",
+            "يقاطع الكلام ويجري فجأة",
+            "يصعب يقعد على نشاط هادي"
+          ],
+          why: [
+            "السن ده طبيعي فيه نشاط وحركة",
+            "نقص التفريغ الحركي يخلي الطفل “يفرغ” في وقت غلط",
+            "الشاشات تزيد التشتت عند بعض الأطفال"
+          ],
+          solution: [
+            "30–45 دقيقة لعب حركي يوميًا (جري/قفز/كور) قبل الأنشطة الهادية",
+            "قانون حركة: (مكان للحركة) و(مكان للهدوء) — اشرحهم ببساطة",
+            "قبل أي نشاط هادي: 5 دقائق حركة ثم “تهدئة” دقيقة تنفس",
+            "قلل الشاشة خصوصًا قبل النوم",
+            "لو فيه شكاوى حضانة مستمرة + اندفاع قوي… راقب واطلب تقييم مختص"
+          ],
+          note: "مش كل طفل نشيط = فرط حركة. الأهم: هل يقدر يهدى لو ساعدناه؟"
+        },
+
+        {
+          id: "transitions-stubborn-4-4_5",
+          title: "عناد الانتقال: من لعب لحمام/نوم/خروج",
+          excerpt: "تحذير مسبق + اختيار + نهاية واضحة للنشاط.",
+          thumb: "../images/transitions-stubborn-4-4_5-cover.png",
+          cover: "../images/transitions-stubborn-4-4_5-cover.png",
+          symptoms: [
+            "يرفض يسيب اللعب",
+            "يعمل نوبة وقت تغيير النشاط",
+            "يقول: “لا… مش هقوم”"
+          ],
+          why: [
+            "الانتقال المفاجئ بيحسّه بفقدان السيطرة",
+            "مش فاهم “إمتى هنخلص”",
+            "لو مرة نجح بالعياط… بيتعلم يكرر"
+          ],
+          solution: [
+            "تحذير 5 دقائق: “بعد خمس دقايق هنقوم” ثم تحذير دقيقة",
+            "اختيار داخل القاعدة: “هتلم الألعاب ولا أنا أساعدك؟”",
+            "خلي “نهاية اللعب” واضحة: أغنية/جرس/عدّاد",
+            "لو رفض: ساعده بهدوء على الانتقال بدون جدال طويل",
+            "بعد ما ينجح: مدح + مكسب صغير (قصة/ملصق)"
+          ],
+          note: "الانتقالات أسهل لما تكون متوقعة… مش مفاجئة."
+        },
+
+        {
+          id: "tantrum-no-4-4_5",
+          title: "نوبات غضب لما نقول “لا”",
+          excerpt: "ثبات + أمان + تعليم بديل بعد الهدوء.",
+          thumb: "../images/tantrum-no-4-4_5-cover.png",
+          cover: "../images/tantrum-no-4-4_5-cover.png",
+          symptoms: [
+            "صراخ/بكاء شديد عند الرفض",
+            "رمي حاجات أو ضرب",
+            "تهديدات: “مش هحبك” أو “مش هعمل”"
+          ],
+          why: [
+            "المشاعر كبيرة ولسه بيتعلم تنظيمها",
+            "لو الـ(لا) بتتغير أحيانًا… يزيد الاختبار",
+            "تعب/جوع يزود الانفجار"
+          ],
+          solution: [
+            "أمّن المكان وقلل الكلام: “أنا جنبك”",
+            "لا تفاوض أثناء الصراخ",
+            "بعد الهدوء: سمّي الشعور: “إنت زعلان” وقدم بديل: “اطلب كذا”",
+            "ثبت القاعدة: لو ممنوع… ممنوع",
+            "درّب على جملة بديلة: “عايز… من فضلك”"
+          ],
+          note: "الطفل يتعلم الهدوء من هدوءك، مش من الشدة."
+        },
+
+        {
+          id: "sleep-resistance-4-4_5",
+          title: "مقاومة النوم: يماطل قبل النوم",
+          excerpt: "روتين ثابت + تقليل شاشة + حدود لطيفة.",
+          thumb: "../images/sleep-resistance-4-4_5-cover.png",
+          cover: "../images/sleep-resistance-4-4_5-cover.png",
+          symptoms: [
+            "طلبات كتير قبل النوم (مياه/حمام/قصة تانية)",
+            "يقوم من السرير مرات",
+            "ينام متأخر ويصحى متعب"
+          ],
+          why: [
+            "الشاشات أو اللعب العنيف قبل النوم بتنبه المخ",
+            "الروتين غير ثابت فيتفاوض",
+            "الخوف أو القلق يظهر وقت النوم"
+          ],
+          solution: [
+            "قبل النوم بساعة: وقف شاشات + نشاط هادي",
+            "روتين 20 دقيقة ثابت: حمام → لبس → قصة → نوم",
+            "اتفاق 2 طلب فقط قبل النوم (مياه + حمام) وبعدها “خلاص”",
+            "لو قام: رجّعه بهدوء بدون كلام كتير (نفس الرد كل مرة)",
+            "صباحًا: نوم بدري = مكافأة (وقت قصة/لعبة) مش بالليل"
+          ],
+          note: "الثبات الليلي أهم من المحاضرات… رد واحد يتكرر كل مرة."
+        }
+      ];
+
+      function makeLi(text){
+        const li = document.createElement("li");
+        li.textContent = text;
+        return li;
+      }
+
+      function buildCard(p){
+        const card = document.createElement("div");
+        card.className = "prob-card";
+
+        const head = document.createElement("button");
+        head.type = "button";
+        head.className = "acc-head";
+
+        const left = document.createElement("div");
+        left.className = "acc-left";
+
+        const thumb = document.createElement("div");
+        thumb.className = "thumb";
+        const timg = document.createElement("img");
+        timg.src = p.thumb || "../images/placeholder.jpg";
+        timg.alt = p.title;
+        thumb.appendChild(timg);
+
+        const titleWrap = document.createElement("div");
+        titleWrap.className = "acc-title";
+
+        const h3 = document.createElement("h3");
+        h3.textContent = p.title;
+
+        const ex = document.createElement("p");
+        ex.textContent = p.excerpt || "";
+
+        titleWrap.appendChild(h3);
+        titleWrap.appendChild(ex);
+
+        left.appendChild(thumb);
+        left.appendChild(titleWrap);
+
+        const arrow = document.createElement("span");
+        arrow.className = "acc-arrow";
+        arrow.textContent = "▾";
+
+        head.appendChild(left);
+        head.appendChild(arrow);
+
+        const body = document.createElement("div");
+        body.className = "acc-body";
+
+        const content = document.createElement("div");
+        content.className = "acc-content";
+
+        const imgBox = document.createElement("div");
+        imgBox.className = "acc-img";
+        const img = document.createElement("img");
+        img.src = p.cover || "../images/placeholder.jpg";
+        img.alt = p.title;
+        imgBox.appendChild(img);
+
+        const textBox = document.createElement("div");
+        textBox.className = "acc-text";
+
+        const h4a = document.createElement("h4");
+        h4a.textContent = "الأعراض";
+        const ulA = document.createElement("ul");
+        (p.symptoms || []).forEach(t => ulA.appendChild(makeLi(t)));
+
+        const h4b = document.createElement("h4");
+        h4b.textContent = "ليه ده بيحصل؟";
+        const ulB = document.createElement("ul");
+        (p.why || []).forEach(t => ulB.appendChild(makeLi(t)));
+
+        const h4c = document.createElement("h4");
+        h4c.textContent = "الحل العملي";
+        const olC = document.createElement("ol");
+        (p.solution || []).forEach(t => {
+          const li = document.createElement("li");
+          li.textContent = t;
+          olC.appendChild(li);
+        });
+
+        textBox.appendChild(h4a);
+        textBox.appendChild(ulA);
+        textBox.appendChild(h4b);
+        textBox.appendChild(ulB);
+        textBox.appendChild(h4c);
+        textBox.appendChild(olC);
+
+        if(p.note){
+          const note = document.createElement("div");
+          note.className = "callout";
+          const strong = document.createElement("strong");
+          strong.textContent = "ملاحظة:";
+          note.appendChild(strong);
+          note.appendChild(document.createTextNode(" " + p.note));
+          textBox.appendChild(note);
+        }
+
+        content.appendChild(imgBox);
+        content.appendChild(textBox);
+        body.appendChild(content);
+
+        head.addEventListener("click", () => {
+          const open = body.style.display === "block";
+          body.style.display = open ? "none" : "block";
+          card.classList.toggle("open", !open);
+        });
+
+        card.appendChild(head);
+        card.appendChild(body);
+        return card;
+      }
+
+      const grid = document.getElementById("problemsGrid");
+      PROBLEMS.forEach(p => grid.appendChild(buildCard(p)));
+    </script>
+  </body>
+</html>

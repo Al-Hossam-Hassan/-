@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>7.5 – 8 سنوات | AL-Hossam Hassn</title>
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <style>
+      .wrap {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .stage-hero {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 14px;
+        align-items: center;
+        margin-bottom: 14px;
+        padding: 14px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .stage-hero-img img {
+        width: 100%;
+        border-radius: 16px;
+        aspect-ratio: 16/10;
+        object-fit: cover;
+      }
+      @media (max-width: 900px) {
+        .stage-hero {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 12px;
+      }
+      .prob-card {
+        grid-column: span 6;
+        padding: 12px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+      }
+      @media (max-width: 900px) {
+        .prob-card {
+          grid-column: span 12;
+        }
+      }
+
+      .acc-head {
+        width: 100%;
+        background: transparent;
+        border: 0;
+        color: inherit;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        text-align: right;
+        padding: 0;
+      }
+      .acc-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .thumb {
+        width: 74px;
+        height: 56px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .acc-title h3 {
+        margin: 0 0 6px;
+        font-size: 18px;
+      }
+      .acc-title p {
+        margin: 0;
+        opacity: 0.85;
+        line-height: 1.8;
+        font-size: 14px;
+      }
+
+      .acc-arrow {
+        font-size: 20px;
+        opacity: 0.85;
+        transition: 0.2s;
+        user-select: none;
+      }
+      .prob-card.open .acc-arrow {
+        transform: rotate(180deg);
+      }
+
+      .acc-body {
+        display: none;
+        margin-top: 12px;
+      }
+      .acc-content {
+        display: grid;
+        grid-template-columns: 1fr 1.6fr;
+        gap: 14px;
+        align-items: start;
+      }
+      .acc-img img {
+        width: 100%;
+        border-radius: 16px;
+        aspect-ratio: 16/10;
+        object-fit: cover;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      @media (max-width: 900px) {
+        .acc-content {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .acc-text h4 {
+        margin: 10px 0 6px;
+      }
+      .acc-text ul,
+      .acc-text ol {
+        padding-right: 18px;
+        margin: 0;
+        line-height: 1.9;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="logo" href="../index.html">AL-Hossam Hassn</a>
+        <ul class="nav-links">
+          <li><a href="../index.html">الرئيسية</a></li>
+          <li><a href="../stages.html">المراحل العمرية</a></li>
+          <li><a href="../contact.html">تواصل</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section wrap">
+        <a class="btn btn-secondary" href="../stages.html">رجوع للمراحل</a>
+
+        <section class="stage-hero">
+          <div>
+            <h1>7.5 – 8 سنوات</h1>
+            <p>
+              في السن ده يبدأ الضغط الدراسي يزيد، ويظهر مفهوم "المنافسة" بوضوح.
+              الطفل يحتاج مهارات تنظيم ذاتي وإدارة وقت عشان ما يتحول الضغط لقلق
+              مزمن.
+            </p>
+          </div>
+          <div class="stage-hero-img">
+            <img
+              src="../images/stage-7_5-8.png"
+              alt="7.5-8 Years Academic Pressure"
+            />
+          </div>
+        </section>
+
+        <div class="callout">
+          <strong>مهم:</strong> في المرحلة دي الطفل يتعلم كيف ينظم نفسه مش بس
+          ينفذ أوامر.
+        </div>
+
+        <h2>مشاكل شائعة في المرحلة</h2>
+        <div class="grid" id="problemsGrid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> AL-Hossam Hassn — جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const PROBLEMS = [
+        {
+          title: "الضغط الدراسي",
+          excerpt: "زيادة الواجبات والتوقعات وتأثيرها على نفسية الطفل.",
+          thumb: "../images/academic-pressure-cover.png",
+          cover: "../images/academic-pressure-cover.png",
+          symptoms: [
+            "توتر قبل المذاكرة",
+            "بكاء عند كثرة الواجب",
+            "شكاوى جسدية قبل المدرسة",
+          ],
+          why: [
+            "توقعات عالية من الأهل",
+            "مقارنة بالزملاء",
+            "كثرة أنشطة بدون راحة",
+          ],
+          solution: [
+            "تقسيم الواجب لأجزاء قصيرة",
+            "جدول أسبوعي واضح",
+            "تخصيص وقت لعب يومي ثابت",
+            "تقليل المقارنة",
+          ],
+          note: "الإنجاز تحت الضغط المستمر يسبب احتراق مبكر.",
+        },
+
+        {
+          title: "ضعف إدارة الوقت",
+          excerpt: "يضيع الوقت ولا ينهي مهامه.",
+          thumb: "../images/time-management-cover.png",
+          cover: "../images/time-management-cover.png",
+          symptoms: [
+            "يؤجل المذاكرة",
+            "يقضي وقت طويل بدون إنجاز",
+            "ينسى المواعيد",
+          ],
+          why: [
+            "الوظائف التنفيذية لسه في تطور",
+            "غياب جدول واضح",
+            "مشتتات إلكترونية",
+          ],
+          solution: [
+            "استخدام مؤقت 20 دقيقة",
+            "كتابة قائمة مهام يومية",
+            "تحديد أوقات شاشة واضحة",
+            "تعليمه ترتيب الأولويات",
+          ],
+          note: "إدارة الوقت مهارة مكتسبة وليست فطرية.",
+        },
+
+        {
+          title: "الخوف من الفشل",
+          excerpt: "يتجنب المهام الصعبة.",
+          thumb: "../images/fear-failure-cover.png",
+          cover: "../images/fear-failure-cover.png",
+          symptoms: ["يرفض المحاولة", "ينسحب سريعًا", "يغضب عند الخطأ"],
+          why: [
+            "ربط النجاح بالقيمة الشخصية",
+            "نقد مفرط",
+            "قلة خبرة بالنجاحات الصغيرة",
+          ],
+          solution: [
+            "مدح الجهد",
+            "عرض أخطاء كجزء طبيعي من التعلم",
+            "تقسيم المهمة",
+            "تجارب نجاح قصيرة",
+          ],
+          note: "الفشل تجربة تعلم مش حكم نهائي.",
+        },
+
+        {
+          title: "زيادة التشتت",
+          excerpt: "صعوبة الاستمرار أكثر من 20 دقيقة.",
+          thumb: "../images/distraction-cover.png",
+          cover: "../images/distraction-cover.png",
+          symptoms: ["يقوم كثيرًا", "ينظر حوله أثناء الشرح", "ينسى المطلوب"],
+          why: ["مشتتات بيئية", "قلة نوم", "تحميل عقلي زائد"],
+          solution: [
+            "مكان مذاكرة ثابت",
+            "إطفاء الأجهزة",
+            "فترات راحة منتظمة",
+            "نوم مبكر",
+          ],
+          note: "البيئة المنظمة تساوي تركيز أفضل.",
+        },
+
+        {
+          title: "المنافسة الزائدة",
+          excerpt: "يتحول النجاح لصراع مع الآخرين.",
+          thumb: "../images/competition-cover.png",
+          cover: "../images/competition-cover.png",
+          symptoms: [
+            "غيرة من المتفوقين",
+            "فرح بسقوط الآخرين",
+            "توتر عند مقارنة النتائج",
+          ],
+          why: ["ثقافة ترتيب", "ضغط اجتماعي", "ضعف ثقة"],
+          solution: [
+            "التركيز على التطور الشخصي",
+            "أهداف فردية",
+            "تجنب المقارنات العائلية",
+            "تعزيز العمل الجماعي",
+          ],
+          note: "المنافسة الصحية تبني مهارة، الزائدة تبني قلق.",
+        },
+
+        {
+          title: "قلة التوازن بين الدراسة واللعب",
+          excerpt: "إما لعب مفرط أو دراسة مفرطة.",
+          thumb: "../images/balance-cover.png",
+          cover: "../images/balance-cover.png",
+          symptoms: ["ملل سريع", "إرهاق ذهني", "انخفاض دافعية"],
+          why: ["غياب جدول متوازن", "ضغط أكاديمي", "وقت شاشة عشوائي"],
+          solution: [
+            "جدول أسبوعي متوازن",
+            "وقت نشاط بدني يومي",
+            "وقت عائلي ثابت",
+            "راحة ذهنية",
+          ],
+          note: "اللعب عنصر أساسي في النمو المعرفي.",
+        },
+      ];
+
+      function makeLi(t) {
+        const li = document.createElement("li");
+        li.textContent = t;
+        return li;
+      }
+
+      function buildCard(p) {
+        const card = document.createElement("div");
+        card.className = "prob-card";
+        const head = document.createElement("button");
+        head.type = "button";
+        head.className = "acc-head";
+        const left = document.createElement("div");
+        left.className = "acc-left";
+        const thumb = document.createElement("div");
+        thumb.className = "thumb";
+        const tImg = document.createElement("img");
+        tImg.src = p.thumb;
+        tImg.alt = p.title;
+        thumb.appendChild(tImg);
+        const titleWrap = document.createElement("div");
+        titleWrap.className = "acc-title";
+        const h3 = document.createElement("h3");
+        h3.textContent = p.title;
+        const ex = document.createElement("p");
+        ex.textContent = p.excerpt || "";
+        titleWrap.appendChild(h3);
+        titleWrap.appendChild(ex);
+        left.appendChild(thumb);
+        left.appendChild(titleWrap);
+        const arrow = document.createElement("span");
+        arrow.className = "acc-arrow";
+        arrow.textContent = "▾";
+        head.appendChild(left);
+        head.appendChild(arrow);
+
+        const body = document.createElement("div");
+        body.className = "acc-body";
+        const content = document.createElement("div");
+        content.className = "acc-content";
+
+        const imgBox = document.createElement("div");
+        imgBox.className = "acc-img";
+        const img = document.createElement("img");
+        img.src = p.cover;
+        img.alt = p.title;
+        imgBox.appendChild(img);
+
+        const text = document.createElement("div");
+        text.className = "acc-text";
+        const h4a = document.createElement("h4");
+        h4a.textContent = "الأعراض";
+        const ulA = document.createElement("ul");
+        (p.symptoms || []).forEach((t) => ulA.appendChild(makeLi(t)));
+        const h4b = document.createElement("h4");
+        h4b.textContent = "ليه ده بيحصل؟";
+        const ulB = document.createElement("ul");
+        (p.why || []).forEach((t) => ulB.appendChild(makeLi(t)));
+        const h4c = document.createElement("h4");
+        h4c.textContent = "الحل العملي";
+        const olC = document.createElement("ol");
+        (p.solution || []).forEach((t) => olC.appendChild(makeLi(t)));
+
+        text.appendChild(h4a);
+        text.appendChild(ulA);
+        text.appendChild(h4b);
+        text.appendChild(ulB);
+        text.appendChild(h4c);
+        text.appendChild(olC);
+
+        content.appendChild(imgBox);
+        content.appendChild(text);
+        body.appendChild(content);
+
+        head.addEventListener("click", () => {
+          const open = body.style.display === "block";
+          body.style.display = open ? "none" : "block";
+          card.classList.toggle("open", !open);
+        });
+
+        card.appendChild(head);
+        card.appendChild(body);
+        return card;
+      }
+
+      const grid = document.getElementById("problemsGrid");
+      PROBLEMS.forEach((p) => grid.appendChild(buildCard(p)));
+    </script>
+  </body>
+</html>

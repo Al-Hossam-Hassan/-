@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>0 – 6 شهور | AL-Hossam Hassn</title>
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <style>
+      .wrap { max-width: 1000px; margin: 0 auto; }
+
+      .grid{
+        display:grid;
+        grid-template-columns:repeat(12,1fr);
+        gap:12px;
+        margin-top:14px;
+      }
+
+      .prob-card{
+        grid-column:span 6;
+        border:1px solid rgba(255,255,255,0.14);
+        background:rgba(255,255,255,0.06);
+        border-radius:16px;
+        padding:12px;
+        box-shadow:0 10px 25px rgba(0,0,0,0.25);
+      }
+
+      /* Accordion header */
+      .acc-head{
+        width:100%;
+        background:transparent;
+        border:0;
+        color:inherit;
+        cursor:pointer;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap:12px;
+        padding:0;
+        text-align:right;
+      }
+
+      /* header content: thumb + title */
+      .acc-main{
+        display:flex;
+        align-items:center;
+        gap:12px;
+        flex:1;
+        min-width: 0;
+      }
+
+      .acc-thumb{
+        width:92px;
+        height:72px;
+        border-radius:14px;
+        overflow:hidden;
+        border:1px solid rgba(255,255,255,0.14);
+        background:rgba(255,255,255,0.04);
+        flex:0 0 auto;
+      }
+      .acc-thumb img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+      }
+
+      .acc-title{ min-width: 0; }
+      .acc-title h3{
+        margin:0 0 6px;
+        font-size:18px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .acc-title p{
+        margin:0;
+        opacity:.85;
+        line-height:1.8;
+        font-size:14px;
+      }
+
+      .acc-arrow{
+        font-size:20px;
+        opacity:.85;
+        transition:200ms ease;
+        user-select:none;
+        flex: 0 0 auto;
+      }
+      .prob-card.open .acc-arrow{ transform: rotate(180deg); }
+
+      .acc-body{ display:none; margin-top:12px; }
+
+      .acc-content{
+        display:grid;
+        grid-template-columns:1fr 1.6fr;
+        gap:14px;
+        align-items:start;
+      }
+
+      .acc-img img{
+        width:100%;
+        border-radius:16px;
+        border:1px solid rgba(255,255,255,0.14);
+        background:rgba(255,255,255,0.04);
+        aspect-ratio:16/10;
+        object-fit:cover;
+      }
+
+      .acc-text h4{ margin:10px 0 8px; }
+      .acc-text ul, .acc-text ol{
+        padding-right:18px;
+        margin:0;
+        line-height:1.9;
+      }
+
+      /* Mobile */
+      @media (max-width: 900px){
+        .prob-card{ grid-column: span 12; }
+        .acc-content{ grid-template-columns: 1fr; }
+      }
+      @media (max-width: 560px){
+        .acc-thumb{ width:78px; height:62px; }
+      }
+
+      /* Stage hero (لو مش موجودة في css بتاعك) */
+      .stage-hero{
+        display:grid;
+        grid-template-columns:1.2fr .8fr;
+        gap:14px;
+        align-items:center;
+        margin-bottom:18px;
+      }
+      .stage-hero-img{
+        border-radius:18px;
+        overflow:hidden;
+        border:1px solid rgba(255,255,255,0.14);
+        background:rgba(255,255,255,0.05);
+        box-shadow:0 18px 45px rgba(0,0,0,0.35);
+      }
+      .stage-hero-img img{
+        width:100%;
+        aspect-ratio:16/10;
+        object-fit:cover;
+      }
+      @media (max-width: 900px){
+        .stage-hero{ grid-template-columns:1fr; }
+        .stage-hero-img img{ aspect-ratio:16/9; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="logo" href="../index.html">AL-Hossam Hassn</a>
+        <ul class="nav-links">
+          <li><a href="../index.html">الرئيسية</a></li>
+          <li><a href="../stages.html">المراحل العمرية</a></li>
+          <li><a href="../activities.html">الأنشطة</a></li>
+          <li><a href="../about.html">من أنا</a></li>
+          <li><a href="../contact.html">تواصل</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="section wrap">
+        <a class="btn btn-secondary" href="../stages.html" style="margin-bottom:14px;">رجوع للمراحل</a>
+
+        <!-- Stage Hero -->
+        <section class="stage-hero">
+          <div class="stage-hero-text">
+            <h1>0 – 6 شهور</h1>
+            <p>
+              التركيز الأساسي: الأمان النفسي والارتباط، تهدئة الجهاز العصبي،
+              وبداية روتين بسيط (مرن) للنوم والتغذية.
+            </p>
+          </div>
+
+          <div class="stage-hero-img">
+            <!-- صورة المرحلة -->
+            <img src="../images/stage-0-6m.png" alt="0-6 Months - Calm Sleep Bonding" />
+          </div>
+        </section>
+
+        <div class="callout" style="margin-top: 10px">
+          <strong>مهم:</strong> الهدف في السن ده مش “نوم طويل ثابت”… الهدف “تهدئة + روتين”
+          يخلّي الطفل أهدى ويتطور أحسن.
+        </div>
+
+        <h2 style="margin-top:26px;">مشاكل شائعة في المرحلة</h2>
+        <div class="grid" id="problemsGrid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> AL-Hossam Hassn — جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      /*
+        ✅ الصور:
+        - thumb: صورة صغيرة تظهر على المربع (الهيدر)
+        - cover: صورة داخل تفاصيل المشكلة
+        اعمل فولدر: images/problems/
+      */
+
+      const PROBLEMS = [
+        {
+          id: "sleep-0-6m",
+          title: "نوم الرضيع في أول 6 شهور",
+          excerpt: "إشارات النوم + تهدئة قبل النوم بشكل آمن.",
+          thumb: "../images/sleep-0-6m-cover.png",
+          cover: "../images/sleep-0-6m-cover.png",
+          symptoms: [
+            "ينام قليل ويصحى كتير",
+            "يبكي قبل النوم أو يرفض ينام",
+            "يصحى بعد ما ينام بدقايق"
+          ],
+          why: [
+            "الجهاز العصبي لسه بينضج وده طبيعي",
+            "الرضيع مش بيعرف ينظم نومه لوحده",
+            "مثيرات كتير (ضوضاء/إضاءة/لعب قبل النوم)"
+          ],
+          solution: [
+            "راقب إشارات النوم بدري (فرك عين/تثاؤب/نظرة ثابتة)",
+            "روتين 15 دقيقة: إضاءة هادية + حضن ثابت + صوت ثابت",
+            "قلل المثيرات قبل النوم (شاشة/زيارات/لعب عنيف)"
+          ],
+          note: "الروتين ثابت، لكن التوقيت مرن حسب إشارات الطفل."
+        },
+        {
+          id: "crying-0-6m",
+          title: "البكاء: إمتى طبيعي وإمتى أقلق؟",
+          excerpt: "تفريق الجوع/التعب/المغص وخطوات تهدئة.",
+          thumb: "../images/crying-0-6m-cover.png",
+          cover: "../images/crying-0-6m-cover.png",
+          symptoms: [
+            "بكاء متكرر بدون سبب واضح",
+            "بكاء يزيد بالليل",
+            "صراخ مع شد الرجلين (ممكن مغص)"
+          ],
+          why: [
+            "البكاء لغة الرضيع: جوع/تعب/حفاض/مغص/احتياج قرب",
+            "التعب يزيد بسرعة لو اتأخرنا عن إشارات النوم",
+            "مغص/غازات شائعة في الشهور الأولى"
+          ],
+          solution: [
+            "افحص الأساسيات: حفاض/حرارة/جوع",
+            "حضن قريب + تنفس هادي منك",
+            "حركة ثابتة + صوت ثابت",
+            "لو مغص: تغيير وضعية + تدليك بسيط للبطن"
+          ],
+          note: "لو بكاء غير معتاد مع حرارة/خمول/رفض رضاعة… استشير طبيب."
+        },
+        {
+          id: "attachment-0-6m",
+          title: "الارتباط العاطفي: أساس الأمان النفسي",
+          excerpt: "احتواء + ثبات = طفل أهدى ونمو أحسن.",
+          thumb: "../images/attachment-0-6m-cover.png",
+          cover: "../images/attachment-0-6m-cover.png",
+          symptoms: [
+            "صعب يهدى إلا في حضنك",
+            "يبكي لما تسيبه حتى لو دقائق",
+            "يحتاج تكرار طمأنة"
+          ],
+          why: [
+            "الطفل لسه بيبني إحساس الأمان الداخلي",
+            "الاستجابة الهادية بتعلمه إن العالم آمن",
+            "الأمان مش تدليل… ده أساس الاستقلال بعدين"
+          ],
+          solution: [
+            "استجابة سريعة للبكاء (بهدوء)",
+            "نبرة ثابتة وملامح مطمّنة",
+            "روتين يومي متكرر (حتى لو بسيط)"
+          ],
+          note: "الطفل يتعلم الهدوء من هدوءك."
+        },
+        {
+          id: "colic-0-6m",
+          title: "المغص والغازات",
+          excerpt: "علامات بسيطة + تهدئة آمنة تقلل الألم.",
+          thumb: "../images/colic-0-6m-cover.png",
+          cover: "../images/colic-0-6m-cover.png",
+          symptoms: [
+            "شد الرجلين للبطن",
+            "بكاء بعد الرضاعة",
+            "انتفاخ/تجشؤ قليل"
+          ],
+          why: [
+            "الجهاز الهضمي لسه بيكتمل",
+            "بلع هوا أثناء الرضاعة",
+            "أحيانًا عدم انتظام طبيعي في البداية"
+          ],
+          solution: [
+            "تجشئة بعد الرضاعة",
+            "تدليك بسيط للبطن بحركة دائرية",
+            "وضعية على البطن فوق رجلك (مع متابعة)",
+            "لو مستمر وقوي جدًا… استشارة طبيب"
+          ],
+          note: "متضغطش على بطنه جامد، خلي التدليك خفيف."
+        },
+        {
+          id: "hunger-sleep-0-6m",
+          title: "الخلط بين الجوع والتعب",
+          excerpt: "متى يرضع ومتى ينام؟ علامات تساعدك.",
+          thumb: "../images/hunger-sleep-0-6m-cover.png",
+          cover: "../images/hunger-sleep-0-6m-cover.png",
+          symptoms: [
+            "يرضع شوية ويبعد ويبكي",
+            "يرفض الرضاعة وهو باين عليه تعب",
+            "يبكي بعد الرضاعة مباشرة"
+          ],
+          why: [
+            "الرضيع أحيانًا يستخدم الرضاعة كتهدئة",
+            "لو اتأخرنا على النوم… بيبقى منهك ومش عارف يهدى",
+            "الخلط ده شائع جدًا في أول شهور"
+          ],
+          solution: [
+            "قبل ما تعرض رضاعة… شوف إشارات النوم",
+            "جرب تهدئة 3 دقائق الأول (حضن/صوت ثابت)",
+            "لو استمر يبكي… اعرض رضاعة بكميات صغيرة"
+          ],
+          note: "مش كل بكاء معناه جوع."
+        },
+        {
+          id: "sensory-0-6m",
+          title: "تحفيز حسي آمن بدون مبالغة",
+          excerpt: "ازاي ننمي الحواس من غير ما نرهقه.",
+          thumb: "../images/sensory-0-6m-cover.png",
+          cover: "../images/sensory-0-6m-cover.png",
+          symptoms: [
+            "يتوتر من أصوات/أنوار قوية",
+            "يبكي بعد زيارات وزحمة",
+            "ينام بصعوبة بعد لعب كتير"
+          ],
+          why: [
+            "الحواس لسه حساسة جدًا",
+            "المثيرات الكتير تعمل Overstimulation",
+            "التهدئة أهم من “نشاط كتير”"
+          ],
+          solution: [
+            "لمس لطيف + كلام هادي",
+            "وقت بطن تدريجي حسب القدرة",
+            "ألعاب بسيطة (لونين/صوت خفيف)",
+            "قلل الزحمة خصوصًا قبل النوم"
+          ],
+          note: "القليل المنتظم أفضل من الكثير مرة واحدة."
+        }
+      ];
+
+      function makeLi(text){
+        const li = document.createElement("li");
+        li.textContent = text;
+        return li;
+      }
+
+      function buildCard(p){
+        const card = document.createElement("div");
+        card.className = "prob-card";
+
+        const head = document.createElement("button");
+        head.type = "button";
+        head.className = "acc-head";
+
+        const main = document.createElement("div");
+        main.className = "acc-main";
+
+        // thumb
+        const thumbBox = document.createElement("div");
+        thumbBox.className = "acc-thumb";
+        const thumbImg = document.createElement("img");
+        thumbImg.src = p.thumb || p.cover || "../images/placeholder.jpg";
+        thumbImg.alt = p.title || "Problem";
+        thumbBox.appendChild(thumbImg);
+
+        // title + excerpt
+        const titleWrap = document.createElement("div");
+        titleWrap.className = "acc-title";
+
+        const h3 = document.createElement("h3");
+        h3.textContent = p.title || "—";
+        const ex = document.createElement("p");
+        ex.textContent = p.excerpt || "";
+
+        titleWrap.appendChild(h3);
+        titleWrap.appendChild(ex);
+
+        main.appendChild(thumbBox);
+        main.appendChild(titleWrap);
+        const arrow = document.createElement("span");
+        arrow.className = "acc-arrow";
+        arrow.textContent = "▾";
+
+        head.appendChild(main);
+        head.appendChild(arrow);
+
+        // body
+        const body = document.createElement("div");
+        body.className = "acc-body";
+
+        const content = document.createElement("div");
+        content.className = "acc-content";
+
+        const imgBox = document.createElement("div");
+        imgBox.className = "acc-img";
+        const img = document.createElement("img");
+        img.src = p.cover || p.thumb || "../images/placeholder.jpg";
+        img.alt = p.title || "Cover";
+        imgBox.appendChild(img);
+
+        const textBox = document.createElement("div");
+        textBox.className = "acc-text";
+
+        // symptoms
+        const h4a = document.createElement("h4");
+        h4a.textContent = "الأعراض";
+        const ulA = document.createElement("ul");
+        (p.symptoms || []).forEach(t => ulA.appendChild(makeLi(t)));
+
+        // why
+        const h4b = document.createElement("h4");
+        h4b.textContent = "ليه ده بيحصل؟";
+        const ulB = document.createElement("ul");
+        (p.why || []).forEach(t => ulB.appendChild(makeLi(t)));
+
+        // solution
+        const h4c = document.createElement("h4");
+        h4c.textContent = "الحل العملي";
+        const olC = document.createElement("ol");
+        (p.solution || []).forEach(t => {
+          const li = document.createElement("li");
+          li.textContent = t;
+          olC.appendChild(li);
+        });
+
+        textBox.appendChild(h4a); textBox.appendChild(ulA);
+        textBox.appendChild(h4b); textBox.appendChild(ulB);
+        textBox.appendChild(h4c); textBox.appendChild(olC);
+
+        if (p.note){
+          const note = document.createElement("div");
+          note.className = "callout";
+          const strong = document.createElement("strong");
+          strong.textContent = "ملاحظة:";
+          note.appendChild(strong);
+          note.appendChild(document.createTextNode(" " + p.note));
+          textBox.appendChild(note);
+        }
+
+        content.appendChild(imgBox);
+        content.appendChild(textBox);
+        body.appendChild(content);
+
+        head.addEventListener("click", () => {
+          const open = body.style.display === "block";
+          body.style.display = open ? "none" : "block";
+          card.classList.toggle("open", !open);
+        });
+
+        card.appendChild(head);
+        card.appendChild(body);
+
+        return card;
+      }
+
+      const grid = document.getElementById("problemsGrid");
+      PROBLEMS.forEach(p => grid.appendChild(buildCard(p)));
+    </script>
+  </body>
+</html>
+

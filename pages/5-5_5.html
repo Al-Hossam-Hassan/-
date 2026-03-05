@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>5 – 5.5 سنوات | AL-Hossam Hassn</title>
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <style>
+      .wrap {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .stage-hero {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 14px;
+        align-items: center;
+        margin-bottom: 14px;
+        padding: 14px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      }
+      .stage-hero-img img {
+        width: 100%;
+        border-radius: 16px;
+        aspect-ratio: 16/10;
+        object-fit: cover;
+      }
+      @media (max-width: 900px) {
+        .stage-hero {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 12px;
+        margin-top: 14px;
+      }
+      .prob-card {
+        grid-column: span 6;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        padding: 12px;
+      }
+      @media (max-width: 900px) {
+        .prob-card {
+          grid-column: span 12;
+        }
+      }
+
+      .acc-head {
+        width: 100%;
+        background: transparent;
+        border: 0;
+        color: inherit;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        text-align: right;
+      }
+
+      .acc-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .thumb {
+        width: 74px;
+        height: 56px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .acc-arrow {
+        font-size: 20px;
+        transition: 0.2s;
+      }
+      .prob-card.open .acc-arrow {
+        transform: rotate(180deg);
+      }
+
+      .acc-body {
+        display: none;
+        margin-top: 12px;
+      }
+      .acc-content {
+        display: grid;
+        grid-template-columns: 1fr 1.6fr;
+        gap: 14px;
+      }
+      .acc-img img {
+        width: 100%;
+        border-radius: 16px;
+        aspect-ratio: 16/10;
+        object-fit: cover;
+      }
+      @media (max-width: 900px) {
+        .acc-content {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .acc-text ul,
+      .acc-text ol {
+        padding-right: 18px;
+        line-height: 1.9;
+      }
+      .acc-text h4 {
+        margin: 10px 0 6px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="logo" href="../index.html">AL-Hossam Hassn</a>
+        <ul class="nav-links">
+          <li><a href="../index.html">الرئيسية</a></li>
+          <li><a href="../stages.html">المراحل العمرية</a></li>
+          <li><a href="../contact.html">تواصل</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section wrap">
+        <a class="btn btn-secondary" href="../stages.html">رجوع للمراحل</a>
+
+        <section class="stage-hero">
+          <div>
+            <h1>5 – 5.5 سنوات</h1>
+            <p>
+              مرحلة تأسيس الانضباط الداخلي: قواعد واضحة، مكافآت ذكية، وبداية
+              تعلم أكاديمي منظم بدون ضغط.
+            </p>
+          </div>
+          <div class="stage-hero-img">
+            <img
+              src="../images/stage-5-5_5.png"
+              alt="5 Years Child Development"
+            />
+          </div>
+        </section>
+
+        <h2>مشاكل شائعة في المرحلة</h2>
+        <div class="grid" id="problemsGrid"></div>
+      </section>
+    </main>
+
+    <script>
+      const PROBLEMS = [
+        {
+          title: "تطبيق القواعد بدون صراخ",
+          excerpt: "قواعد قصيرة + ثبات + نتيجة واضحة.",
+          thumb: "../images/rules-5-5_5-cover.png",
+          cover: "../images/rules-5-5_5-cover.png",
+          symptoms: [
+            "يتجاهل التعليمات",
+            "يجادل في كل قاعدة",
+            "ينفذ أحيانًا ويرفض أحيانًا",
+          ],
+          why: [
+            "القواعد كثيرة أو طويلة",
+            "في تفاوض زائد بعد كل رفض",
+            "عدم ثبات في التنفيذ",
+          ],
+          solution: [
+            "اكتب 3 قواعد فقط واضحة جدًا",
+            "جملة قصيرة ثابتة: (القاعدة هي…)",
+            "نتيجة فورية هادئة بدون تهديد",
+            "متدخلش في جدال طويل",
+          ],
+          note: "الثبات أهم من ارتفاع الصوت.",
+        },
+
+        {
+          title: "المكافآت الذكية مش الرشوة",
+          excerpt: "فرق كبير بين التحفيز والابتزاز.",
+          thumb: "../images/reward-system-cover.png",
+          cover: "../images/reward-system-cover.png",
+          symptoms: [
+            "لا ينفذ إلا لو في مقابل",
+            "يسأل: هتديني إيه؟",
+            "يرفض لو مفيش جائزة",
+          ],
+          why: [
+            "المكافآت تُستخدم قبل السلوك مش بعده",
+            "تم الاعتماد على الرشوة بدل التعزيز",
+            "عدم تعزيز السلوك الإيجابي بالكلام",
+          ],
+          solution: [
+            "المكافأة بعد التنفيذ وليس قبله",
+            "جدول نقاط بسيط أسبوعي",
+            "مدح محدد للسلوك",
+            "استبدل الحلوى بنشاط يحبه",
+          ],
+          note: "الهدف بناء دافع داخلي مش تعويد على مقابل دائم.",
+        },
+
+        {
+          title: "بداية التعلّم الأكاديمي بدون ضغط",
+          excerpt: "استعداد عقلي قبل قراءة وكتابة.",
+          thumb: "../images/early-learning-cover.png",
+          cover: "../images/early-learning-cover.png",
+          symptoms: ["ملل سريع من الورق", "رفض الكتابة", "تشتت أثناء الجلسة"],
+          why: ["الجلسة طويلة", "عدم جاهزية عضلات اليد", "ضغط نفسي مبكر"],
+          solution: [
+            "جلسة 10-15 دقيقة فقط",
+            "أنشطة قص ولصق قبل الكتابة",
+            "تعلم بالحركة واللعب",
+            "مدح المحاولة مش النتيجة",
+          ],
+          note: "التعلم في السن ده يعتمد على اللعب الموجه.",
+        },
+
+        {
+          title: "العناد المنطقي",
+          excerpt: "بيبدأ يجادل بعقل مش بس رفض.",
+          thumb: "../images/logical-arguing-cover.png",
+          cover: "../images/logical-arguing-cover.png",
+          symptoms: ["يرد بحجج طويلة", "يسأل ليه كتير", "يحاول يغير القاعدة"],
+          why: ["التفكير المنطقي بدأ يتطور", "اختبار الحدود", "محاولة استقلال"],
+          solution: [
+            "ناقشه مرة واحدة فقط",
+            "لو القاعدة ثابتة قول: القرار نهائي",
+            "اسمح له يختار داخل حدود",
+            "متسخرش من منطقه",
+          ],
+          note: "الجدال مش سوء تربية… ده تطور عقلي.",
+        },
+
+        {
+          title: "رفض المسؤولية",
+          excerpt: "مش عايز يرتب أو يساعد.",
+          thumb: "../images/responsibility-cover.png",
+          cover: "../images/responsibility-cover.png",
+          symptoms: ["يترك ألعابه", "يرفض ترتيب", "يعتمد على الكبار"],
+          why: ["لم يُدرّب تدريجيًا", "المهمة كبيرة عليه", "عدم وجود روتين"],
+          solution: [
+            "مهمة صغيرة ثابتة يوميًا",
+            "مؤقت 5 دقائق",
+            "مدح الالتزام فورًا",
+            "اعملها معاه أول أسبوع",
+          ],
+          note: "المسؤولية تُبنى بالتكرار.",
+        },
+
+        {
+          title: "تشتت عند التعليمات المتعددة",
+          excerpt: "يحتاج تعليمات خطوة خطوة.",
+          thumb: "../images/instructions-cover.png",
+          cover: "../images/instructions-cover.png",
+          symptoms: [
+            "ينفذ جزء وينسى الباقي",
+            "يتوقف في منتصف المهمة",
+            "يسأل ماذا أفعل الآن؟",
+          ],
+          why: [
+            "الذاكرة العاملة لسه بتتطور",
+            "تعليمات طويلة جدًا",
+            "تشتيت بصري",
+          ],
+          solution: [
+            "تعليمات من خطوتين فقط",
+            "استخدم صور توضيحية",
+            "أعد الجملة مرة واحدة",
+            "قلل المشتتات أثناء المهمة",
+          ],
+          note: "التدرج في التعليمات يقوي التركيز.",
+        },
+      ];
+
+      function makeLi(text) {
+        const li = document.createElement("li");
+        li.textContent = text;
+        return li;
+      }
+
+      function buildCard(p) {
+        const card = document.createElement("div");
+        card.className = "prob-card";
+
+        const head = document.createElement("button");
+        head.className = "acc-head";
+
+        const left = document.createElement("div");
+        left.className = "acc-left";
+
+        const thumb = document.createElement("div");
+        thumb.className = "thumb";
+        const timg = document.createElement("img");
+        timg.src = p.thumb;
+        thumb.appendChild(timg);
+
+        const titleWrap = document.createElement("div");
+        const h3 = document.createElement("h3");
+        h3.textContent = p.title;
+        const ex = document.createElement("p");
+        ex.textContent = p.excerpt;
+
+        titleWrap.appendChild(h3);
+        titleWrap.appendChild(ex);
+
+        left.appendChild(thumb);
+        left.appendChild(titleWrap);
+
+        const arrow = document.createElement("span");
+        arrow.className = "acc-arrow";
+        arrow.textContent = "▾";
+
+        head.appendChild(left);
+        head.appendChild(arrow);
+
+        const body = document.createElement("div");
+        body.className = "acc-body";
+
+        const content = document.createElement("div");
+        content.className = "acc-content";
+
+        const imgBox = document.createElement("div");
+        imgBox.className = "acc-img";
+        const img = document.createElement("img");
+        img.src = p.cover;
+        imgBox.appendChild(img);
+
+        const textBox = document.createElement("div");
+        textBox.className = "acc-text";
+
+        const h4a = document.createElement("h4");
+        h4a.textContent = "الأعراض";
+        const ulA = document.createElement("ul");
+        p.symptoms.forEach((t) => ulA.appendChild(makeLi(t)));
+
+        const h4b = document.createElement("h4");
+        h4b.textContent = "ليه ده بيحصل؟";
+        const ulB = document.createElement("ul");
+        p.why.forEach((t) => ulB.appendChild(makeLi(t)));
+
+        const h4c = document.createElement("h4");
+        h4c.textContent = "الحل العملي";
+        const olC = document.createElement("ol");
+        p.solution.forEach((t) => olC.appendChild(makeLi(t)));
+
+        textBox.appendChild(h4a);
+        textBox.appendChild(ulA);
+        textBox.appendChild(h4b);
+        textBox.appendChild(ulB);
+        textBox.appendChild(h4c);
+        textBox.appendChild(olC);
+
+        content.appendChild(imgBox);
+        content.appendChild(textBox);
+        body.appendChild(content);
+
+        head.addEventListener("click", () => {
+          const open = body.style.display === "block";
+          body.style.display = open ? "none" : "block";
+          card.classList.toggle("open", !open);
+        });
+
+        card.appendChild(head);
+        card.appendChild(body);
+        return card;
+      }
+
+      const grid = document.getElementById("problemsGrid");
+      PROBLEMS.forEach((p) => grid.appendChild(buildCard(p)));
+    </script>
+  </body>
+</html>

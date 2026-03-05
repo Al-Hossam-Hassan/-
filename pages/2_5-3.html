@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>2.5 – 3 سنوات | AL-Hossam Hassn</title>
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <style>
+      .wrap { max-width: 1000px; margin: 0 auto; }
+
+      .stage-hero{
+        display:grid;
+        grid-template-columns: 1.2fr .8fr;
+        gap: 14px;
+        align-items: center;
+        margin-bottom: 14px;
+        padding: 14px;
+        border-radius: 18px;
+        border: 1px solid rgba(255,255,255,0.14);
+        background: rgba(255,255,255,0.06);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      }
+      .stage-hero-text h1{ margin:0 0 6px; }
+      .stage-hero-text p{ margin:0; opacity:.9; line-height:1.9; }
+      .stage-hero-img img{
+        width:100%;
+        border-radius: 16px;
+        border: 1px solid rgba(255,255,255,0.14);
+        aspect-ratio: 16/10;
+        object-fit: cover;
+      }
+      @media(max-width:900px){
+        .stage-hero{ grid-template-columns: 1fr; }
+      }
+
+      .grid{
+        display:grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .prob-card{
+        grid-column: span 6;
+        border: 1px solid rgba(255,255,255,0.14);
+        background: rgba(255,255,255,0.06);
+        border-radius: 16px;
+        padding: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      }
+
+      .acc-head{
+        width: 100%;
+        background: transparent;
+        border: 0;
+        color: inherit;
+        cursor: pointer;
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 0;
+        text-align: right;
+      }
+
+      .acc-left{
+        display:flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+      }
+      .thumb{
+        width: 74px;
+        height: 56px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.14);
+        background: rgba(255,255,255,0.04);
+        flex: 0 0 auto;
+      }
+      .thumb img{ width:100%; height:100%; object-fit: cover; }
+
+      .acc-title{ min-width:0; }
+      .acc-title h3{
+        margin:0 0 6px;
+        font-size: 18px;
+        line-height: 1.35;
+      }
+      .acc-title p{
+        margin:0;
+        opacity:.85;
+        line-height: 1.8;
+        font-size: 14px;
+      }
+
+      .acc-arrow{
+        font-size: 20px;
+        opacity: .85;
+        transition: 200ms ease;
+        user-select: none;
+        flex: 0 0 auto;
+      }
+      .prob-card.open .acc-arrow{ transform: rotate(180deg); }
+
+      .acc-body{ display:none; margin-top: 12px; }
+
+      .acc-content{
+        display:grid;
+        grid-template-columns: 1fr 1.6fr;
+        gap: 14px;
+        align-items: start;
+      }
+
+      .acc-img img{
+        width: 100%;
+        border-radius: 16px;
+        border: 1px solid rgba(255,255,255,0.14);
+        background: rgba(255,255,255,0.04);
+        aspect-ratio: 16/10;
+        object-fit: cover;
+      }
+
+      .acc-text h4{ margin: 10px 0 8px; }
+      .acc-text ul, .acc-text ol{
+        padding-right: 18px;
+        margin: 0;
+        line-height: 1.9;
+      }
+
+      @media(max-width:900px){
+        .prob-card{ grid-column: span 12; }
+        .acc-content{ grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="logo" href="../index.html">AL-Hossam Hassn</a>
+        <ul class="nav-links">
+          <li><a href="../index.html">الرئيسية</a></li>
+          <li><a href="../stages.html">المراحل العمرية</a></li>
+          <li><a href="../activities.html">الأنشطة</a></li>
+          <li><a href="../about.html">من أنا</a></li>
+          <li><a href="../contact.html">تواصل</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section wrap">
+        <a class="btn btn-secondary" href="../stages.html" style="margin-bottom:14px;">رجوع للمراحل</a>
+
+        <section class="stage-hero">
+          <div class="stage-hero-text">
+            <h1>2.5 – 3 سنوات</h1>
+            <p>
+              هنا الخيال بيكبر، واللغة بتتحسن تدريجيًا، والطفل يبدأ يتعلم
+              “الدور/المشاركة”، ومع ده تظهر مخاوف ونوبات رفض وتحدّي للحدود.
+            </p>
+          </div>
+          <div class="stage-hero-img">
+            <img src="../images/stage-2_5-3.png" alt="2.5-3 Years - imagination, language, routines" />
+          </div>
+        </section>
+
+        <div class="callout" style="margin-top:16px;">
+          <strong>مهم:</strong> “التوقعات الواضحة + الروتين + تدريب بسيط يومي”
+          بيقلل أغلب مشاكل السن ده.
+        </div>
+
+        <h2 style="margin-top:26px;">مشاكل شائعة في المرحلة</h2>
+        <div class="grid" id="problemsGrid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> AL-Hossam Hassn — جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const PROBLEMS = [
+        {
+          id: "sleep-fears-2_5-3",
+          title: "الخوف (الظلام/الأصوات): احتواء بدون تهويل",
+          excerpt: "طمأنة + روتين نوم + تعريض تدريجي.",
+          thumb: "../images/sleep-fears-2_5-3-cover.png",
+          cover: "../images/sleep-fears-2_5-3-cover.png",
+          symptoms: [
+            "يرفض ينام وحده أو يصرخ عند إطفاء النور",
+            "يتخيل وحوش/أصوات ويطلب تأكيد كتير",
+            "كوابيس أو صحيات مفاجئة بالليل"
+          ],
+          why: [
+            "الخيال بيكبر جدًا في السن ده",
+            "التأثر بالقصص/الشاشات يزيد قبل النوم",
+            "القلق يزيد مع التعب أو تغيّر الروتين"
+          ],
+          solution: [
+            "اعترف بالخوف: “أنا شايف إنك خايف” بدون سخرية",
+            "روتين هادي ثابت: حمام دافي + قصة لطيفة + نفس الكلمات كل ليلة",
+            "إضاءة خافتة لو محتاج + غرض أمان (بطانية/دبدوب)",
+            "تعريض تدريجي: نطفّي جزء من النور/نقعد دقايق ونقلل وجودنا بالتدريج",
+            "قلّل الشاشات قبل النوم بساعة وتجنب المحتوى المخيف"
+          ],
+          note: "متدخلش في نقاش طويل وقت الخوف… طمّن وارجع للروتين."
+        },
+
+        {
+          id: "language-requests-2_5-3",
+          title: "اللغة: علّمه يطلب بدل ما يصرخ",
+          excerpt: "جمل قصيرة + صور + تدريب يومي سريع.",
+          thumb: "../images/language-requests-2_5-3-cover.png",
+          cover: "../images/language-requests-2_5-3-cover.png",
+          symptoms: [
+            "يصرخ بدل ما يطلب",
+            "يشاور أو يسحبك بدل الكلام",
+            "نوبات غضب بسبب سوء الفهم"
+          ],
+          why: [
+            "الطفل فاهم أكتر من قدرته على التعبير",
+            "الضغط عليه إنه “يتكلم صح” يقلل المحاولة",
+            "وقت الغضب المخ بيقفل ومش بيعرف يكوّن جملة"
+          ],
+          solution: [
+            "استخدم 3 كلمات فقط: “عايز مياه” / “افتح الباب”",
+            "قدّم نموذج: انت قول الجملة وهو يكرر لو حابب (بدون إجبار)",
+            "استخدم صور بسيطة للاحتياجات (مياه/أكل/حمام/نوم)",
+            "قبل الانفعال: ذكّره بالجملة، أثناء الصراخ: هدوء ثم بعده إعادة المحاولة",
+            "امدح المحاولة حتى لو ناقصة: “حلو إنك طلبت”"
+          ],
+          note: "لو اللغة قليلة جدًا مقارنة بعمره أو مفيش تواصل… يفضّل تقييم سمع/لغة."
+        },
+
+        {
+          id: "pretend-play-2_5-3",
+          title: "اللعب التخيلي: ليه مهم وإزاي نستفيد؟",
+          excerpt: "ينمي اللغة والمشاعر وحل المشكلات.",
+          thumb: "../images/pretend-play-2_5-3-cover.png",
+          cover: "../images/pretend-play-2_5-3-cover.png",
+          symptoms: [
+            "يمثل دور (دكتور/طبّاخ/ماما)",
+            "يحكي قصص قصيرة من خياله",
+            "أحيانًا يبالغ أو “يكدب” كخيال"
+          ],
+          why: [
+            "التخيل أداة طبيعية لتطوير اللغة والعاطفة",
+            "الطفل يجرب السيطرة على العالم من خلال اللعب",
+            "ممكن يعبر عن مخاوفه أو رغباته في اللعب"
+          ],
+          solution: [
+            "خصص 10 دقائق يوميًا لعب دور معاه (بدون موبايل)",
+            "اسأله أسئلة بسيطة: “الدكتور هيعمل إيه؟”",
+            "استخدم اللعب لتعليم مهارة: انتظار الدور/طلب/اعتذار",
+            "اعمل سيناريوهات: زيارة/نوم/حمام… عشان يقل القلق الحقيقي",
+            "لو خياله مخيف: حوّله لقصة آمنة ونهاية مطمّنة"
+          ],
+          note: "الخيال مش كذب… الكذب الحقيقي غالبًا يظهر أكبر شوية."
+        },
+
+        {
+          id: "sleep-routine-2_5-3",
+          title: "بيصحى كتير؟ خطة تنظيم النوم",
+          excerpt: "روتين ثابت + تقليل مثيرات + ثبات.",
+          thumb: "../images/sleep-routine-2_5-3-cover.png",
+          cover: "../images/sleep-routine-2_5-3-cover.png",
+          symptoms: [
+            "يقاوم النوم ويطلب قصص كتير",
+            "يصحي مرة أو أكتر ويطلب وجودك",
+            "ينام متأخر فيأثر على مزاجه"
+          ],
+          why: [
+            "نوم النهار متأخر أو طويل",
+            "الشاشات/النشاط العالي قبل النوم",
+            "الاتجاه لنمط “ينام بوجودك فقط”"
+          ],
+          solution: [
+            "ثبّت موعد نوم تقريبًا (±30 دقيقة)",
+            "اقفل الشاشات قبل النوم بساعة",
+            "روتين 20 دقيقة ثابت بنفس الترتيب كل ليلة",
+            "لو بيقوم: رجّعه بهدوء وبنفس الجملة (بدون محاضرات)",
+            "لو قيلولة: خليها بدري ومش طويلة"
+          ],
+          note: "الثبات أهم من المثالية… أول 3 أيام بتكون أصعب."
+        },
+
+        {
+          id: "refusal-boundaries-2_5-3",
+          title: "الرفض والعناد: “مش عايز” طول اليوم",
+          excerpt: "اختيارات محدودة + قواعد واضحة + انتقالات أسهل.",
+          thumb: "../images/refusal-boundaries-2_5-3-cover.png",
+          cover: "../images/refusal-boundaries-2_5-3-cover.png",
+          symptoms: [
+            "رفض مستمر للأكل/اللبس/الخروج",
+            "عناد عند تغيير النشاط",
+            "يزوّد صوته لحد ما تاخد قرار عنه"
+          ],
+          why: [
+            "بيجرب الاستقلال والسيطرة",
+            "الانتقال المفاجئ صعب (من لعب لأكل مثلًا)",
+            "لو “الصريخ يجيب نتيجة” السلوك يثبت"
+          ],
+          solution: [
+            "اختيارين فقط: “القميص الأحمر ولا الأزرق؟”",
+            "عدّ تنازلي قبل الانتقال: “بعد 2 دقيقة هنلم اللعب”",
+            "قواعد قصيرة: “الأكل على الترابيزة”",
+            "نتيجة ثابتة وهادية (من غير تهديدات طويلة)",
+            "امدح التعاون بسرعة"
+          ],
+          note: "مفتاح السن ده: اختيارات + حدود… مش صراع قوة."
+        },
+
+        {
+          id: "sharing-turns-2_5-3",
+          title: "المشاركة والدور: نعلّمه من غير خناق",
+          excerpt: "تدريب في البيت بألعاب بسيطة.",
+          thumb: "../images/sharing-turns-2_5-3-cover.png",
+          cover: "../images/sharing-turns-2_5-3-cover.png",
+          symptoms: [
+            "يزعل لو طفل لمس لعبته",
+            "يخطف الألعاب ويرفض المشاركة",
+            "يضرب أو يصرخ وقت الدور"
+          ],
+          why: [
+            "المشاركة مهارة… مش طبيعة فطرية في السن ده",
+            "لسه بيملك أشياء ويشعر إنها “بتاعته”",
+            "الانتظار صعب على التحكم الذاتي"
+          ],
+          solution: [
+            "ابدأ بدور قصير جدًا (10 ثواني) وزوده تدريجيًا",
+            "استخدم مؤقت بسيط أو عدّ بصوتك",
+            "علّمه جملة: “دوري بعدك” / “خد بعدي”",
+            "ألعاب تبادل: كرة/مكعبات/لعبة تركيب",
+            "امدح أي مشاركة صغيرة فورًا"
+          ],
+          note: "ما تجبره يشارك كل حاجة… علّمه “اختيار المشاركة” بالتدريج."
+        }
+      ];
+
+      function makeLi(text){
+        const li = document.createElement("li");
+        li.textContent = text;
+        return li;
+      }
+
+      function buildCard(p){
+        const card = document.createElement("div");
+        card.className = "prob-card";
+
+        const head = document.createElement("button");
+        head.type = "button";
+        head.className = "acc-head";
+
+        const left = document.createElement("div");
+        left.className = "acc-left";
+
+        const thumb = document.createElement("div");
+        thumb.className = "thumb";
+        const timg = document.createElement("img");
+        timg.src = p.thumb || "../images/placeholder.jpg";
+        timg.alt = p.title;
+        thumb.appendChild(timg);
+
+        const titleWrap = document.createElement("div");
+        titleWrap.className = "acc-title";
+
+        const h3 = document.createElement("h3");
+        h3.textContent = p.title;
+
+        const ex = document.createElement("p");
+        ex.textContent = p.excerpt || "";
+
+        titleWrap.appendChild(h3);
+        titleWrap.appendChild(ex);
+
+        left.appendChild(thumb);
+        left.appendChild(titleWrap);
+
+        const arrow = document.createElement("span");
+        arrow.className = "acc-arrow";
+        arrow.textContent = "▾";
+
+        head.appendChild(left);
+        head.appendChild(arrow);
+
+        const body = document.createElement("div");
+        body.className = "acc-body";
+
+        const content = document.createElement("div");
+        content.className = "acc-content";
+
+        const imgBox = document.createElement("div");
+        imgBox.className = "acc-img";
+        const img = document.createElement("img");
+        img.src = p.cover || "../images/placeholder.jpg";
+        img.alt = p.title;
+        imgBox.appendChild(img);
+
+        const textBox = document.createElement("div");
+        textBox.className = "acc-text";
+
+        const h4a = document.createElement("h4");
+        h4a.textContent = "الأعراض";
+        const ulA = document.createElement("ul");
+        (p.symptoms || []).forEach(t => ulA.appendChild(makeLi(t)));
+
+        const h4b = document.createElement("h4");
+        h4b.textContent = "ليه ده بيحصل؟";
+        const ulB = document.createElement("ul");
+        (p.why || []).forEach(t => ulB.appendChild(makeLi(t)));
+
+        const h4c = document.createElement("h4");
+        h4c.textContent = "الحل العملي";
+        const olC = document.createElement("ol");
+        (p.solution || []).forEach(t => {
+          const li = document.createElement("li");
+          li.textContent = t;
+          olC.appendChild(li);
+        });
+
+        textBox.appendChild(h4a);
+        textBox.appendChild(ulA);
+        textBox.appendChild(h4b);
+        textBox.appendChild(ulB);
+        textBox.appendChild(h4c);
+        textBox.appendChild(olC);
+
+        if(p.note){
+          const note = document.createElement("div");
+          note.className = "callout";
+          const strong = document.createElement("strong");
+          strong.textContent = "ملاحظة:";
+          note.appendChild(strong);
+          note.appendChild(document.createTextNode(" " + p.note));
+          textBox.appendChild(note);
+        }
+
+        content.appendChild(imgBox);
+        content.appendChild(textBox);
+        body.appendChild(content);
+
+        head.addEventListener("click", () => {
+          const open = body.style.display === "block";
+          body.style.display = open ? "none" : "block";
+          card.classList.toggle("open", !open);
+        });
+
+        card.appendChild(head);
+        card.appendChild(body);
+
+        return card;
+      }
+
+      const grid = document.getElementById("problemsGrid");
+      PROBLEMS.forEach(p => grid.appendChild(buildCard(p)));
+    </script>
+  </body>
+</html>

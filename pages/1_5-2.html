@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>1.5 – 2 سنة | AL-Hossam Hassn</title>
+  <link rel="stylesheet" href="../css/style.css" />
+
+  <style>
+    .wrap{ max-width: 1000px; margin: 0 auto; }
+
+    /* ===== Stage Hero ===== */
+    .stage-hero{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 16px;
+      align-items:center;
+      margin-bottom: 14px;
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    }
+    .stage-hero-text h1{ margin:0 0 8px; }
+    .stage-hero-text p{ margin:0; opacity:.9; line-height:1.9; }
+    .stage-hero-img{
+      border-radius: 16px;
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+    }
+    .stage-hero-img img{
+      width:100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      display:block;
+    }
+
+    /* ===== Problems Grid ===== */
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .prob-card{
+      grid-column: span 6;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    /* ===== Card Head (with thumb) ===== */
+    .acc-head{
+      width: 100%;
+      background: transparent;
+      border: 0;
+      color: inherit;
+      cursor: pointer;
+      padding: 0;
+      text-align: right;
+
+      display: grid;
+      grid-template-columns: 110px 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .thumb{
+      width: 110px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+    }
+    .thumb img{
+      width: 100%;
+      height: 80px;
+      object-fit: cover;
+      display:block;
+    }
+
+    .acc-title h3{ margin:0 0 6px; font-size: 18px; }
+    .acc-title p{ margin:0; opacity:.85; line-height: 1.8; font-size: 14px; }
+
+    .acc-arrow{
+      font-size: 20px;
+      opacity: .85;
+      transition: 200ms ease;
+      user-select: none;
+    }
+    .prob-card.open .acc-arrow{ transform: rotate(180deg); }
+
+    /* ===== Accordion Body ===== */
+    .acc-body{ display:none; margin-top: 12px; }
+    .acc-content{
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .acc-img img{
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+      aspect-ratio: 16/10;
+      object-fit: cover;
+    }
+
+    .acc-text h4{ margin: 10px 0 8px; }
+    .acc-text ul, .acc-text ol{
+      padding-right: 18px;
+      margin: 0;
+      line-height: 1.9;
+    }
+
+    @media (max-width: 900px){
+      .stage-hero{ grid-template-columns: 1fr; }
+      .prob-card{ grid-column: span 12; }
+      .acc-content{ grid-template-columns: 1fr; }
+      .acc-head{ grid-template-columns: 90px 1fr auto; }
+      .thumb{ width: 90px; }
+      .thumb img{ height: 72px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a class="logo" href="../index.html">AL-Hossam Hassn</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">الرئيسية</a></li>
+      <li><a href="../stages.html">المراحل العمرية</a></li>
+      <li><a href="../activities.html">الأنشطة</a></li>
+      <li><a href="../about.html">من أنا</a></li>
+      <li><a href="../contact.html">تواصل</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="section wrap">
+    <a class="btn btn-secondary" href="../stages.html" style="margin-bottom:14px;">رجوع للمراحل</a>
+
+    <!-- ✅ Stage Hero -->
+    <section class="stage-hero">
+      <div class="stage-hero-text">
+        <h1>1.5 – 2 سنة</h1>
+        <p>
+          مرحلة العناد ونوبات الغضب طبيعيين جدًا بسبب نمو الاستقلال واللغة لسه بتتكوّن.
+          الهدف هنا: أمان وقت النوبة + قواعد ثابتة + تعليم بدائل بعد الهدوء.
+        </p>
+      </div>
+
+      <!-- ✅ صورة المرحلة نفسها -->
+      <div class="stage-hero-img">
+        <img src="../images/1_5-2.png" alt="1.5-2 Years - Tantrums & Independence" />
+      </div>
+    </section>
+
+    <div class="callout" style="margin-top:14px;">
+      <strong>مهم:</strong> وقت النوبة مش وقت تعليم… وقت النوبة: تهدئة + أمان، وبعدها نعلّم بديل.
+    </div>
+
+    <h2 style="margin-top:26px;">مشاكل شائعة في المرحلة</h2>
+    <div class="grid" id="problemsGrid"></div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p>© <span id="year"></span> AL-Hossam Hassn — جميع الحقوق محفوظة</p>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // ✅ 6 مشاكل + لكل مشكلة thumb و cover
+  const PROBLEMS = [
+    {
+      id: "tantrums-1_5-2",
+      title: "نوبات الغضب: تعمل إيه وقت النوبة؟",
+      excerpt: "أمان + هدوء + تعليم بديل بعد النوبة.",
+      thumb: "../images/tantrums-1_5-2-cover.png",
+      cover: "../images/tantrums-1_5-2-cover.png",
+      symptoms: ["صراخ شديد فجأة", "وقوع على الأرض", "رفض أي تهدئة"],
+      why: ["مشاعره كبيرة ولسانه لسه صغير", "بيختبر حدود الاستقلال", "جوع/نعاس يزود النوبة"],
+      solution: ["ثباتك أهم حاجة (صوت هادي)", "أمّن المكان", "جملة قصيرة: «أنا جنبك»", "لا تفاوض أثناء الصراخ", "بعد الهدوء: علّم بديل (كلمة/إشارة)"],
+      note: "لو النوبة زادت جدًا: راجع النوم/الجوع/الروتين."
+    },
+    {
+      id: "stubborn-1_5-2",
+      title: "العناد: إمتى طبيعي وإمتى مكتسب؟",
+      excerpt: "فرق بين نمو طبيعي وسلوك بيتكرر بسبب أسلوبنا.",
+      thumb: "../images/stubborn-1_5-2-cover.png",
+      cover: "../images/stubborn-1_5-2-cover.png",
+      symptoms: ["يقول «لا» كتير", "يرفض اللبس/الأكل", "يعاند عند الخروج"],
+      why: ["بيتمرّن على الاستقلال", "أوامر كتير تسبب رفض", "عدم وجود اختيار بديل"],
+      solution: ["اختيارين فقط (مش أكتر)", "أمر واحد واضح", "ثبت القاعدة وكرّر بهدوء", "مدح أي تعاون فورًا"],
+      note: "العناد يقل لما تقل الأوامر وتزيد الاختيارات الذكية."
+    },
+    {
+      id: "hitting-throwing-1_5-2",
+      title: "الضرب والرمي: بدائل عملية للسلوك",
+      excerpt: "منع آمن + بديل + تعزيز إيجابي.",
+      thumb: "../images/hitting-1_5-2-cover.png",
+      cover: "../images/hitting-1_5-2-cover.png",
+      symptoms: ["يضرب وقت الغضب", "يرمي ألعاب", "يؤذي نفسه/غيره"],
+      why: ["تفريغ انفعال بدون لغة", "بيجرب رد فعلك", "طاقة عالية بدون تفريغ صحي"],
+      solution: ["امسك إيده بلطف وقل: «ممنوع ضرب»", "بديل: «اضرب المخدة»/«ادوس برجلي»", "تفريغ طاقة قبل المواقف", "تعزيز أي ضبط للنفس"],
+      note: "الضحك أو الصراخ أحيانًا بيزود السلوك."
+    },
+    {
+      id: "food-refusal-1_5-2",
+      title: "رفض الأكل: حلول عملية بدون ضغط",
+      excerpt: "روتين + كميات صغيرة + تقليل الملهيات.",
+      thumb: "../images/food-1_5-2-cover.png",
+      cover: "../images/food-1_5-2-cover.png",
+      symptoms: ["ياكل قليل", "يرفض أصناف", "يلعب بالأكل"],
+      why: ["مرحلة استقلال", "الضغط يزيد الرفض", "ملهيات (شاشة) تبوّظ الإحساس بالجوع"],
+      solution: ["أنت تعرض… وهو يقرر الكمية", "كميات صغيرة جدًا", "كرر نفس الطعام 8–10 مرات", "ممنوع شاشة وقت الأكل"],
+      note: "لو نقص وزن واضح أو قيء متكرر… استشير طبيب."
+    },
+    {
+      id: "night-waking-1_5-2",
+      title: "الاستيقاظ الليلي: ليه بيصحى كتير؟",
+      excerpt: "خطة نوم ثابتة تقلل الاستيقاظ.",
+      thumb: "../images/night-waking-1_5-2-cover.png",
+      cover: "../images/night-waking-1_5-2-cover.png",
+      symptoms: ["يصحى يبكي", "يرفض يرجع ينام", "يتعلق بالأم"],
+      why: ["قلق انفصال", "روتين نوم غير ثابت", "شاشة أو إثارة قبل النوم"],
+      solution: ["روتين نوم ثابت (قصة/تهدئة)", "تهدئة قصيرة عند الاستيقاظ", "تجنب حمل طويل", "تقليل مثيرات قبل النوم بساعة"],
+      note: "الثبات أسبوعين يعمل فرق كبير."
+    },
+    {
+      id: "clingy-1_5-2",
+      title: "التعلق الزائد: يمسك فيك طول الوقت",
+      excerpt: "أمان + خطوات صغيرة للاستقلال.",
+      thumb: "../images/clingy-1_5-2-cover.png",
+      cover: "../images/clingy-1_5-2-cover.png",
+      symptoms: ["يبكي لما تبعد", "يرفض يروح لحد تاني", "يلزق في الأم"],
+      why: ["الاستقلال لسه بيتكوّن", "قلق انفصال طبيعي", "تجارب انفصال مفاجئة تزوده"],
+      solution: ["وداع قصير وواضح", "طقس ثابت للوداع", "رجوع هادي بدون مبالغة", "تدريب استقلال في البيت دقائق"],
+      note: "الاختفاء فجأة بيزود التعلق."
+    }
+  ];
+
+  function makeLi(text){
+    const li = document.createElement("li");
+    li.textContent = text;
+    return li;
+  }
+
+  function buildCard(p){
+    const card = document.createElement("div");
+    card.className = "prob-card";
+
+    const head = document.createElement("button");
+    head.type = "button";
+    head.className = "acc-head";
+
+    // thumb
+    const thumb = document.createElement("div");
+    thumb.className = "thumb";
+    const timg = document.createElement("img");
+    timg.src = p.thumb || "../images/placeholder.jpg";
+    timg.alt = p.title;
+    thumb.appendChild(timg);
+
+    // title/excerpt
+    const titleWrap = document.createElement("div");
+    titleWrap.className = "acc-title";
+    const h3 = document.createElement("h3");
+    h3.textContent = p.title;
+    const ex = document.createElement("p");
+    ex.textContent = p.excerpt || "";
+    titleWrap.appendChild(h3);
+    titleWrap.appendChild(ex);
+
+    // arrow
+    const arrow = document.createElement("span");
+    arrow.className = "acc-arrow";
+    arrow.textContent = "▾";
+
+    head.appendChild(thumb);
+    head.appendChild(titleWrap);
+    head.appendChild(arrow);
+
+    // body
+    const body = document.createElement("div");
+    body.className = "acc-body";
+
+    const content = document.createElement("div");
+    content.className = "acc-content";
+
+    const imgBox = document.createElement("div");
+    imgBox.className = "acc-img";
+    const img = document.createElement("img");
+    img.src = p.cover || "../images/placeholder.jpg";
+    img.alt = p.title;
+    imgBox.appendChild(img);
+
+    const textBox = document.createElement("div");
+    textBox.className = "acc-text";
+
+    const h4a = document.createElement("h4");
+    h4a.textContent = "الأعراض";
+    const ulA = document.createElement("ul");
+    (p.symptoms || []).forEach(t => ulA.appendChild(makeLi(t)));
+
+    const h4b = document.createElement("h4");
+    h4b.textContent = "ليه ده بيحصل؟";
+    const ulB = document.createElement("ul");
+    (p.why || []).forEach(t => ulB.appendChild(makeLi(t)));
+
+    const h4c = document.createElement("h4");
+    h4c.textContent = "الحل العملي";
+    const olC = document.createElement("ol");
+    (p.solution || []).forEach(t => {
+      const li = document.createElement("li");
+      li.textContent = t;
+      olC.appendChild(li);
+    });
+
+    textBox.appendChild(h4a); textBox.appendChild(ulA);
+    textBox.appendChild(h4b); textBox.appendChild(ulB);
+    textBox.appendChild(h4c); textBox.appendChild(olC);
+
+    if(p.note){
+      const note = document.createElement("div");
+      note.className = "callout";
+      const strong = document.createElement("strong");
+      strong.textContent = "ملاحظة:";
+      note.appendChild(strong);
+      note.appendChild(document.createTextNode(" " + p.note));
+      textBox.appendChild(note);
+    }
+
+    content.appendChild(imgBox);
+    content.appendChild(textBox);
+    body.appendChild(content);
+
+    head.addEventListener("click", () => {
+      const open = body.style.display === "block";
+      body.style.display = open ? "none" : "block";
+      card.classList.toggle("open", !open);
+    });
+
+    card.appendChild(head);
+    card.appendChild(body);
+    return card;
+  }
+
+  const grid = document.getElementById("problemsGrid");
+  PROBLEMS.forEach(p => grid.appendChild(buildCard(p)));
+</script>
+
+</body>
+</html>

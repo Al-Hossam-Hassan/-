@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>6 – 6.5 سنوات | AL-Hossam Hassn</title>
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <style>
+      .wrap {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .stage-hero {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 14px;
+        align-items: center;
+        margin-bottom: 14px;
+        padding: 14px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .stage-hero-img img {
+        width: 100%;
+        border-radius: 16px;
+        aspect-ratio: 16/10;
+        object-fit: cover;
+      }
+      @media (max-width: 900px) {
+        .stage-hero {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 12px;
+      }
+      .prob-card {
+        grid-column: span 6;
+        padding: 12px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+      }
+      @media (max-width: 900px) {
+        .prob-card {
+          grid-column: span 12;
+        }
+      }
+
+      .acc-head {
+        width: 100%;
+        background: transparent;
+        border: 0;
+        color: inherit;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .acc-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .thumb {
+        width: 74px;
+        height: 56px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .acc-arrow {
+        font-size: 20px;
+        transition: 0.2s;
+      }
+      .prob-card.open .acc-arrow {
+        transform: rotate(180deg);
+      }
+      .acc-body {
+        display: none;
+        margin-top: 12px;
+      }
+      .acc-content {
+        display: grid;
+        grid-template-columns: 1fr 1.6fr;
+        gap: 14px;
+      }
+      .acc-img img {
+        width: 100%;
+        border-radius: 16px;
+        aspect-ratio: 16/10;
+        object-fit: cover;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      @media (max-width: 900px) {
+        .acc-content {
+          grid-template-columns: 1fr;
+        }
+      }
+      .acc-text ul,
+      .acc-text ol {
+        padding-right: 18px;
+        line-height: 1.9;
+        margin: 0;
+      }
+      .acc-text h4 {
+        margin: 10px 0 6px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="logo" href="../index.html">AL-Hossam Hassn</a>
+        <ul class="nav-links">
+          <li><a href="../index.html">الرئيسية</a></li>
+          <li><a href="../stages.html">المراحل العمرية</a></li>
+          <li><a href="../contact.html">تواصل</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section wrap">
+        <a class="btn btn-secondary" href="../stages.html">رجوع للمراحل</a>
+
+        <section class="stage-hero">
+          <div>
+            <h1>6 – 6.5 سنوات</h1>
+            <p>
+              بداية تثبيت عادة المذاكرة + تقليل المشتتات + بناء مسؤولية دراسية
+              مستقرة.
+            </p>
+          </div>
+          <div class="stage-hero-img">
+            <img
+              src="../images/stage-6-6_5.png"
+              alt="6-6.5 Years Learning Focus"
+            />
+          </div>
+        </section>
+
+        <div class="callout">
+          <strong>مهم:</strong> في السن ده الطفل محتاج نظام ثابت مش ضغط عالي.
+        </div>
+
+        <h2>مشاكل شائعة في المرحلة</h2>
+        <div class="grid" id="problemsGrid"></div>
+      </section>
+    </main>
+
+    <script>
+      const PROBLEMS = [
+        {
+          title: "عادة المذاكرة اليومية",
+          excerpt: "تحويل المذاكرة لعادة مش عقاب.",
+          thumb: "../images/study-habit-cover.png",
+          cover: "../images/study-habit-cover.png",
+          symptoms: [
+            "تأجيل دائم للواجب",
+            "سؤال متكرر: نذاكر إمتى؟",
+            "ملل سريع",
+          ],
+          why: [
+            "مفيش وقت ثابت للمذاكرة",
+            "ربط المذاكرة بالعقاب",
+            "المهمة كبيرة وغير مقسمة",
+          ],
+          solution: [
+            "وقت ثابت يوميًا (حتى لو مفيش واجب)",
+            "مدة 20 دقيقة + 5 راحة",
+            "ابدأ بجزء سهل لرفع الدافعية",
+            "مكافأة صغيرة بعد الالتزام بالوقت",
+          ],
+          note: "الثبات أهم من عدد الساعات.",
+        },
+
+        {
+          title: "تقليل المشتتات",
+          excerpt: "بيئة مذاكرة نظيفة = تركيز أعلى.",
+          thumb: "../images/distractions-cover.png",
+          cover: "../images/distractions-cover.png",
+          symptoms: ["يقوم كل دقيقتين", "ينظر حوله كثيرًا", "يتأثر بأي صوت"],
+          why: ["شاشة قريبة", "مكان مفتوح فيه حركة", "تعليمات طويلة"],
+          solution: [
+            "مكان ثابت خالي من شاشة",
+            "مكتب بسيط بدون ألعاب",
+            "تعليمات قصيرة من خطوتين فقط",
+            "مؤقت مرئي للوقت",
+          ],
+          note: "إزالة المشتت أسهل من تدريب تركيز طويل.",
+        },
+
+        {
+          title: "الاعتماد الزائد على الأهل",
+          excerpt: "يسأل قبل ما يحاول.",
+          thumb: "../images/dependence-cover.png",
+          cover: "../images/dependence-cover.png",
+          symptoms: ["يسأل عن كل خطوة", "يطلب الحل جاهز", "يرفض المحاولة"],
+          why: ["خوف من الخطأ", "الأهل بيحلوا بدل الطفل", "قلة تدريب تدريجي"],
+          solution: [
+            "اسأله: إنت فاهم السؤال بيقول إيه؟",
+            "سيبه يحاول دقيقة كاملة قبل المساعدة",
+            "مدح المحاولة مش الإجابة الصحيحة فقط",
+          ],
+          note: "الاستقلال مهارة تُبنى بالتكرار.",
+        },
+
+        {
+          title: "بطء في الكتابة",
+          excerpt: "عضلات اليد لسه بتتقوى.",
+          thumb: "../images/writing-cover.png",
+          cover: "../images/writing-cover.png",
+          symptoms: ["يتعب بسرعة", "خط غير واضح", "رفض الكتابة الطويلة"],
+          why: [
+            "عضلات دقيقة غير مكتملة",
+            "ضغط شديد على القلم",
+            "وقت مذاكرة طويل",
+          ],
+          solution: [
+            "تمارين عضلات يد (تلوين/قص/صلصال)",
+            "تقليل كمية الكتابة في الجلسة الواحدة",
+            "استخدام قلم مريح",
+          ],
+          note: "السرعة تيجي بعد الثبات.",
+        },
+
+        {
+          title: "الملل من الدراسة",
+          excerpt: "الملل طبيعي لو الطريقة ثابتة.",
+          thumb: "../images/boredom-cover.png",
+          cover: "../images/boredom-cover.png",
+          symptoms: ["تنهيد كثير", "تشتت فجأة", "طلب لعب بدل مذاكرة"],
+          why: ["طريقة واحدة ثابتة", "جلسة طويلة بدون راحة", "قلة تنوع"],
+          solution: [
+            "تنويع: قراءة + كتابة + سؤال شفهي",
+            "راحة حركة قصيرة",
+            "تحويل سؤال للعبة سريعة",
+          ],
+          note: "التنوع يحفز الدماغ.",
+        },
+
+        {
+          title: "المقارنة بزملائه",
+          excerpt: "تقلل الثقة بالنفس.",
+          thumb: "../images/comparison-cover.png",
+          cover: "../images/comparison-cover.png",
+          symptoms: ["يقول: فلان أشطر مني", "إحباط سريع", "رفض المحاولة"],
+          why: ["مقارنات مباشرة", "تركيز على النتيجة فقط", "تجارب فشل متكررة"],
+          solution: [
+            "قارن الطفل بنفسه أمس",
+            "احتفل بأي تقدم بسيط",
+            "قلل التعليقات المقارنة أمامه",
+          ],
+          note: "الثقة أهم من الدرجة.",
+        },
+      ];
+
+      function makeLi(t) {
+        const li = document.createElement("li");
+        li.textContent = t;
+        return li;
+      }
+      function buildCard(p) {
+        const card = document.createElement("div");
+        card.className = "prob-card";
+        const head = document.createElement("button");
+        head.className = "acc-head";
+        const left = document.createElement("div");
+        left.className = "acc-left";
+        const thumb = document.createElement("div");
+        thumb.className = "thumb";
+        const imgT = document.createElement("img");
+        imgT.src = p.thumb;
+        imgT.alt = p.title;
+        thumb.appendChild(imgT);
+        const wrap = document.createElement("div");
+        const h3 = document.createElement("h3");
+        h3.textContent = p.title;
+        const ex = document.createElement("p");
+        ex.textContent = p.excerpt;
+        wrap.appendChild(h3);
+        wrap.appendChild(ex);
+        left.appendChild(thumb);
+        left.appendChild(wrap);
+        const arrow = document.createElement("span");
+        arrow.className = "acc-arrow";
+        arrow.textContent = "▾";
+        head.appendChild(left);
+        head.appendChild(arrow);
+        const body = document.createElement("div");
+        body.className = "acc-body";
+        const content = document.createElement("div");
+        content.className = "acc-content";
+        const imgBox = document.createElement("div");
+        imgBox.className = "acc-img";
+        const img = document.createElement("img");
+        img.src = p.cover;
+        img.alt = p.title;
+        imgBox.appendChild(img);
+        const text = document.createElement("div");
+        text.className = "acc-text";
+        const h4a = document.createElement("h4");
+        h4a.textContent = "الأعراض";
+        const ulA = document.createElement("ul");
+        p.symptoms.forEach((t) => ulA.appendChild(makeLi(t)));
+        const h4b = document.createElement("h4");
+        h4b.textContent = "ليه ده بيحصل؟";
+        const ulB = document.createElement("ul");
+        p.why.forEach((t) => ulB.appendChild(makeLi(t)));
+        const h4c = document.createElement("h4");
+        h4c.textContent = "الحل العملي";
+        const ol = document.createElement("ol");
+        p.solution.forEach((t) => ol.appendChild(makeLi(t)));
+        text.appendChild(h4a);
+        text.appendChild(ulA);
+        text.appendChild(h4b);
+        text.appendChild(ulB);
+        text.appendChild(h4c);
+        text.appendChild(ol);
+        content.appendChild(imgBox);
+        content.appendChild(text);
+        body.appendChild(content);
+        head.addEventListener("click", () => {
+          const open = body.style.display === "block";
+          body.style.display = open ? "none" : "block";
+          card.classList.toggle("open", !open);
+        });
+        card.appendChild(head);
+        card.appendChild(body);
+        return card;
+      }
+      const grid = document.getElementById("problemsGrid");
+      PROBLEMS.forEach((p) => grid.appendChild(buildCard(p)));
+    </script>
+  </body>
+</html>

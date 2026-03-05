@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>5.5 – 6 سنوات | AL-Hossam Hassn</title>
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <style>
+      .wrap {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .stage-hero {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 14px;
+        align-items: center;
+        margin-bottom: 14px;
+        padding: 14px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      }
+      .stage-hero-img img {
+        width: 100%;
+        border-radius: 16px;
+        aspect-ratio: 16/10;
+        object-fit: cover;
+      }
+      @media (max-width: 900px) {
+        .stage-hero {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 12px;
+        margin-top: 14px;
+      }
+      .prob-card {
+        grid-column: span 6;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        padding: 12px;
+      }
+      @media (max-width: 900px) {
+        .prob-card {
+          grid-column: span 12;
+        }
+      }
+
+      .acc-head {
+        width: 100%;
+        background: transparent;
+        border: 0;
+        color: inherit;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        text-align: right;
+      }
+
+      .acc-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .thumb {
+        width: 74px;
+        height: 56px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .acc-arrow {
+        font-size: 20px;
+        transition: 0.2s;
+      }
+      .prob-card.open .acc-arrow {
+        transform: rotate(180deg);
+      }
+
+      .acc-body {
+        display: none;
+        margin-top: 12px;
+      }
+      .acc-content {
+        display: grid;
+        grid-template-columns: 1fr 1.6fr;
+        gap: 14px;
+      }
+      .acc-img img {
+        width: 100%;
+        border-radius: 16px;
+        aspect-ratio: 16/10;
+        object-fit: cover;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      @media (max-width: 900px) {
+        .acc-content {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .acc-text ul,
+      .acc-text ol {
+        padding-right: 18px;
+        line-height: 1.9;
+        margin: 0;
+      }
+      .acc-text h4 {
+        margin: 10px 0 6px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="logo" href="../index.html">AL-Hossam Hassn</a>
+        <ul class="nav-links">
+          <li><a href="../index.html">الرئيسية</a></li>
+          <li><a href="../stages.html">المراحل العمرية</a></li>
+          <li><a href="../contact.html">تواصل</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section wrap">
+        <a class="btn btn-secondary" href="../stages.html">رجوع للمراحل</a>
+
+        <section class="stage-hero">
+          <div>
+            <h1>5.5 – 6 سنوات</h1>
+            <p>
+              مرحلة انتقال مهم: دخول المدرسة أو قربها. التركيز هنا على: **التكيف
+              المدرسي + عادة الواجب + تحمل الخطأ + الاستقلال**.
+            </p>
+          </div>
+          <div class="stage-hero-img">
+            <img
+              src="../images/stage-5_5-6.png"
+              alt="5.5–6 Years School Readiness"
+            />
+          </div>
+        </section>
+
+        <div class="callout" style="margin-top: 10px">
+          <strong>مهم:</strong> الهدف مش “تفوق سريع”… الهدف “نظام + أمان نفسي +
+          عادة”.
+        </div>
+
+        <h2>مشاكل شائعة في المرحلة</h2>
+        <div class="grid" id="problemsGrid"></div>
+      </section>
+    </main>
+
+    <script>
+      const PROBLEMS = [
+        {
+          title: "الانتقال للمدرسة بدون صدمة",
+          excerpt: "نقل آمن من البيت للمدرسة يقلل رفض المدرسة.",
+          thumb: "../images/school-transition-cover.png",
+          cover: "../images/school-transition-cover.png",
+          symptoms: [
+            "رفض مفاجئ للمدرسة أو بكاء صباحًا",
+            "تعلّق زائد بالأهل",
+            "شكوى مستمرة: “مش عايز أروح”",
+          ],
+          why: [
+            "خوف من الجديد (مكان/ناس/قواعد)",
+            "قلق انفصال (بيظهر مع بداية المدرسة)",
+            "توقعات كبيرة وضغط من الأهل",
+          ],
+          solution: [
+            "قبل البداية: حكايات عن المدرسة + لعب أدوار (مدرسة/فصل)",
+            "روتين صباح ثابت (نوم بدري + تجهيز شنطة من الليل)",
+            "وداع قصير واضح (من غير إطالة)",
+            "بعد الرجوع: سؤال بسيط واحد (أحلى حاجة حصلت؟) بدون تحقيق",
+          ],
+          note: "لو طولت في الوداع… القلق يزيد.",
+        },
+
+        {
+          title: "الواجبات: بناء عادة مش معركة",
+          excerpt: "نظام بسيط يمنع الرفض اليومي.",
+          thumb: "../images/homework-habit-cover.png",
+          cover: "../images/homework-habit-cover.png",
+          symptoms: [
+            "يرفض يبدأ الواجب",
+            "يتأخر ويتشتت",
+            "ينفعل أول ما تفتحوا الكراسة",
+          ],
+          why: [
+            "المهمة كبيرة في عينه",
+            "تشتت (شاشة/لعب حوالينه)",
+            "بيحتاج مساعدة في “البداية” مش الحل",
+          ],
+          solution: [
+            "قاعدة: 15–20 دقيقة + 5 راحة (حسب قدرة الطفل)",
+            "مكان ثابت للواجب بعيد عن الشاشة",
+            "قسّم الواجب لجزء صغير جدًا كبداية",
+            "ساعده يبدأ: اقرأ السؤال الأول فقط ثم سيبه يحاول",
+            "مدح فوري بعد الالتزام بالوقت مش بعد الدرجة",
+          ],
+          note: "ساعده يبدأ… ومتعملش الواجب مكانه.",
+        },
+
+        {
+          title: "تقبل الأخطاء (مقاومة الفشل)",
+          excerpt: "الطفل يهرب من الخطأ لو بيتعاقب عليه.",
+          thumb: "../images/mistakes-cover.png",
+          cover: "../images/mistakes-cover.png",
+          symptoms: [
+            "يبكي أو يزعل لو غلط",
+            "يرفض المحاولة ويقول: “مش بعرف”",
+            "يمزق الورق أو يسيب المهمة",
+          ],
+          why: [
+            "خوف من النقد أو المقارنة",
+            "ضغط على الكمال",
+            "ربط الحب بالنتيجة مش بالمحاولة",
+          ],
+          solution: [
+            "غيّر لغة البيت: (غلطنا = بنتعلم)",
+            "امدح المحاولة والتجربة: “حلو إنك حاولت”",
+            "قسّم المهمة لصعوبة أقل (نجاح سريع)",
+            "ورّيه إنك بتغلط عادي وتصلح",
+            "وقت الغضب: تهدئة أولًا ثم رجوع للمهمة",
+          ],
+          note: "الطفل الشجاع هو اللي يجرب… مش اللي ما يغلطش.",
+        },
+
+        {
+          title: "التشتت في الفصل/المذاكرة",
+          excerpt: "التركيز مهارة تُبنى بالتدرج.",
+          thumb: "../images/focus-5_5-6-cover.png",
+          cover: "../images/focus-5_5-6-cover.png",
+          symptoms: [
+            "لا يكمل المهمة",
+            "ينسى التعليمات بسرعة",
+            "يقوم ويترك مكانه كثيرًا",
+          ],
+          why: ["المثيرات كثيرة حوله", "تعليمات طويلة", "نوم غير كافي أو جوع"],
+          solution: [
+            "تعليمات من خطوتين فقط",
+            "مؤقت بصري 10–15 دقيقة",
+            "راحة حركة قصيرة بعد كل جزء",
+            "تأكد من النوم + وجبة خفيفة قبل المذاكرة",
+          ],
+          note: "قبل ما نقول “مش مركز”… نشوف نومه وأكله.",
+        },
+
+        {
+          title: "السلوك في الأماكن العامة والمدرسة",
+          excerpt: "قواعد قبل الخروج تقلل الإحراج.",
+          thumb: "../images/public-behavior-cover.png",
+          cover: "../images/public-behavior-cover.png",
+          symptoms: [
+            "صوت عالي/جري في المكان",
+            "رفض الالتزام بالطابور",
+            "إحراج عند الزيارة أو في المدرسة",
+          ],
+          why: [
+            "محتاج قواعد واضحة قبل الحدث",
+            "توقعات غير معلنة: الطفل مش عارف المطلوب",
+            "تعب/جوع يرفع السلوك",
+          ],
+          solution: [
+            "قبل الخروج: 3 قواعد فقط (صوت هادي/إيدك لنفسك/نمشي جنب ماما)",
+            "اتفاق على نتيجة لو خالف (نرجع/نوقف 2 دقيقة)",
+            "مدح سريع لأي التزام",
+            "تجنب الخروج وقت الجوع والنعاس",
+          ],
+          note: "الاتفاق قبل الحدث أهم من العقاب بعده.",
+        },
+
+        {
+          title: "الاستقلال: شنطته ولبسه ومسؤولياته",
+          excerpt: "نقله من الاعتماد الكامل للاعتماد الجزئي.",
+          thumb: "../images/independence-5_5-6-cover.png",
+          cover: "../images/independence-5_5-6-cover.png",
+          symptoms: ["ينسى حاجاته", "يرفض يلبس لوحده", "يتوقع إنك تعمل كل شيء"],
+          why: [
+            "لم يتم تدريبه تدريجيًا",
+            "المهام كبيرة عليه مرة واحدة",
+            "السرعة من الأهل (أسهل تعملها أنت)",
+          ],
+          solution: [
+            "مهمة واحدة ثابتة يوميًا (شنطة/ترتيب زي/تجهيز قلم)",
+            "قائمة بسيطة مصورة (اختياري)",
+            "ابدأ بمساعدته 50% ثم قلل تدريجيًا",
+            "شجع المحاولة حتى لو بطيئة",
+          ],
+          note: "الاستقلال بيتبني في البيت قبل المدرسة.",
+        },
+      ];
+
+      function makeLi(text) {
+        const li = document.createElement("li");
+        li.textContent = text;
+        return li;
+      }
+
+      function buildCard(p) {
+        const card = document.createElement("div");
+        card.className = "prob-card";
+
+        const head = document.createElement("button");
+        head.className = "acc-head";
+
+        const left = document.createElement("div");
+        left.className = "acc-left";
+
+        const thumb = document.createElement("div");
+        thumb.className = "thumb";
+        const timg = document.createElement("img");
+        timg.src = p.thumb;
+        timg.alt = p.title;
+        thumb.appendChild(timg);
+
+        const titleWrap = document.createElement("div");
+        const h3 = document.createElement("h3");
+        h3.style.margin = "0 0 6px";
+        h3.textContent = p.title;
+
+        const ex = document.createElement("p");
+        ex.style.margin = "0";
+        ex.style.opacity = ".85";
+        ex.style.lineHeight = "1.8";
+        ex.style.fontSize = "14px";
+        ex.textContent = p.excerpt;
+
+        titleWrap.appendChild(h3);
+        titleWrap.appendChild(ex);
+
+        left.appendChild(thumb);
+        left.appendChild(titleWrap);
+
+        const arrow = document.createElement("span");
+        arrow.className = "acc-arrow";
+        arrow.textContent = "▾";
+
+        head.appendChild(left);
+        head.appendChild(arrow);
+
+        const body = document.createElement("div");
+        body.className = "acc-body";
+
+        const content = document.createElement("div");
+        content.className = "acc-content";
+
+        const imgBox = document.createElement("div");
+        imgBox.className = "acc-img";
+        const img = document.createElement("img");
+        img.src = p.cover;
+        img.alt = p.title;
+        imgBox.appendChild(img);
+
+        const textBox = document.createElement("div");
+        textBox.className = "acc-text";
+
+        const h4a = document.createElement("h4");
+        h4a.textContent = "الأعراض";
+        const ulA = document.createElement("ul");
+        (p.symptoms || []).forEach((t) => ulA.appendChild(makeLi(t)));
+
+        const h4b = document.createElement("h4");
+        h4b.textContent = "ليه ده بيحصل؟";
+        const ulB = document.createElement("ul");
+        (p.why || []).forEach((t) => ulB.appendChild(makeLi(t)));
+
+        const h4c = document.createElement("h4");
+        h4c.textContent = "الحل العملي";
+        const olC = document.createElement("ol");
+        (p.solution || []).forEach((t) => olC.appendChild(makeLi(t)));
+
+        textBox.appendChild(h4a);
+        textBox.appendChild(ulA);
+        textBox.appendChild(h4b);
+        textBox.appendChild(ulB);
+        textBox.appendChild(h4c);
+        textBox.appendChild(olC);
+
+        if (p.note) {
+          const note = document.createElement("div");
+          note.className = "callout";
+          const s = document.createElement("strong");
+          s.textContent = "ملاحظة:";
+          note.appendChild(s);
+          note.appendChild(document.createTextNode(" " + p.note));
+          textBox.appendChild(note);
+        }
+
+        content.appendChild(imgBox);
+        content.appendChild(textBox);
+        body.appendChild(content);
+
+        head.addEventListener("click", () => {
+          const open = body.style.display === "block";
+          body.style.display = open ? "none" : "block";
+          card.classList.toggle("open", !open);
+        });
+
+        card.appendChild(head);
+        card.appendChild(body);
+        return card;
+      }
+
+      const grid = document.getElementById("problemsGrid");
+      PROBLEMS.forEach((p) => grid.appendChild(buildCard(p)));
+    </script>
+  </body>
+</html>

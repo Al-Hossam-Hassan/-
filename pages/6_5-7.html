@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>6.5 – 7 سنوات | AL-Hossam Hassn</title>
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <style>
+      .wrap {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .stage-hero {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 14px;
+        align-items: center;
+        margin-bottom: 14px;
+        padding: 14px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .stage-hero-img img {
+        width: 100%;
+        border-radius: 16px;
+        aspect-ratio: 16/10;
+        object-fit: cover;
+      }
+      @media (max-width: 900px) {
+        .stage-hero {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 12px;
+      }
+      .prob-card {
+        grid-column: span 6;
+        padding: 12px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+      }
+      @media (max-width: 900px) {
+        .prob-card {
+          grid-column: span 12;
+        }
+      }
+
+      .acc-head {
+        width: 100%;
+        background: transparent;
+        border: 0;
+        color: inherit;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        text-align: right;
+        padding: 0;
+      }
+      .acc-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .thumb {
+        width: 74px;
+        height: 56px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .acc-title h3 {
+        margin: 0 0 6px;
+        font-size: 18px;
+      }
+      .acc-title p {
+        margin: 0;
+        opacity: 0.85;
+        line-height: 1.8;
+        font-size: 14px;
+      }
+
+      .acc-arrow {
+        font-size: 20px;
+        opacity: 0.85;
+        transition: 0.2s;
+        user-select: none;
+      }
+      .prob-card.open .acc-arrow {
+        transform: rotate(180deg);
+      }
+
+      .acc-body {
+        display: none;
+        margin-top: 12px;
+      }
+      .acc-content {
+        display: grid;
+        grid-template-columns: 1fr 1.6fr;
+        gap: 14px;
+        align-items: start;
+      }
+      .acc-img img {
+        width: 100%;
+        border-radius: 16px;
+        aspect-ratio: 16/10;
+        object-fit: cover;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.04);
+      }
+      @media (max-width: 900px) {
+        .acc-content {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .acc-text h4 {
+        margin: 10px 0 6px;
+      }
+      .acc-text ul,
+      .acc-text ol {
+        padding-right: 18px;
+        margin: 0;
+        line-height: 1.9;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="logo" href="../index.html">AL-Hossam Hassn</a>
+        <ul class="nav-links">
+          <li><a href="../index.html">الرئيسية</a></li>
+          <li><a href="../stages.html">المراحل العمرية</a></li>
+          <li><a href="../contact.html">تواصل</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section wrap">
+        <a class="btn btn-secondary" href="../stages.html">رجوع للمراحل</a>
+
+        <section class="stage-hero">
+          <div class="stage-hero-text">
+            <h1>6.5 – 7 سنوات</h1>
+            <p>
+              في السن ده العلاقات المدرسية بتبقى أهم، والطفل بيحتاج يتعلم
+              مهارات: الدفاع عن النفس باحترام، التحكم في الغضب، والصدق بدون خوف.
+            </p>
+          </div>
+          <div class="stage-hero-img">
+            <img
+              src="../images/stage-6_5-7.png"
+              alt="6.5-7 Years Social Skills & Emotional Control"
+            />
+          </div>
+        </section>
+
+        <div class="callout">
+          <strong>مهم:</strong> التركيز هنا على “مهارات” مش “محاضرات”. الطفل
+          يتعلم بالتمرين والتكرار، مش بالكلام الطويل وقت الانفعال.
+        </div>
+
+        <h2>مشاكل شائعة في المرحلة</h2>
+        <div class="grid" id="problemsGrid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> AL-Hossam Hassn — جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const PROBLEMS = [
+        {
+          title: "التنمر: أكتشفه بدري وأتصرف صح",
+          excerpt: "علامات + حماية + تواصل مع المدرسة بخطة.",
+          thumb: "../images/bullying-cover.png",
+          cover: "../images/bullying-cover.png",
+          symptoms: [
+            "رفض مفاجئ للمدرسة أو شكاوى متكررة قبلها",
+            "حزن/عصبية غير معتادة بعد الرجوع",
+            "فقدان أدوات/كدمات متكررة أو طلب فلوس زيادة",
+          ],
+          why: [
+            "نقص مهارات دفاع عن النفس اللفظية",
+            "اختلاف/خجل/عزلة تجعل الطفل هدفًا أسهل",
+            "ضعف متابعة في المدرسة أو بيئة فصل غير آمنة",
+          ],
+          solution: [
+            "اسمع بدون لوم: “أنا معاك… احكي اللي حصل”",
+            "سجل تفاصيل واضحة (مين/فين/إمتى/إيه اللي اتقال)",
+            "درّبه على ردود قصيرة ثابتة: “قف. متعملش كدا.” + يمشي بعيد",
+            "اتواصل مع المدرسة بهدوء وبحلول: مراقبة/فصل/قواعد واضحة",
+            "ادعم صداقاته (نشاط/رياضة) لتقوية الثقة",
+          ],
+          note: "لو في أذى جسدي متكرر أو تهديد واضح: التصعيد للمدرسة وإدارة أعلى ضروري.",
+        },
+
+        {
+          title: "الغضب والانفعال: نوبات عصبية",
+          excerpt: "طريقة تهدئة + تعليم بديل بعد الهدوء.",
+          thumb: "../images/anger-cover.png",
+          cover: "../images/anger-cover.png",
+          symptoms: [
+            "صرخ/رمي حاجات وقت الرفض",
+            "ضرب أخ/زميل عند الاستفزاز",
+            "يندم بعد ما يهدى",
+          ],
+          why: [
+            "التحكم التنفيذي (Self-control) لسه بيتطور",
+            "التعب/الجوع/ضغط المدرسة يقلل القدرة على التنظيم",
+            "عدم امتلاك كلمات بديلة للتعبير",
+          ],
+          solution: [
+            "وقت الغضب: أمّن المكان + صوت هادي + جملة واحدة: “أنا شايفك غضبان… هنهدى الأول”",
+            "ممنوع تفاوض أثناء الصراخ (ده بيعلمه إن الصراخ طريق للنتيجة)",
+            "خطة تهدئة قصيرة: تنفس 4-4 (4 شهيق/4 زفير) × 3 مرات",
+            "بعد الهدوء: علم بديل واحد: “قول: أنا مضايق… محتاج دقيقة”",
+            "اتفاق مسبق لعواقب ثابتة: ضرب = توقف لعب + اعتذار + إصلاح",
+          ],
+          note: "العقاب أثناء الانفعال غالبًا بيزود العناد؛ خلي التعليم بعد الهدوء.",
+        },
+
+        {
+          title: "الصدق والكذب: ليه بيكدب؟",
+          excerpt: "سبب الكذب + أسلوب تصحيح بدون تهديد.",
+          thumb: "../images/truth-lies-cover.png",
+          cover: "../images/truth-lies-cover.png",
+          symptoms: [
+            "ينكر الغلط رغم وضوحه",
+            "يؤلف قصة لتجنب عقاب",
+            "يلوم غيره",
+          ],
+          why: [
+            "الخوف من العقاب أو الإحراج",
+            "الرغبة في رضا الأهل/المعلم",
+            "أحيانًا خيال زائد أو محاولة “تحسين الصورة”",
+          ],
+          solution: [
+            "قلل التهديد: “أنا محتاج الصدق علشان أساعدك”",
+            "افصل بين الصدق والعقاب: الصدق = تقدير + حل للمشكلة",
+            "اسأله أسئلة تساعده يعترف: “إيه اللي حصل الأول؟ وبعدين؟”",
+            "ضع قاعدة: الكذب = فقدان ثقة + إعادة إصلاح، مش ضرب/إهانة",
+            "كافئ الصدق في مواقف صغيرة: “شكراً إنك قلت الحقيقة”",
+          ],
+          note: "لو الكذب مرتبط بخوف شديد أو بيزيد جدًا مع المدرسة: راجع أسلوب العقاب والضغط اليومي.",
+        },
+
+        {
+          title: "العدوانية مع الزملاء (ضرب/دفع)",
+          excerpt: "إيقاف فوري + تدريب اجتماعي بديل.",
+          thumb: "../images/aggression-cover.png",
+          cover: "../images/aggression-cover.png",
+          symptoms: [
+            "يدفع أو يضرب عند الزحمة",
+            "يزعل بسرعة من اللعب الجماعي",
+            "شكاوى متكررة من المدرسة",
+          ],
+          why: [
+            "ضعف مهارات المشاركة والدور",
+            "استفزاز متكرر بدون أدوات رد محترمة",
+            "نموذج عدواني يشوفه (بيت/شاشة)",
+          ],
+          solution: [
+            "قاعدة واضحة: “الأيدي مش للضرب” + إيقاف فوري للسلوك",
+            "علمه 3 بدائل: (اطلب دورك/ابعد/اطلب مساعدة المدرس)",
+            "تدريب لعب أدوار في البيت 5 دقايق يوميًا",
+            "قلل محتوى عنيف (يوتيوب/ألعاب) خصوصًا قبل النوم",
+            "اتفاق مع المدرسة على إشارات تنبيه مبكرة",
+          ],
+          note: "لو العدوانية مع الكل وفي كل مكان: محتاج تقييم أسباب ضغط/نوم/مهارات.",
+        },
+
+        {
+          title: "الخوف الاجتماعي والخجل في المدرسة",
+          excerpt: "تشجيع تدريجي بدون إحراج.",
+          thumb: "../images/shyness-cover.png",
+          cover: "../images/shyness-cover.png",
+          symptoms: [
+            "يرفض يشارك في الفصل",
+            "يتكلم بصوت واطي جدًا",
+            "يشتكي من صداع/مغص قبل المدرسة",
+          ],
+          why: [
+            "قلق اجتماعي أو خوف من الخطأ",
+            "تجربة سخرية/تنمر سابق",
+            "ضغط عالي على الأداء",
+          ],
+          solution: [
+            "ابدأ بخطوات صغيرة: سؤال واحد يوميًا يجاوب عليه في البيت",
+            "اتفاق مع المعلم على مشاركة بسيطة (رفع يد/كلمة واحدة)",
+            "مدح الشجاعة مش النتيجة: “أنا فخور إنك حاولت”",
+            "تجنب جمل: “ليه مش بتتكلم؟” قدام الناس",
+          ],
+          note: "الخجل لا يُعالج بالضغط… يتعالج بالأمان والتدرج.",
+        },
+
+        {
+          title: "الشكوى المتكررة من المدرسة",
+          excerpt: "نفهم السبب ونبني خطة.",
+          thumb: "../images/school-complaints-cover.png",
+          cover: "../images/school-complaints-cover.png",
+          symptoms: [
+            "كل يوم: “مش عايز أروح”",
+            "كلام سلبي عن المعلم/الأصحاب",
+            "هبوط مفاجئ في الحماس",
+          ],
+          why: [
+            "صعوبة أكاديمية/ضغط واجبات",
+            "مشاكل علاقة (تنمر/عزلة)",
+            "تعب/نوم غير كافي",
+          ],
+          solution: [
+            "اسأله 3 أسئلة ثابتة: (إيه أصعب حاجة؟ إيه أسهل حاجة؟ مين لعبت معاه؟)",
+            "قسّم المشكلة: أكاديمي/اجتماعي/روتين",
+            "نوم مبكر + فطور ثابت يقلل الضغط",
+            "تواصل مع المدرسة على نقاط محددة مش كلام عام",
+          ],
+          note: "لو الشكوى مصحوبة بخوف شديد أو بكاء يومي: لازم تدخل أسرع مع المدرسة.",
+        },
+      ];
+
+      function makeLi(t) {
+        const li = document.createElement("li");
+        li.textContent = t;
+        return li;
+      }
+
+      function buildCard(p) {
+        const card = document.createElement("div");
+        card.className = "prob-card";
+
+        const head = document.createElement("button");
+        head.type = "button";
+        head.className = "acc-head";
+
+        const left = document.createElement("div");
+        left.className = "acc-left";
+        const thumb = document.createElement("div");
+        thumb.className = "thumb";
+        const tImg = document.createElement("img");
+        tImg.src = p.thumb;
+        tImg.alt = p.title;
+        thumb.appendChild(tImg);
+
+        const titleWrap = document.createElement("div");
+        titleWrap.className = "acc-title";
+        const h3 = document.createElement("h3");
+        h3.textContent = p.title;
+        const ex = document.createElement("p");
+        ex.textContent = p.excerpt || "";
+        titleWrap.appendChild(h3);
+        titleWrap.appendChild(ex);
+
+        left.appendChild(thumb);
+        left.appendChild(titleWrap);
+
+        const arrow = document.createElement("span");
+        arrow.className = "acc-arrow";
+        arrow.textContent = "▾";
+
+        head.appendChild(left);
+        head.appendChild(arrow);
+
+        const body = document.createElement("div");
+        body.className = "acc-body";
+        const content = document.createElement("div");
+        content.className = "acc-content";
+
+        const imgBox = document.createElement("div");
+        imgBox.className = "acc-img";
+        const img = document.createElement("img");
+        img.src = p.cover;
+        img.alt = p.title;
+        imgBox.appendChild(img);
+
+        const text = document.createElement("div");
+        text.className = "acc-text";
+
+        const h4a = document.createElement("h4");
+        h4a.textContent = "الأعراض";
+        const ulA = document.createElement("ul");
+        (p.symptoms || []).forEach((t) => ulA.appendChild(makeLi(t)));
+
+        const h4b = document.createElement("h4");
+        h4b.textContent = "ليه ده بيحصل؟";
+        const ulB = document.createElement("ul");
+        (p.why || []).forEach((t) => ulB.appendChild(makeLi(t)));
+
+        const h4c = document.createElement("h4");
+        h4c.textContent = "الحل العملي";
+        const olC = document.createElement("ol");
+        (p.solution || []).forEach((t) => olC.appendChild(makeLi(t)));
+
+        text.appendChild(h4a);
+        text.appendChild(ulA);
+        text.appendChild(h4b);
+        text.appendChild(ulB);
+        text.appendChild(h4c);
+        text.appendChild(olC);
+
+        if (p.note) {
+          const note = document.createElement("div");
+          note.className = "callout";
+          const s = document.createElement("strong");
+          s.textContent = "ملاحظة:";
+          note.appendChild(s);
+          note.appendChild(document.createTextNode(" " + p.note));
+          text.appendChild(note);
+        }
+
+        content.appendChild(imgBox);
+        content.appendChild(text);
+        body.appendChild(content);
+
+        head.addEventListener("click", () => {
+          const open = body.style.display === "block";
+          body.style.display = open ? "none" : "block";
+          card.classList.toggle("open", !open);
+        });
+
+        card.appendChild(head);
+        card.appendChild(body);
+        return card;
+      }
+
+      const grid = document.getElementById("problemsGrid");
+      PROBLEMS.forEach((p) => grid.appendChild(buildCard(p)));
+    </script>
+  </body>
+</html>

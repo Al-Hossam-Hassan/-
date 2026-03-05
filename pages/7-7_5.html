@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>7 – 7.5 سنوات | AL-Hossam Hassn</title>
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <style>
+      .wrap {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .stage-hero {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 14px;
+        align-items: center;
+        margin-bottom: 14px;
+        padding: 14px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .stage-hero-img img {
+        width: 100%;
+        border-radius: 16px;
+        aspect-ratio: 16/10;
+        object-fit: cover;
+      }
+      @media (max-width: 900px) {
+        .stage-hero {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 12px;
+      }
+      .prob-card {
+        grid-column: span 6;
+        padding: 12px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+      }
+      @media (max-width: 900px) {
+        .prob-card {
+          grid-column: span 12;
+        }
+      }
+
+      .acc-head {
+        width: 100%;
+        background: transparent;
+        border: 0;
+        color: inherit;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        text-align: right;
+        padding: 0;
+      }
+      .acc-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .thumb {
+        width: 74px;
+        height: 56px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .acc-title h3 {
+        margin: 0 0 6px;
+        font-size: 18px;
+      }
+      .acc-title p {
+        margin: 0;
+        opacity: 0.85;
+        line-height: 1.8;
+        font-size: 14px;
+      }
+
+      .acc-arrow {
+        font-size: 20px;
+        opacity: 0.85;
+        transition: 0.2s;
+        user-select: none;
+      }
+      .prob-card.open .acc-arrow {
+        transform: rotate(180deg);
+      }
+
+      .acc-body {
+        display: none;
+        margin-top: 12px;
+      }
+      .acc-content {
+        display: grid;
+        grid-template-columns: 1fr 1.6fr;
+        gap: 14px;
+        align-items: start;
+      }
+      .acc-img img {
+        width: 100%;
+        border-radius: 16px;
+        aspect-ratio: 16/10;
+        object-fit: cover;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.04);
+      }
+      @media (max-width: 900px) {
+        .acc-content {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .acc-text h4 {
+        margin: 10px 0 6px;
+      }
+      .acc-text ul,
+      .acc-text ol {
+        padding-right: 18px;
+        margin: 0;
+        line-height: 1.9;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="logo" href="../index.html">AL-Hossam Hassn</a>
+        <ul class="nav-links">
+          <li><a href="../index.html">الرئيسية</a></li>
+          <li><a href="../stages.html">المراحل العمرية</a></li>
+          <li><a href="../contact.html">تواصل</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section wrap">
+        <a class="btn btn-secondary" href="../stages.html">رجوع للمراحل</a>
+
+        <section class="stage-hero">
+          <div>
+            <h1>7 – 7.5 سنوات</h1>
+            <p>
+              في المرحلة دي الطفل يبدأ يعتمد أكتر على التقييم الخارجي (درجات –
+              رأي المدرس – مقارنة بزمايله). لازم نبني دافعية داخلية مش بس خوف من
+              العقاب أو رغبة في المكافأة.
+            </p>
+          </div>
+          <div class="stage-hero-img">
+            <img
+              src="../images/stage-7-7_5.png"
+              alt="7-7.5 Years Motivation & Responsibility"
+            />
+          </div>
+        </section>
+
+        <div class="callout">
+          <strong>مهم:</strong> الطفل هنا يتشكل عنده تصور عن نفسه: "أنا شاطر" أو
+          "أنا فاشل". طريقة تعاملنا مع الأخطاء هتحدد الصورة دي.
+        </div>
+
+        <h2>مشاكل شائعة في المرحلة</h2>
+        <div class="grid" id="problemsGrid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> AL-Hossam Hassn — جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const PROBLEMS = [
+        {
+          title: "ضعف الدافعية للمذاكرة",
+          excerpt: "ليه بيقول مش عايز أذاكر؟ وإزاي نبني دافعية داخلية.",
+          thumb: "../images/motivation-cover.png",
+          cover: "../images/motivation-cover.png",
+          symptoms: [
+            "تأجيل مستمر للمذاكرة",
+            "يشتكي بسرعة إن الدرس صعب",
+            "يعتمد على ضغط الأهل عشان يبدأ",
+          ],
+          why: [
+            "اعتماد على المكافآت فقط مش على هدف داخلي",
+            "خوف من الفشل يخليه يهرب",
+            "تشتت عالي يقلل القدرة على البدء",
+          ],
+          solution: [
+            "ربط المذاكرة بهدف: “إيه عايز تبقى لما تكبر؟”",
+            "قسّم المهمة لأجزاء صغيرة جدًا (10–15 دقيقة)",
+            "مدح الجهد مش النتيجة",
+            "تحديد وقت ثابت يوميًا للمذاكرة",
+          ],
+          note: "الدافعية الداخلية تبني بالإنجازات الصغيرة المتكررة.",
+        },
+
+        {
+          title: "قلق الامتحان",
+          excerpt: "توتر قبل الاختبار وتأثيره على الأداء.",
+          thumb: "../images/exam-anxiety-cover.png",
+          cover: "../images/exam-anxiety-cover.png",
+          symptoms: [
+            "وجع بطن/صداع قبل الامتحان",
+            "نسيان رغم المذاكرة",
+            "بكاء أو رفض الذهاب للمدرسة",
+          ],
+          why: [
+            "ضغط توقعات عالية",
+            "مقارنة مستمرة بزملاء",
+            "خوف من العقاب لو الدرجة قليلة",
+          ],
+          solution: [
+            "تقسيم المذاكرة لأجزاء يومية بدل ليلة الامتحان",
+            "نوم كافي قبل الاختبار",
+            "جمل دعم: “إنت بتجرب مش لازم تبقى كامل”",
+            "تدريب تنفس 4 ثواني شهيق – 4 زفير",
+          ],
+          note: "الأداء يقل لما القلق يزيد… التهدئة أهم من المراجعة.",
+        },
+
+        {
+          title: "ضعف تحمل المسؤولية",
+          excerpt: "نسيان الواجب أو الأدوات باستمرار.",
+          thumb: "../images/responsibilitye-cover.png",
+          cover: "../images/responsibilitye-cover.png",
+          symptoms: [
+            "ينسى كتبه أو واجبه",
+            "يعتمد على الأهل في التذكير",
+            "يتحجج بأعذار متكررة",
+          ],
+          why: [
+            "الذاكرة التنفيذية لسه بتتطور",
+            "عدم وجود روتين ثابت",
+            "حماية زائدة من الأهل",
+          ],
+          solution: [
+            "روتين ثابت: مراجعة الشنطة كل يوم نفس الوقت",
+            "قائمة مهام مصورة في الغرفة",
+            "لو نسي يتحمل نتيجة بسيطة طبيعية",
+            "تقليل التذكير اللفظي المستمر",
+          ],
+          note: "المسؤولية تتعلم بالممارسة مش بالمحاضرات.",
+        },
+
+        {
+          title: "المقارنة بالآخرين",
+          excerpt: "دايمًا يقول فلان أشطر مني.",
+          thumb: "../images/comparisone-cover.png",
+          cover: "../images/comparisone-cover.png",
+          symptoms: [
+            "يحبط بسرعة",
+            "يفقد الحماس لو حد متفوق عليه",
+            "يرفض التجربة خوفًا من الخسارة",
+          ],
+          why: [
+            "المرحلة دي يبدأ يفهم المنافسة بوضوح",
+            "تأكيد الأهل على الترتيب مش الجهد",
+            "انخفاض الثقة بالنفس",
+          ],
+          solution: [
+            "قارن الطفل بنفسه مش بزميله",
+            "اعرض تقدم واضح: “زمان كنت بتعمل كذا… دلوقتي أحسن”",
+            "اعمل أهداف شخصية مش ترتيب فصل",
+            "تجنب جمل: شوف صاحبك عمل إيه",
+          ],
+          note: "المقارنة الدائمة تبني قلق مزمن.",
+        },
+
+        {
+          title: "فقدان التركيز أثناء المذاكرة",
+          excerpt: "يقوم كل 5 دقائق.",
+          thumb: "../images/focus-cover.png",
+          cover: "../images/focus-cover.png",
+          symptoms: [
+            "يقوم يتحرك باستمرار",
+            "ينسى التعليمات بسرعة",
+            "يتشتت من أي صوت",
+          ],
+          why: [
+            "مدة التركيز الطبيعية 20 دقيقة تقريبًا",
+            "بيئة مليانة مشتتات",
+            "تعب أو نوم غير كافي",
+          ],
+          solution: [
+            "تقنية 20 دقيقة مذاكرة + 5 راحة",
+            "مكان ثابت بدون شاشة",
+            "إطفاء الإشعارات",
+            "حركة قصيرة بين الجلسات",
+          ],
+          note: "التركيز مهارة قابلة للتدريب.",
+        },
+
+        {
+          title: "حساسية زائدة للنقد",
+          excerpt: "يبكي أو ينسحب لما يتصحح له.",
+          thumb: "../images/sensitive-cover.png",
+          cover: "../images/sensitive-cover.png",
+          symptoms: [
+            "يبكي عند الملاحظات",
+            "يرفض المحاولة بعد خطأ",
+            "يغضب لو اتصحح له",
+          ],
+          why: ["صورة ذاتية هشة", "خوف من الفشل", "تجارب نقد قاسية"],
+          solution: [
+            "صحح السلوك مش الشخص: “التصرف ده غلط” مش “إنت غلط”",
+            "مدح المحاولة",
+            "احكي له عن أخطاءك الشخصية",
+            "اعمل مراجعة أخطاء كأنها لعبة",
+          ],
+          note: "الطفل اللي يخاف من الخطأ مش هيتعلم.",
+        },
+      ];
+
+      function makeLi(t) {
+        const li = document.createElement("li");
+        li.textContent = t;
+        return li;
+      }
+
+      function buildCard(p) {
+        const card = document.createElement("div");
+        card.className = "prob-card";
+        const head = document.createElement("button");
+        head.type = "button";
+        head.className = "acc-head";
+        const left = document.createElement("div");
+        left.className = "acc-left";
+        const thumb = document.createElement("div");
+        thumb.className = "thumb";
+        const tImg = document.createElement("img");
+        tImg.src = p.thumb;
+        tImg.alt = p.title;
+        thumb.appendChild(tImg);
+        const titleWrap = document.createElement("div");
+        titleWrap.className = "acc-title";
+        const h3 = document.createElement("h3");
+        h3.textContent = p.title;
+        const ex = document.createElement("p");
+        ex.textContent = p.excerpt || "";
+        titleWrap.appendChild(h3);
+        titleWrap.appendChild(ex);
+        left.appendChild(thumb);
+        left.appendChild(titleWrap);
+        const arrow = document.createElement("span");
+        arrow.className = "acc-arrow";
+        arrow.textContent = "▾";
+        head.appendChild(left);
+        head.appendChild(arrow);
+
+        const body = document.createElement("div");
+        body.className = "acc-body";
+        const content = document.createElement("div");
+        content.className = "acc-content";
+
+        const imgBox = document.createElement("div");
+        imgBox.className = "acc-img";
+        const img = document.createElement("img");
+        img.src = p.cover;
+        img.alt = p.title;
+        imgBox.appendChild(img);
+
+        const text = document.createElement("div");
+        text.className = "acc-text";
+        const h4a = document.createElement("h4");
+        h4a.textContent = "الأعراض";
+        const ulA = document.createElement("ul");
+        (p.symptoms || []).forEach((t) => ulA.appendChild(makeLi(t)));
+        const h4b = document.createElement("h4");
+        h4b.textContent = "ليه ده بيحصل؟";
+        const ulB = document.createElement("ul");
+        (p.why || []).forEach((t) => ulB.appendChild(makeLi(t)));
+        const h4c = document.createElement("h4");
+        h4c.textContent = "الحل العملي";
+        const olC = document.createElement("ol");
+        (p.solution || []).forEach((t) => olC.appendChild(makeLi(t)));
+
+        text.appendChild(h4a);
+        text.appendChild(ulA);
+        text.appendChild(h4b);
+        text.appendChild(ulB);
+        text.appendChild(h4c);
+        text.appendChild(olC);
+
+        content.appendChild(imgBox);
+        content.appendChild(text);
+        body.appendChild(content);
+
+        head.addEventListener("click", () => {
+          const open = body.style.display === "block";
+          body.style.display = open ? "none" : "block";
+          card.classList.toggle("open", !open);
+        });
+
+        card.appendChild(head);
+        card.appendChild(body);
+        return card;
+      }
+
+      const grid = document.getElementById("problemsGrid");
+      PROBLEMS.forEach((p) => grid.appendChild(buildCard(p)));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>تواصل | AL-Hossam Hassn</title>
+  <meta name="description" content="طرق التواصل مع AL-Hossam Hassn - واتساب، تلجرام، جيميل، فيسبوك." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <header class="site-header">
+    <nav class="nav">
+      <a class="logo" href="index.html">AL-Hossam Hassn</a>
+      <ul class="nav-links">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="stages.html">المراحل العمرية</a></li>
+        <li><a href="activities.html">الأنشطة</a></li>
+        <li><a href="platform.html">ما تقدمه المنصة</a></li>
+        <li><a href="about.html">من أنا</a></li>
+        <li><a class="active" href="contact.html">تواصل</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <h1>تواصل</h1>
+      <p style="opacity:.9; line-height:1.9;">
+        ابعت سؤالك بالطريقة اللي تناسبك. يفضل تكتب:
+        <strong>عمر الطفل</strong> + <strong>المشكلة</strong> + <strong>إمتى بتتكرر</strong> + <strong>إيه اللي جرّبته</strong>.
+      </p>
+
+      <div class="contact-grid">
+
+        <div class="contact-card">
+          <h3>طرق التواصل</h3>
+
+          <div class="contact-links">
+            <a class="contact-link" href="https://wa.me/201508178093" target="_blank" rel="noreferrer">
+              واتساب: 01508178093
+            </a>
+
+            <a class="contact-link" href="https://t.me/MrHossamHassn" target="_blank" rel="noreferrer">
+              تلجرام: @MrHossamHassn
+            </a>
+
+            <a class="contact-link" href="mailto:hojhhgk@gmail.com">
+              البريد: hojhhgk@gmail.com
+            </a>
+
+            <a class="contact-link" href="https://www.facebook.com/share/1CPU5xpXNw/" target="_blank" rel="noreferrer">
+              فيسبوك
+            </a>
+          </div>
+
+          <div class="callout" style="margin-top:14px;">
+            <strong>للمساعدة الأسرع:</strong> اكتب عمر الطفل + المشكلة + مثال واحد حصل آخر مرة.
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <h3>اكتب رسالتك</h3>
+
+          <form class="contact-form" onsubmit="return false;">
+            <label>
+              الاسم
+              <input type="text" id="cName" placeholder="اكتب اسمك" />
+            </label>
+
+            <label>
+              عمر الطفل
+              <input type="text" id="cAge" placeholder="مثال: 4 سنوات" />
+            </label>
+
+            <label>
+              الرسالة
+              <textarea id="cMsg" rows="6" placeholder="اكتب التفاصيل هنا..."></textarea>
+            </label>
+
+            <div class="contact-actions">
+              <button class="btn" id="sendMail" type="button">إرسال عبر البريد</button>
+              <button class="btn btn-secondary" id="sendWhatsBtn" type="button">إرسال عبر واتساب</button>
+              <button class="btn btn-secondary" id="copyForTg" type="button">نسخ للتيليجرام</button>
+              <a class="btn btn-secondary" id="openTg" href="https://t.me/MrHossamHassn" target="_blank" rel="noreferrer">فتح تيليجرام</a>
+            </div>
+
+            <p class="small-note">
+              * تيليجرام: اضغط "نسخ" ثم افتح تيليجرام والصق الرسالة وأرسلها.
+            </p>
+          </form>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> AL-Hossam Hassn — جميع الحقوق محفوظة</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const btnMail = document.getElementById("sendMail");
+    const btnWhatsBtn = document.getElementById("sendWhatsBtn");
+    const btnCopyTg = document.getElementById("copyForTg");
+
+    function buildMessage() {
+      const name = (document.getElementById("cName").value || "").trim();
+      const age  = (document.getElementById("cAge").value  || "").trim();
+      const msg  = (document.getElementById("cMsg").value  || "").trim();
+      const lines = [];
+      lines.push("رسالة من موقع AL-Hossam Hassn");
+      if (name) lines.push("الاسم: " + name);
+      if (age)  lines.push("عمر الطفل: " + age);
+      if (msg)  lines.push("الرسالة: " + msg);
+
+      return lines.join("\n");
+    }
+
+    btnMail.addEventListener("click", () => {
+      const subject = encodeURIComponent("استشارة تربوية من الموقع");
+      const body = encodeURIComponent(buildMessage());
+      window.location.href = "mailto:hojhhgk@gmail.com?subject=" + subject + "&body=" + body;
+    });
+
+    btnWhatsBtn.addEventListener("click", () => {
+      const text = encodeURIComponent(buildMessage());
+      window.open("https://wa.me/201508178093?text=" + text, "_blank", "noreferrer");
+    });
+
+    btnCopyTg.addEventListener("click", async () => {
+      const text = buildMessage();
+      try {
+        await navigator.clipboard.writeText(text);
+        alert("تم نسخ الرسالة. افتح تيليجرام والصق الرسالة ثم أرسلها.");
+      } catch (e) {
+        alert("لم أستطع النسخ تلقائياً. انسخ الرسالة يدوياً من مربع الرسالة.");
+      }
+    });
+  </script>
+
+  <style>
+    .contact-grid{
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 18px;
+      margin-top: 18px;
+    }
+    .contact-card{
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+    .contact-card h3{ margin: 0 0 10px; }
+
+    .contact-links{
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .contact-link{
+      display: block;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.9);
+      transition: 200ms ease;
+      word-break: break-word;
+      text-decoration: none;
+    }
+    .contact-link:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.10);
+    }
+
+    .contact-form label{
+      display: grid;
+      gap: 6px;
+      margin-top: 10px;
+      color: rgba(255,255,255,0.85);
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .contact-form input,
+    .contact-form textarea{
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.9);
+      padding: 10px 12px;
+      outline: none;
+      font-weight: 500;
+    }
+    .contact-form textarea{ resize: vertical; }
+
+    .contact-actions{
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .small-note{
+      margin-top: 10px;
+      color: rgba(255,255,255,0.65);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px){
+      .contact-grid{ grid-template-columns: 1fr; }
+    }
+  </style>
+
+</body>
+</html>

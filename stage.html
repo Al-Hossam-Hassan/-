@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>مرحلة |AL-Hossam Hassn</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .sectionBox{ margin-top:14px; padding:14px; border-radius:18px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06); }
+    .mini-grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:12px; margin-top:12px; }
+    .mini-card{ grid-column:span 6; padding:12px; border-radius:18px; border:1px solid rgba(255,255,255,.14); background:rgba(0,0,0,.18); text-decoration:none; display:block; }
+    .mini-card h3{ margin:0 0 6px; }
+    .mini-card p{ margin:0; opacity:.85; line-height:1.9; }
+    @media(max-width:900px){ .mini-card{ grid-column:span 12; } }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <nav class="nav">
+      <a class="logo" href="index.html"><span class="logo-badge"></span>AL-Hossam Hassn</a>
+      <ul class="nav-links">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="stages.html">المراحل</a></li>
+        <li><a href="activities.html">الأنشطة</a></li>
+        <li><a href="platform.html">المنصة</a></li>
+        <li><a href="about.html">من أنا</a></li>
+        <li><a href="contact.html">تواصل</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <section class="section">
+    <a class="btn" href="stages.html">رجوع للمراحل</a>
+
+    <h2 id="stageTitle" style="margin-top:14px;">مرحلة</h2>
+    <p id="stageIntro"></p>
+
+    <div id="sectionsArea"></div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">© <span id="year"></span> AL-Hossam Hassn</div>
+</footer>
+
+<script src="js/app.js"></script>
+<script src="js/stages-data.js"></script>
+<script src="js/problems-data.js"></script>
+<script>
+  function getParam(name){ return new URLSearchParams(location.search).get(name); }
+
+  const stageKey = getParam("stage");
+  const stage = window.STAGES && window.STAGES[stageKey];
+  const problems = Array.isArray(window.PROBLEMS) ? window.PROBLEMS : [];
+
+  const titleEl = document.getElementById("stageTitle");
+  const introEl = document.getElementById("stageIntro");
+  const area = document.getElementById("sectionsArea");
+
+  function findProblemById(id){
+    return problems.find(p => p && p.id === id);
+  }
+
+  if(!stage){
+    titleEl.textContent = "المرحلة غير موجودة";
+    introEl.textContent = "الرابط غير صحيح أو المرحلة لم تُضف بعد.";
+  } else {
+    document.title = stage.title + " | AL-Hossam Hassn";
+    titleEl.textContent = stage.title;
+    introEl.textContent = stage.intro;
+
+    stage.sections.forEach(sec => {
+      const box = document.createElement("div");
+      box.className = "sectionBox";
+
+      const h3 = document.createElement("h3");
+      h3.textContent = sec.title;
+
+      const p = document.createElement("p");
+      p.style.opacity = ".85";
+      p.style.margin = "8px 0 0";
+      p.textContent = sec.desc;
+
+      const grid = document.createElement("div");
+      grid.className = "mini-grid";
+
+      if (!sec.problems || !sec.problems.length){
+        const empty = document.createElement("p");
+        empty.style.opacity = ".8";
+        empty.style.marginTop = "10px";
+        empty.textContent = "سيتم إضافة مشاكل لهذا القسم قريبًا.";
+        box.appendChild(h3);
+        box.appendChild(p);
+        box.appendChild(empty);
+        area.appendChild(box);
+        return;
+      }
+
+      sec.problems.forEach(pid => {
+        const prob = findProblemById(pid);
+        if(!prob) return;
+
+        const a = document.createElement("a");
+        a.className = "mini-card";
+        a.href = "problem.html?id=" + encodeURIComponent(prob.id);
+
+        const t = document.createElement("h3");
+        t.textContent = prob.title;
+
+        const ex = document.createElement("p");
+        ex.textContent = prob.excerpt || "";
+
+        a.appendChild(t);
+        a.appendChild(ex);
+        grid.appendChild(a);
+      });
+      box.appendChild(h3);
+      box.appendChild(p);
+      box.appendChild(grid);
+      area.appendChild(box);
+    });
+  }
+</script>
+</body>
+</html>

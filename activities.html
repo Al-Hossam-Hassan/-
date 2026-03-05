@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>الأنشطة | AL-Hossam Hassn</title>
+    <meta
+      name="description"
+      content="أنشطة بالصور لكل المراحل العمرية حسب تقسيم بورتاج."
+    />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+      .filters select option {
+        background: #0b1220;
+        color: #fff;
+      }
+      .activity-card {
+        cursor: pointer;
+      }
+      .act-body {
+        display: none;
+        margin-top: 12px;
+      }
+      .act-body.open {
+        display: block;
+      }
+      .act-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.4fr;
+        gap: 14px;
+        margin-top: 12px;
+        align-items: start;
+      }
+      .act-cover {
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .act-cover img {
+        width: 100%;
+        aspect-ratio: 16/10;
+        object-fit: cover;
+      }
+      .act-meta h4 {
+        margin: 10px 0 8px;
+      }
+      .act-meta ul,
+      .act-meta ol {
+        padding-right: 18px;
+        margin: 0;
+        line-height: 1.9;
+      }
+      .act-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+      @media (max-width: 900px) {
+        .act-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="logo" href="index.html">AL-Hossam Hassn</a>
+        <ul class="nav-links">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="stages.html">المراحل العمرية</a></li>
+          <li><a class="active" href="activities.html">الأنشطة</a></li>
+          <li><a href="pdfs.html">ملفات PDF</a></li>
+          <li><a href="about.html">من أنا</a></li>
+          <li><a href="contact.html">تواصل</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="page-head">
+          <div>
+            <h2>أنشطة بالصور</h2>
+            <p>
+              اختار المرحلة والمهارة أو استخدم البحث. اضغط على النشاط لعرض
+              التفاصيل.
+            </p>
+          </div>
+
+          <div class="filters">
+            <select id="ageFilter" aria-label="اختيار المرحلة">
+              <option value="all">كل المراحل</option>
+              <option value="0-6m">0 – 6 شهور</option>
+              <option value="7-12m">7 – 12 شهر</option>
+              <option value="1-1_5">1 – 1.5 سنة</option>
+              <option value="1_5-2">1.5 – 2 سنة</option>
+              <option value="2-2_5">2 – 2.5 سنة</option>
+              <option value="2_5-3">2.5 – 3 سنوات</option>
+              <option value="3-3_5">3 – 3.5 سنوات</option>
+              <option value="3_5-4">3.5 – 4 سنوات</option>
+              <option value="4-4_5">4 – 4.5 سنوات</option>
+              <option value="4_5-5">4.5 – 5 سنوات</option>
+              <option value="5-5_5">5 – 5.5 سنوات</option>
+              <option value="5_5-6">5.5 – 6 سنوات</option>
+              <option value="6-6_5">6 – 6.5 سنوات</option>
+              <option value="6_5-7">6.5 – 7 سنوات</option>
+              <option value="7-7_5">7 – 7.5 سنوات</option>
+              <option value="7_5-8">7.5 – 8 سنوات</option>
+              <option value="8-8_5">8 – 8.5 سنوات</option>
+              <option value="8_5-9">8.5 – 9 سنوات</option>
+              <option value="9-9_5">9 – 9.5 سنوات</option>
+            </select>
+
+            <select id="skillFilter" aria-label="اختيار المهارة">
+              <option value="all">كل المهارات</option>
+              <option value="حركي">حركي</option>
+              <option value="لغة">لغة</option>
+              <option value="سلوك">سلوك</option>
+              <option value="تنظيم مشاعر">تنظيم مشاعر</option>
+              <option value="اجتماعي">اجتماعي</option>
+              <option value="نوم">نوم</option>
+              <option value="روتين">روتين</option>
+              <option value="استعداد مدرسة">استعداد مدرسة</option>
+              <option value="ثقة بالنفس">ثقة بالنفس</option>
+              <option value="تعلم">تعلم</option>
+              <option value="مذاكرة">مذاكرة</option>
+              <option value="تركيز">تركيز</option>
+              <option value="قيم">قيم</option>
+              <option value="قلق">قلق</option>
+              <option value="ضغط">ضغط</option>
+              <option value="جدال">جدال</option>
+              <option value="استقلال">استقلال</option>
+              <option value="مدرسة">مدرسة</option>
+              <option value="مرونة">مرونة</option>
+              <option value="انفعالات">انفعالات</option>
+            </select>
+
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="ابحث عن نشاط..."
+              aria-label="بحث"
+            />
+          </div>
+        </div>
+
+        <div
+          class="article-grid"
+          id="activitiesGrid"
+          style="margin-top: 18px"
+        ></div>
+
+        <div
+          class="callout"
+          id="emptyState"
+          style="display: none; margin-top: 18px"
+        >
+          لا توجد نتائج. جرّب تغيير المرحلة أو المهارة أو امسح البحث.
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> AL-Hossam Hassn — جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script src="js/activities-data.js"></script>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const ageFilter = document.getElementById("ageFilter");
+      const skillFilter = document.getElementById("skillFilter");
+      const searchInput = document.getElementById("searchInput");
+      const grid = document.getElementById("activitiesGrid");
+      const emptyState = document.getElementById("emptyState");
+
+      const ACTIVITIES = Array.isArray(window.ACTIVITIES)
+        ? window.ACTIVITIES
+        : [];
+
+      function el(tag, cls) {
+        const x = document.createElement(tag);
+        if (cls) x.className = cls;
+        return x;
+      }
+
+      function buildActivityCard(a) {
+        // reuse article-card styling
+        const card = el("div", "article-card activity-card");
+
+        const thumb = el("div", "thumb");
+        const img = document.createElement("img");
+        img.src = a.cover || "images/placeholder.jpg";
+        img.alt = a.title || "نشاط";
+        thumb.appendChild(img);
+
+        const meta = el("div", "meta");
+
+        const badge = el("span", "badge");
+        badge.textContent =
+          (a.ageLabel || a.age || "مرحلة") + " • " + (a.skill || "مهارة");
+        meta.appendChild(badge);
+
+        const h3 = document.createElement("h3");
+        h3.textContent = a.title || "نشاط";
+        meta.appendChild(h3);
+
+        const p = document.createElement("p");
+        p.textContent = a.desc || "";
+        meta.appendChild(p);
+
+        // details area (accordion)
+        const body = el("div", "act-body");
+        const inner = el("div", "act-grid");
+
+        const coverBox = el("div", "act-cover");
+        const bigImg = document.createElement("img");
+        bigImg.src = a.cover || "images/placeholder.jpg";
+        bigImg.alt = a.title || "نشاط";
+        coverBox.appendChild(bigImg);
+
+        const text = el("div", "act-meta");
+
+        const h4tools = document.createElement("h4");
+        h4tools.textContent = "الأدوات";
+        const ulTools = document.createElement("ul");
+        (a.tools || []).forEach((t) => {
+          const li = document.createElement("li");
+          li.textContent = t;
+          ulTools.appendChild(li);
+        });
+
+        const h4steps = document.createElement("h4");
+        h4steps.textContent = "الخطوات";
+        const olSteps = document.createElement("ol");
+        (a.steps || []).forEach((t) => {
+          const li = document.createElement("li");
+          li.textContent = t;
+          olSteps.appendChild(li);
+        });
+
+        text.appendChild(h4tools);
+        text.appendChild(ulTools);
+        text.appendChild(h4steps);
+        text.appendChild(olSteps);
+
+        if (a.tip) {
+          const tip = el("div", "callout");
+          const s = document.createElement("strong");
+          s.textContent = "نصيحة:";
+          tip.appendChild(s);
+          tip.appendChild(document.createTextNode(" " + a.tip));
+          text.appendChild(tip);
+        }
+
+        inner.appendChild(coverBox);
+        inner.appendChild(text);
+        body.appendChild(inner);
+
+        const actions = el("div", "act-actions");
+        const btn = el("a", "btn btn-secondary");
+        btn.href = "#";
+        btn.textContent = "عرض التفاصيل";
+        actions.appendChild(btn);
+        meta.appendChild(actions);
+
+        function toggle() {
+          const isOpen = body.classList.contains("open");
+          body.classList.toggle("open", !isOpen);
+          btn.textContent = isOpen ? "عرض التفاصيل" : "إخفاء التفاصيل";
+        }
+
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          toggle();
+        });
+        card.addEventListener("dblclick", toggle);
+
+        card.appendChild(thumb);
+        card.appendChild(meta);
+        card.appendChild(body);
+        return card;
+      }
+
+      function applyFilters() {
+        const age = ageFilter.value;
+        const skill = skillFilter.value;
+        const q = searchInput.value.trim().toLowerCase();
+
+        grid.innerHTML = "";
+        let count = 0;
+
+        ACTIVITIES.forEach((a) => {
+          const matchAge = age === "all" || a.age === age;
+          const matchSkill = skill === "all" || a.skill === skill;
+          const text = (
+            (a.title || "") +
+            " " +
+            (a.desc || "") +
+            " " +
+            (a.skill || "") +
+            " " +
+            (a.ageLabel || "")
+          ).toLowerCase();
+          const matchSearch = !q || text.includes(q);
+
+          if (matchAge && matchSkill && matchSearch) {
+            grid.appendChild(buildActivityCard(a));
+            count++;
+          }
+        });
+
+        emptyState.style.display = count ? "none" : "block";
+      }
+
+      // read ?age= from URL (optional)
+      const params = new URLSearchParams(location.search);
+      const ageFromUrl = params.get("age");
+      if (ageFromUrl) {
+        ageFilter.value = ageFromUrl;
+      }
+
+      ageFilter.addEventListener("change", applyFilters);
+      skillFilter.addEventListener("change", applyFilters);
+      searchInput.addEventListener("input", applyFilters);
+
+      applyFilters();
+    </script>
+  </body>
+</html>

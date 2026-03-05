@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>المشكلة | AL-Hossam Hassn</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="logo" href="index.html">AL-Hossam Hassn</a>
+        <ul class="nav-links">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="stages.html">المراحل العمرية</a></li>
+          <li><a href="about.html">من أنا</a></li>
+          <li><a href="contact.html">تواصل</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section article">
+        <a class="back-link" href="javascript:history.back()">← رجوع</a>
+
+        <div class="article-header">
+          <span class="badge" id="ageBadge">مرحلة</span>
+          <h1 id="problemTitle">عنوان المشكلة</h1>
+          <p class="article-sub" id="problemExcerpt"></p>
+        </div>
+
+        <div class="article-hero">
+          <img id="problemImage" src="images/placeholder.jpg" alt="" />
+        </div>
+
+        <!-- ✅ Accordion Cards -->
+        <div class="acc-grid" id="accGrid"></div>
+
+        <div class="callout">
+          <strong> سوف يتم انشاء مقالات خاصه بالأعمار قريبا</strong>
+
+          <a href="contact.html">تواصل</a>.
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> AL-Hossam Hassn — جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script src="js/problems-data.js"></script>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+
+      const titleEl = document.getElementById("problemTitle");
+      const excerptEl = document.getElementById("problemExcerpt");
+      const badgeEl = document.getElementById("ageBadge");
+      const imageEl = document.getElementById("problemImage");
+      const accGrid = document.getElementById("accGrid");
+
+      function escapeHtml(str) {
+        return String(str || "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function notFound() {
+        document.title = "المحتوى غير موجود | AL-Hossam Hassn";
+        titleEl.textContent = "المحتوى غير موجود";
+        excerptEl.textContent = "الرابط غير صحيح أو المشكلة لم تُضف بعد.";
+        badgeEl.textContent = "—";
+        imageEl.src = "images/placeholder.jpg";
+        imageEl.alt = "صورة افتراضية";
+
+        accGrid.innerHTML = (
+          <div class="acc-card open">
+            <button class="acc-head" type="button">
+              <span>معلومة</span>
+              <span class="acc-icon">⌄</span>
+            </button>
+            <div class="acc-body">
+              <p>ارجع لصفحة المراحل واختر مشكلة من القائمة.</p>
+              <a class="btn" href="stages.html" style="margin-top:10px;">
+                صفحة المراحل
+              </a>
+            </div>
+          </div>
+        );
+      }
+
+      function makeCard(title, bodyHtml, open) {
+        const card = document.createElement("div");
+        card.className = "acc-card" + (open ? " open" : "");
+
+        const head = document.createElement("button");
+        head.className = "acc-head";
+        head.type = "button";
+
+        const t = document.createElement("span");
+        t.textContent = title;
+
+        const icon = document.createElement("span");
+        icon.className = "acc-icon";
+        icon.textContent = "⌄";
+
+        head.appendChild(t);
+        head.appendChild(icon);
+
+        const body = document.createElement("div");
+        body.className = "acc-body";
+        body.innerHTML = bodyHtml;
+
+        head.addEventListener("click", () => {
+          card.classList.toggle("open");
+        });
+
+        card.appendChild(head);
+        card.appendChild(body);
+        return card;
+      }
+
+      if (!id || !Array.isArray(window.PROBLEMS)) {
+        notFound();
+      } else {
+        const problem = window.PROBLEMS.find((p) => p && p.id === id);
+
+        if (!problem) {
+          notFound();
+        } else {
+          document.title = problem.title + " | AL-Hossam Hassn";
+          titleEl.textContent = problem.title || "";
+          excerptEl.textContent = problem.excerpt || "";
+          badgeEl.textContent = problem.ageLabel || "";
+          imageEl.src = problem.image || "images/placeholder.jpg";
+          imageEl.alt = problem.title || "صورة المشكلة";
+
+          // ✅ Build sections
+          const symptomsHtml =
+            Array.isArray(problem.symptoms) && problem.symptoms.length ? (
+              <ul>
+                $
+                {problem.symptoms
+                  .map((s) => <li>${escapeHtml(s)}</li>)
+                  .join("")}
+              </ul>
+            ) : (
+              <p>سيتم إضافة الأعراض قريبًا.</p>
+            );
+
+          const causesHtml = problem.causes ? (
+            <p>${escapeHtml(problem.causes)}</p>
+          ) : (
+            <p>سيتم إضافة التفسير قريبًا.</p>
+          );
+
+          const solutionHtml =
+            Array.isArray(problem.solution) && problem.solution.length ? (
+              <ol>
+                $
+                {problem.solution
+                  .map((s) => <li>${escapeHtml(s)}</li>)
+                  .join("")}
+              </ol>
+            ) : (
+              <p>سيتم إضافة الحل قريبًا.</p>
+            );
+
+          const noteHtml = problem.note ? (
+            <p>${escapeHtml(problem.note)}</p>
+          ) : (
+            <p>—</p>
+          );
+
+          accGrid.innerHTML = "";
+          accGrid.appendChild(makeCard("الأعراض", symptomsHtml, true));
+          accGrid.appendChild(makeCard("ليه ده بيحصل؟", causesHtml, false));
+          accGrid.appendChild(makeCard("الحل العملي", solutionHtml, false));
+          accGrid.appendChild(makeCard("ملاحظة مهمة", noteHtml, false));
+        }
+      }
+    </script>
+  </body>
+</html>

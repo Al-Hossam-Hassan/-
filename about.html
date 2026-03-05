@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>من أنا | AL-Hossam Hassn</title>
+    <meta
+      name="description"
+      content="تعرف على حسام حسن، متخصص في تربية وتنمية الطفل، حاصل على شهادات معتمدة في بورتاج وستانفورد–بينيه."
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* تحسينات بسيطة مخصوص للصفحة (بدون ما نعتمد على CSS خارجي) */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.3fr;
+        gap: 18px;
+        align-items: start;
+        max-width: 1050px;
+        margin: 0 auto;
+      }
+      .about-image img {
+        width: 100%;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.04);
+        display: block;
+      }
+      .about-text h1 {
+        margin: 0 0 10px;
+      }
+      .about-text p {
+        line-height: 1.95;
+        opacity: 0.92;
+        margin: 0 0 10px;
+      }
+      .about-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+      }
+
+      .certificates {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 12px;
+        max-width: 1050px;
+        margin: 0 auto;
+        margin-top: 12px;
+      }
+      .certificate-card {
+        grid-column: span 6;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+        overflow: hidden;
+      }
+      .certificate-card img {
+        width: 100%;
+        display: block;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        background: rgba(255, 255, 255, 0.04);
+      }
+      .certificate-card .cap {
+        padding: 10px 12px;
+        margin: 0;
+        opacity: 0.92;
+        line-height: 1.8;
+        font-weight: 700;
+      }
+      @media (max-width: 900px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+        .certificate-card {
+          grid-column: span 12;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="site-header">
+      <nav class="nav">
+        <a class="logo" href="index.html">AL-Hossam Hassn</a>
+
+        <ul class="nav-links">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="stages.html">المراحل العمرية</a></li>
+          <li><a href="activities.html">الأنشطة</a></li>
+          <li><a href="platform.html">ما تقدمه المنصة</a></li>
+          <li><a class="active" href="about.html">من أنا</a></li>
+          <li><a href="contact.html">تواصل</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- About -->
+      <section class="section">
+        <div class="about-grid">
+          <!-- Personal Image -->
+          <div class="about-image">
+            <img
+              src="images/hossam.jpg"
+              alt="Hossam Hassn - متخصص في تربية وتنمية الطفل"
+            />
+          </div>
+
+          <!-- Text -->
+          <div class="about-text">
+            <h1>من أنا</h1>
+
+            <p>
+              أنا <strong>AL-Hossam Hassn</strong>، متخصص في
+              <strong>تربية وتنمية الطفل</strong>، وبشتغل على مساعدة الأهل
+              والمربين في فهم احتياجات الأطفال النفسية والسلوكية من
+              <strong>حديث الولادة</strong> وحتى <strong>9 سنوات ونصف</strong>.
+            </p>
+
+            <p>
+              حاصل على <strong>شهادات معتمدة</strong> في مجال تنمية الطفل، من
+              بينها
+              <strong>برنامج بورتاج للتنمية الشاملة للأطفال</strong> (معتمد من
+              <strong>جامعة الأزهر</strong>)، بالإضافة إلى
+              <strong>شهادة في مقياس ستانفورد–بينيه للذكاء</strong>.
+            </p>
+
+            <p>
+              هدفي إني أقدّم محتوى تربوي مبني على أسس علمية
+              <strong>لكن بشكل عملي</strong>، بحيث تتحول المعرفة إلى خطوات واضحة
+              وسهلة تتطبق داخل البيت، وكل مرحلة عمرية ليها محتوى يناسبها.
+            </p>
+
+            <div class="callout" style="margin-top: 12px">
+              <strong>رسالة المنصة:</strong>
+              نفهم الطفل صح… ونساعده ينمو بأمان وهدوء خطوة بخطوة.
+            </div>
+
+            <div class="about-actions">
+              <a class="btn" href="stages.html">ابدأ بالمراحل العمرية</a>
+              <a class="btn btn-secondary" href="contact.html"
+                >تواصل / استشارة</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Certificates -->
+      <section class="section trust">
+        <h2 style="max-width: 1050px; margin: 0 auto">الشهادات والمؤهلات</h2>
+
+        <div class="certificates">
+          <div class="certificate-card">
+            <img
+              src="images/certificate.jpg"
+              alt="شهادة برنامج بورتاج - جامعة الأزهر"
+            />
+            <p class="cap">شهادة برنامج بورتاج – جامعة الأزهر</p>
+          </div>
+        </div>
+
+        <div class="callout" style="max-width: 1050px; margin: 16px auto 0">
+          <strong>ملاحظة:</strong>
+          الهدف من الشهادات إن المحتوى يكون مبني على منهجية علمية… لكن الأهم
+          عندي هو “إزاي تتحول المعلومة لخطوات” تنفع البيت.
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p>© <span id="year"></span> AL-Hossam Hassn — جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

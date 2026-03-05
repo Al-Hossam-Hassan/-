@@ -1,0 +1,554 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ملفات PDF | AL-Hossam Hassn</title>
+    <meta
+      name="description"
+      content="ملفات PDF قابلة للتحميل: أوراق عمل وأدلة إرشادية."
+    />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+      .wrap {
+        width: min(var(--max), 92vw);
+        margin: 0 auto;
+        padding: 48px 0;
+      }
+      .page-head {
+        display: flex;
+        gap: 14px;
+        align-items: flex-end;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .filters {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .filters select,
+      .filters input {
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(0, 0, 0, 0.35);
+        color: rgba(255, 255, 255, 0.92);
+        padding: 10px 12px;
+        outline: none;
+      }
+      .filters select option {
+        background: #0b1220;
+        color: #fff;
+      }
+
+      .grid {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 14px;
+      }
+      .pdf-card {
+        grid-column: span 4;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        transition: 220ms ease;
+        cursor: pointer;
+      }
+      .pdf-card:hover {
+        transform: translateY(-3px);
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .pdf-thumb img {
+        width: 100%;
+        aspect-ratio: 16/10;
+        object-fit: cover;
+        display: block;
+      }
+      .pdf-meta {
+        padding: 14px 14px 16px;
+      }
+      .pdf-meta h3 {
+        margin: 0 0 6px;
+        font-size: 18px;
+      }
+      .pdf-meta p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 14px;
+        line-height: 1.8;
+      }
+      .pdf-row {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 12px;
+        flex-wrap: wrap;
+      }
+      .dl-count {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      /* Viewer */
+      .viewer {
+        margin-top: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+        display: none;
+      }
+      .viewer-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 12px 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .viewer-head h2 {
+        margin: 0;
+        font-size: 16px;
+      }
+      .viewer-frame {
+        width: 100%;
+        height: 72vh;
+        border: 0;
+        display: block;
+        background: rgba(0, 0, 0, 0.2);
+      }
+
+      /* Modal (Email Gate) */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        padding: 18px;
+      }
+      .modal {
+        width: min(520px, 96vw);
+        background: rgba(11, 18, 32, 0.92);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 18px;
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+        padding: 16px;
+        backdrop-filter: blur(10px);
+      }
+      .modal h3 {
+        margin: 0 0 8px;
+      }
+      .modal p {
+        margin: 0 0 12px;
+        color: rgba(255, 255, 255, 0.75);
+      }
+      .modal input {
+        width: 100%;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+        color: rgba(255, 255, 255, 0.92);
+        padding: 10px 12px;
+        outline: none;
+        font-weight: 600;
+      }
+      .modal-actions {
+        margin-top: 12px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+      .hint {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.65);
+        margin-top: 10px;
+      }
+
+      @media (max-width: 900px) {
+        .pdf-card {
+          grid-column: span 6;
+        }
+        .viewer-frame {
+          height: 70vh;
+        }
+      }
+      @media (max-width: 560px) {
+        .pdf-card {
+          grid-column: span 12;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="logo" href="index.html">AL-Hossam Hassn</a>
+        <ul class="nav-links">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="stages.html">المراحل العمرية</a></li>
+          <li><a href="articles.html">المقالات</a></li>
+          <li><a href="activities.html">الأنشطة</a></li>
+          <li><a href="pdfs.html">ملفات PDF</a></li>
+          <li><a href="about.html">من أنا</a></li>
+          <li><a href="contact.html">تواصل</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="wrap">
+        <div class="page-head">
+          <div>
+            <h2>ملفات PDF</h2>
+            <p>اختار المرحلة أو ابحث. تقدر تشوف الـ PDF داخل الصفحة وتحمله.</p>
+          </div>
+
+          <div class="filters">
+            <select id="ageFilter" aria-label="اختيار المرحلة">
+              <option value="all">كل المراحل</option>
+              <option value="0-6m">0 – 6 شهور</option>
+              <option value="7-12m">7 – 12 شهر</option>
+              <option value="1-1_5">1 – 1.5 سنة</option>
+              <option value="1_5-2">1.5 – 2 سنة</option>
+              <option value="2-2_5">2 – 2.5 سنة</option>
+              <option value="2_5-3">2.5 – 3 سنوات</option>
+              <option value="3-3_5">3 – 3.5 سنوات</option>
+              <option value="3_5-4">3.5 – 4 سنوات</option>
+              <option value="4-4_5">4 – 4.5 سنوات</option>
+              <option value="4_5-5">4.5 – 5 سنوات</option>
+              <option value="5-5_5">5 – 5.5 سنوات</option>
+              <option value="5_5-6">5.5 – 6 سنوات</option>
+              <option value="6-6_5">6 – 6.5 سنوات</option>
+              <option value="6_5-7">6.5 – 7 سنوات</option>
+              <option value="7-7_5">7 – 7.5 سنوات</option>
+              <option value="7_5-8">7.5 – 8 سنوات</option>
+              <option value="8-8_5">8 – 8.5 سنوات</option>
+              <option value="8_5-9">8.5 – 9 سنوات</option>
+              <option value="9-9_5">9 – 9.5 سنوات</option>
+            </select>
+
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="ابحث عن PDF..."
+              aria-label="بحث"
+            />
+          </div>
+        </div>
+        <!-- Viewer -->
+        <div class="viewer" id="viewer" style="display: none">
+          <div class="viewer-head">
+            <h2 id="viewerTitle">PDF Viewer</h2>
+
+            <div style="display: flex; gap: 10px; flex-wrap: wrap">
+              <a
+                class="btn btn-secondary"
+                id="viewerOpenNew"
+                href="#"
+                target="_blank"
+                rel="noreferrer"
+              >
+                فتح في تبويب
+              </a>
+
+              <a class="btn" id="viewerDownload" href="#" download> تحميل </a>
+
+              <!-- زر الرجوع -->
+              <button class="btn btn-secondary" id="viewerBack" type="button">
+                ← رجوع
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="viewer-body">
+          <iframe
+            id="viewerFrame"
+            src=""
+            style="width: 100%; height: 80vh; border: none; border-radius: 18px"
+          >
+          </iframe>
+        </div>
+
+        <!-- Grid -->
+        <div class="grid" id="pdfGrid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> AL-Hossam Hassn — جميع الحقوق محفوظة</p>
+    </footer>
+
+    <!-- Email Gate Modal -->
+    <div class="modal-overlay" id="emailModal">
+      <div class="modal">
+        <h3>قبل التحميل</h3>
+        <p>
+          اكتب بريدك الإلكتروني علشان نقدر نرسل لك ملفات جديدة وتحديثات المنصة.
+        </p>
+        <input id="emailInput" type="email" placeholder="your@email.com" />
+        <div class="modal-actions">
+          <button class="btn" id="emailContinue" type="button">متابعة</button>
+          <button class="btn btn-secondary" id="emailCancel" type="button">
+            إلغاء
+          </button>
+        </div>
+        <div class="hint">
+          * البريد بيتخزن عندك في المتصفح فقط (LocalStorage) لسهولة التحميل بعد
+          كده.
+        </div>
+      </div>
+    </div>
+
+    <script src="js/pdfs-data.js"></script>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const PDFS = Array.isArray(window.PDFS) ? window.PDFS : [];
+
+      const ageFilter = document.getElementById("ageFilter");
+      const searchInput = document.getElementById("searchInput");
+      const pdfGrid = document.getElementById("pdfGrid");
+
+      const viewer = document.getElementById("viewer");
+      const viewerTitle = document.getElementById("viewerTitle");
+      const viewerFrame = document.getElementById("viewerFrame");
+      const viewerOpenNew = document.getElementById("viewerOpenNew");
+      const viewerDownload = document.getElementById("viewerDownload");
+      const viewerBack = document.getElementById("viewerBack");
+
+      // Email Gate
+      const emailModal = document.getElementById("emailModal");
+      const emailInput = document.getElementById("emailInput");
+      const emailContinue = document.getElementById("emailContinue");
+      const emailCancel = document.getElementById("emailCancel");
+
+      let pendingDownload = null;
+
+      function getEmail() {
+        return (localStorage.getItem("hh_email") || "").trim();
+      }
+      function setEmail(v) {
+        localStorage.setItem("hh_email", (v || "").trim());
+      }
+      function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      }
+
+      function getCount(id) {
+        const n = parseInt(localStorage.getItem("pdf_dl_" + id) || "0", 10);
+        return Number.isFinite(n) ? n : 0;
+      }
+      function incCount(id) {
+        const next = getCount(id) + 1;
+        localStorage.setItem("pdf_dl_" + id, String(next));
+        return next;
+      }
+
+      /* ===========================
+   OPEN VIEWER (تم التعديل هنا)
+=========================== */
+      function openViewer(item) {
+        // اخفي شبكة الملفات
+        pdfGrid.style.display = "none";
+
+        // اعرض الـ viewer
+        viewer.style.display = "block";
+
+        viewerTitle.textContent = item.title || "PDF Viewer";
+
+        viewerFrame.src = item.file;
+        viewerOpenNew.href = item.file;
+
+        viewerDownload.href = item.file;
+        viewerDownload.onclick = (e) => {
+          e.preventDefault();
+          requestDownload(item);
+        };
+
+        viewer.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      /* ===========================
+   زر الرجوع (تم إضافته هنا)
+=========================== */
+      if (viewerBack) {
+        viewerBack.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          // اقفل الـ viewer
+          viewer.style.display = "none";
+
+          // رجّع شبكة الملفات
+          pdfGrid.style.display = "grid"; // لو مش grid غيرها لـ block
+
+          // فضّي iframe
+          viewerFrame.src = "";
+
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      }
+
+      /* =========================== */
+
+      function requestDownload(item) {
+        const email = getEmail();
+        if (!email) {
+          pendingDownload = item;
+          emailInput.value = "";
+          emailModal.style.display = "flex";
+          return;
+        }
+        doDownload(item);
+      }
+
+      function doDownload(item) {
+        incCount(item.id);
+        render();
+
+        const a = document.createElement("a");
+        a.href = item.file;
+        a.download = "";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }
+
+      emailContinue.addEventListener("click", () => {
+        const v = (emailInput.value || "").trim();
+        if (!isValidEmail(v)) {
+          alert("اكتب بريد صحيح.");
+          return;
+        }
+        setEmail(v);
+        emailModal.style.display = "none";
+        if (pendingDownload) {
+          const item = pendingDownload;
+          pendingDownload = null;
+          doDownload(item);
+        }
+      });
+
+      emailCancel.addEventListener("click", () => {
+        emailModal.style.display = "none";
+        pendingDownload = null;
+      });
+
+      function cardMatches(item, age, q) {
+        const matchAge = age === "all" || item.age === age;
+        if (!matchAge) return false;
+        if (!q) return true;
+
+        const text = [
+          item.title,
+          item.desc,
+          item.ageLabel,
+          (item.tags || []).join(" "),
+        ]
+          .join(" ")
+          .toLowerCase();
+        return text.includes(q);
+      }
+
+      function render() {
+        const age = ageFilter.value;
+        const q = (searchInput.value || "").trim().toLowerCase();
+
+        pdfGrid.innerHTML = "";
+
+        const list = PDFS.filter((item) => item && cardMatches(item, age, q));
+        if (!list.length) {
+          const p = document.createElement("p");
+          p.style.opacity = ".8";
+          p.textContent = "لا توجد ملفات مطابقة الآن.";
+          pdfGrid.appendChild(p);
+          return;
+        }
+
+        list.forEach((item) => {
+          const card = document.createElement("div");
+          card.className = "pdf-card";
+
+          const thumb = document.createElement("div");
+          thumb.className = "pdf-thumb";
+          const img = document.createElement("img");
+          img.src = item.thumb || "images/placeholder.jpg";
+          img.alt = item.title || "PDF";
+          thumb.appendChild(img);
+
+          const meta = document.createElement("div");
+          meta.className = "pdf-meta";
+
+          const badge = document.createElement("span");
+          badge.className = "badge";
+          badge.textContent = item.ageLabel || "مرحلة";
+          meta.appendChild(badge);
+
+          const h3 = document.createElement("h3");
+          h3.textContent = item.title || "PDF";
+          meta.appendChild(h3);
+
+          const p = document.createElement("p");
+          p.textContent = item.desc || "";
+          meta.appendChild(p);
+
+          const row = document.createElement("div");
+          row.className = "pdf-row";
+
+          const count = document.createElement("div");
+          count.className = "dl-count";
+          count.textContent = "Downloads: " + getCount(item.id);
+          row.appendChild(count);
+
+          const btns = document.createElement("div");
+          btns.style.display = "flex";
+          btns.style.gap = "10px";
+          btns.style.flexWrap = "wrap";
+
+          const viewBtn = document.createElement("a");
+          viewBtn.className = "btn btn-secondary";
+          viewBtn.href = "#";
+          viewBtn.textContent = "عرض";
+          viewBtn.onclick = (e) => {
+            e.preventDefault();
+            openViewer(item);
+          };
+
+          const dlBtn = document.createElement("a");
+          dlBtn.className = "btn";
+          dlBtn.href = "#";
+          dlBtn.textContent = "تحميل";
+          dlBtn.onclick = (e) => {
+            e.preventDefault();
+            requestDownload(item);
+          };
+
+          btns.appendChild(viewBtn);
+          btns.appendChild(dlBtn);
+          row.appendChild(btns);
+          meta.appendChild(row);
+
+          card.appendChild(thumb);
+          card.appendChild(meta);
+
+          pdfGrid.appendChild(card);
+        });
+      }
+
+      ageFilter.addEventListener("change", render);
+      searchInput.addEventListener("input", render);
+
+      render();
+    </script>
+  </body>
+</html>

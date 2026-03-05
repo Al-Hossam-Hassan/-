@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>المراحل العمرية | Hossam Hassn</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      .stage-grid {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 14px;
+      }
+      .stage-card {
+        grid-column: span 3;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 16px;
+        padding: 18px;
+        text-align: center;
+        transition: 200ms ease;
+      }
+      .stage-card:hover {
+        transform: translateY(-4px);
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .stage-card h3 {
+        margin: 0 0 8px;
+      }
+      .stage-card p {
+        margin: 0;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      @media (max-width: 900px) {
+        .stage-card {
+          grid-column: span 6;
+        }
+      }
+      @media (max-width: 560px) {
+        .stage-card {
+          grid-column: span 12;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav">
+        <a class="logo" href="index.html">Hossam Hassn</a>
+        <ul class="nav-links">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="stages.html" class="active">المراحل العمرية</a></li>
+          <li><a href="activities.html">الأنشطة</a></li>
+          <li><a href="about.html">من أنا</a></li>
+          <li><a href="contact.html">تواصل</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section">
+        <h2>اختر المرحلة العمرية</h2>
+        <p>تقسيم بورتاج كل 6 شهور لضمان دقة التطور النمائي.</p>
+
+        <div class="stage-grid">
+          <a class="card" href="pages/0-6m.html">
+            <h3>من 0 إلى 6 شهور</h3>
+            <p>نوم – تهدئة – ارتباط – تحفيز حسي آمن.</p>
+          </a>
+
+          <a class="stage-card" href="pages/7-12m.html">
+            <h3>7 – 12 شهر</h3>
+            <p>الاستكشاف – قلق الانفصال – الأكل</p>
+          </a>
+
+          <a class="stage-card" href="pages/1-1_5.html">
+            <h3>1 – 1.5 سنة</h3>
+            <p>اللغة – السلوكيات الأولى</p>
+          </a>
+
+          <a class="stage-card" href="pages/1_5-2.html">
+            <h3>1.5 – 2 سنة</h3>
+            <p>نوبات الغضب – الحدود</p>
+          </a>
+
+          <a class="stage-card" href="pages/2-2_5.html">
+            <h3>2 – 2.5 سنة</h3>
+            <p>تدريب الحمام – العناد</p>
+          </a>
+
+          <a class="stage-card" href="pages/2_5-3.html">
+            <h3>2.5 – 3 سنوات</h3>
+            <p>الخوف – اللغة – اللعب</p>
+          </a>
+          <a class="stage-card" href="pages/3-3_5.html">
+            <h3>3 – 3.5 سنوات</h3>
+            <p>سلوك الحضانة – مشاركة – عدوانية</p>
+          </a>
+
+          <a class="stage-card" href="pages/3_5-4.html">
+            <h3>3.5 – 4 سنوات</h3>
+            <p>يسمع من أول مرة – قيم – حدود</p>
+          </a>
+
+          <a class="stage-card" href="pages/4-4_5.html">
+            <h3>4 – 4.5 سنوات</h3>
+            <p>تركيز – روتين صباح – طاقة</p>
+          </a>
+
+          <a class="stage-card" href="pages/4_5-5.html">
+            <h3>4.5 – 5 سنوات</h3>
+            <p>استعداد المدرسة – ثقة بالنفس</p>
+          </a>
+
+          <a class="stage-card" href="pages/5-5_5.html">
+            <h3>5 – 5.5 سنوات</h3>
+            <p>قواعد – مكافآت ذكية – بداية تعلم</p>
+          </a>
+
+          <a class="stage-card" href="pages/5_5-6.html">
+            <h3>5.5 – 6 سنوات</h3>
+            <p>المدرسة – الواجب – تقبل الخطأ</p>
+          </a>
+
+          <a class="stage-card" href="pages/6-6_5.html">
+            <h3>6 – 6.5 سنوات</h3>
+            <p>عادة المذاكرة – تقليل المشتتات</p>
+          </a>
+
+          <a class="stage-card" href="pages/6_5-7.html">
+            <h3>6.5 – 7 سنوات</h3>
+            <p>تنمر – غضب – صدق/كذب</p>
+          </a>
+
+          <a class="stage-card" href="pages/7-7_5.html">
+            <h3>7 – 7.5 سنوات</h3>
+            <p>دافعية – قلق الامتحان – مسؤولية</p>
+          </a>
+
+          <a class="stage-card" href="pages/7_5-8.html">
+            <h3>7.5 – 8 سنوات</h3>
+            <p>ضغط مدرسي – إدارة وقت</p>
+          </a>
+
+          <a class="stage-card" href="pages/8-8_5.html">
+            <h3>8 – 8.5 سنوات</h3>
+            <p>جدال – تحمل الإحباط – تركيز أطول</p>
+          </a>
+
+          <a class="stage-card" href="pages/8_5-9.html">
+            <h3>8.5 – 9 سنوات</h3>
+            <p>استقلال – شكوى المدرسة – نوم</p>
+          </a>
+
+          <a class="stage-card" href="pages/9-9_5.html">
+            <h3>9 – 9.5 سنوات</h3>
+            <p>قبل المراهقة – مذاكرة ذاتية – انفعالات</p>
+          </a>
+
+          <!-- كمل بنفس الشكل لباقي المراحل -->
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> AL-Hossam Hassn — جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

@@ -1,129 +1,355 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>مرحلة |AL-Hossam Hassn</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <style>
-    .sectionBox{ margin-top:14px; padding:14px; border-radius:18px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.06); }
-    .mini-grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:12px; margin-top:12px; }
-    .mini-card{ grid-column:span 6; padding:12px; border-radius:18px; border:1px solid rgba(255,255,255,.14); background:rgba(0,0,0,.18); text-decoration:none; display:block; }
-    .mini-card h3{ margin:0 0 6px; }
-    .mini-card p{ margin:0; opacity:.85; line-height:1.9; }
-    @media(max-width:900px){ .mini-card{ grid-column:span 12; } }
-  </style>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>تفاصيل المرحلة | Al-Hossam Hassan</title>
 
-<header class="site-header">
-  <div class="container">
-    <nav class="nav">
-      <a class="logo" href="index.html"><span class="logo-badge"></span>AL-Hossam Hassn</a>
-      <ul class="nav-links">
-        <li><a href="index.html">الرئيسية</a></li>
-        <li><a href="stages.html">المراحل</a></li>
-        <li><a href="activities.html">الأنشطة</a></li>
-        <li><a href="platform.html">المنصة</a></li>
-        <li><a href="about.html">من أنا</a></li>
-        <li><a href="contact.html">تواصل</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
 
-<main class="container">
-  <section class="section">
-    <a class="btn" href="stages.html">رجوع للمراحل</a>
+    <style>
+      /* --- الإعدادات العامة والمتغيرات --- */
+      @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap");
 
-    <h2 id="stageTitle" style="margin-top:14px;">مرحلة</h2>
-    <p id="stageIntro"></p>
-
-    <div id="sectionsArea"></div>
-  </section>
-</main>
-
-<footer class="footer">
-  <div class="container">© <span id="year"></span> AL-Hossam Hassn</div>
-</footer>
-
-<script src="js/app.js"></script>
-<script src="js/stages-data.js"></script>
-<script src="js/problems-data.js"></script>
-<script>
-  function getParam(name){ return new URLSearchParams(location.search).get(name); }
-
-  const stageKey = getParam("stage");
-  const stage = window.STAGES && window.STAGES[stageKey];
-  const problems = Array.isArray(window.PROBLEMS) ? window.PROBLEMS : [];
-
-  const titleEl = document.getElementById("stageTitle");
-  const introEl = document.getElementById("stageIntro");
-  const area = document.getElementById("sectionsArea");
-
-  function findProblemById(id){
-    return problems.find(p => p && p.id === id);
-  }
-
-  if(!stage){
-    titleEl.textContent = "المرحلة غير موجودة";
-    introEl.textContent = "الرابط غير صحيح أو المرحلة لم تُضف بعد.";
-  } else {
-    document.title = stage.title + " | AL-Hossam Hassn";
-    titleEl.textContent = stage.title;
-    introEl.textContent = stage.intro;
-
-    stage.sections.forEach(sec => {
-      const box = document.createElement("div");
-      box.className = "sectionBox";
-
-      const h3 = document.createElement("h3");
-      h3.textContent = sec.title;
-
-      const p = document.createElement("p");
-      p.style.opacity = ".85";
-      p.style.margin = "8px 0 0";
-      p.textContent = sec.desc;
-
-      const grid = document.createElement("div");
-      grid.className = "mini-grid";
-
-      if (!sec.problems || !sec.problems.length){
-        const empty = document.createElement("p");
-        empty.style.opacity = ".8";
-        empty.style.marginTop = "10px";
-        empty.textContent = "سيتم إضافة مشاكل لهذا القسم قريبًا.";
-        box.appendChild(h3);
-        box.appendChild(p);
-        box.appendChild(empty);
-        area.appendChild(box);
-        return;
+      :root {
+        --primary-color: #2c3e50;
+        --accent-color: #27ae60;
+        --light-bg: #f8fafc;
+        --text-main: #34495e;
+        --white: #ffffff;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      sec.problems.forEach(pid => {
-        const prob = findProblemById(pid);
-        if(!prob) return;
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Cairo", sans-serif;
+      }
 
-        const a = document.createElement("a");
-        a.className = "mini-card";
-        a.href = "problem.html?id=" + encodeURIComponent(prob.id);
+      body {
+        background-color: var(--light-bg);
+        color: var(--text-main);
+        line-height: 1.7;
+      }
 
-        const t = document.createElement("h3");
-        t.textContent = prob.title;
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
 
-        const ex = document.createElement("p");
-        ex.textContent = prob.excerpt || "";
+      /* --- الهيدر --- */
+      .site-header {
+        background: var(--white);
+        padding: 15px 0;
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
 
-        a.appendChild(t);
-        a.appendChild(ex);
-        grid.appendChild(a);
-      });
-      box.appendChild(h3);
-      box.appendChild(p);
-      box.appendChild(grid);
-      area.appendChild(box);
-    });
-  }
-</script>
-</body>
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-decoration: none;
+        color: var(--primary-color);
+      }
+      .logo span {
+        color: var(--accent-color);
+      }
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+        align-items: center;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-main);
+        font-weight: 500;
+      }
+
+      /* --- تحسينات صفحة الأقسام --- */
+      .stage-header {
+        padding: 50px 0 30px;
+        text-align: center;
+        animation: fadeInDown 0.8s ease;
+      }
+
+      .btn-back {
+        background: var(--white);
+        color: var(--primary-color);
+        padding: 8px 20px;
+        border-radius: 50px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.9rem;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        margin-bottom: 25px;
+        border: 1px solid #eee;
+      }
+
+      .btn-back:hover {
+        background: var(--primary-color);
+        color: var(--white);
+        transform: scale(1.05);
+      }
+
+      #stageTitle {
+        font-size: 2.2rem;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+      }
+
+      #stageIntro {
+        color: #718096;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* نظام الـ Section Box */
+      .sectionBox {
+        margin-top: 30px;
+        padding: 30px;
+        border-radius: 25px;
+        background: var(--white);
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(0, 0, 0, 0.02);
+        animation: fadeInUp 1s ease;
+      }
+
+      .sectionBox h3 {
+        color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 1.5rem;
+        border-bottom: 2px solid var(--light-bg);
+        padding-bottom: 15px;
+      }
+
+      .sectionBox h3::before {
+        content: "\f05a";
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        color: var(--accent-color);
+      }
+
+      /* شبكة الكروت الصغيرة */
+      .mini-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        margin-top: 25px;
+      }
+
+      .mini-card {
+        padding: 25px;
+        border-radius: 20px;
+        border: 1px solid #f1f5f9;
+        background: #fafafa;
+        text-decoration: none;
+        display: block;
+        transition: var(--transition);
+      }
+
+      .mini-card:hover {
+        background: var(--white);
+        border-color: var(--accent-color);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(39, 174, 96, 0.1);
+      }
+
+      .mini-card h4 {
+        margin-bottom: 10px;
+        color: var(--primary-color);
+        font-size: 1.1rem;
+      }
+
+      .mini-card p {
+        font-size: 0.9rem;
+        color: #718096;
+        line-height: 1.6;
+      }
+
+      /* الفوتر */
+      .main-footer {
+        padding: 40px 0;
+        text-align: center;
+        border-top: 1px solid #eee;
+        margin-top: 60px;
+        color: #718096;
+      }
+
+      /* الأنيميشن */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+        #stageTitle {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <nav class="nav container">
+        <a class="logo" href="index.html">Al-Hossam <span>Hassan</span></a>
+        <ul class="nav-links">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="stages.html" class="active">المراحل</a></li>
+          <li><a href="activities.html">الأنشطة</a></li>
+          <li><a href="about.html">من أنا</a></li>
+          <li>
+            <a class="btn-contact-nav" href="contact.html">تواصل مباشر</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <div class="stage-header">
+        <a class="btn-back" href="stages.html">
+          <i class="fas fa-arrow-right"></i> رجوع للمراحل
+        </a>
+        <h2 id="stageTitle">جاري التحميل...</h2>
+        <p id="stageIntro"></p>
+      </div>
+
+      <div id="sectionsArea"></div>
+    </main>
+
+    <footer class="main-footer">
+      <div class="container">
+        <p>© <span id="year"></span> Al-Hossam Hassan — جميع الحقوق محفوظة</p>
+      </div>
+    </footer>
+
+    <script src="js/stages-data.js"></script>
+    <script src="js/problems-data.js"></script>
+
+    <script>
+      // دالة لجلب معطيات الرابط (URL Params)
+      function getParam(name) {
+        return new URLSearchParams(location.search).get(name);
+      }
+
+      const stageKey = getParam("stage");
+      // ملاحظة: تأكد أن STAGES في ملف stages-data.js معرفة كـ Object وليست Array ليعمل هذا السطر
+      const stage = window.STAGES && window.STAGES[stageKey];
+      const problems = Array.isArray(window.PROBLEMS) ? window.PROBLEMS : [];
+
+      const titleEl = document.getElementById("stageTitle");
+      const introEl = document.getElementById("stageIntro");
+      const area = document.getElementById("sectionsArea");
+
+      function findProblemById(id) {
+        return problems.find((p) => p && p.id === id);
+      }
+
+      if (!stage) {
+        titleEl.textContent = "المرحلة غير موجودة";
+        introEl.textContent =
+          "عذراً، الرابط غير صحيح أو هذه المرحلة قيد التطوير حالياً.";
+      } else {
+        document.title = stage.title + " | Al-Hossam Hassan";
+        titleEl.textContent = stage.title;
+        introEl.textContent = stage.intro;
+
+        stage.sections.forEach((sec) => {
+          const box = document.createElement("div");
+          box.className = "sectionBox";
+
+          const h3 = document.createElement("h3");
+          h3.textContent = sec.title;
+
+          const p = document.createElement("p");
+          p.style.color = "#4a5568";
+          p.style.margin = "10px 0";
+          p.textContent = sec.desc;
+
+          const grid = document.createElement("div");
+          grid.className = "mini-grid";
+
+          if (!sec.problems || !sec.problems.length) {
+            const empty = document.createElement("p");
+            empty.style.color = "#a0aec0";
+            empty.style.marginTop = "15px";
+            empty.style.fontStyle = "italic";
+            empty.textContent = "سيتم إضافة محتوى لهذا القسم قريباً.";
+            box.appendChild(h3);
+            box.appendChild(p);
+            box.appendChild(empty);
+            area.appendChild(box);
+            return;
+          }
+
+          sec.problems.forEach((pid) => {
+            const prob = findProblemById(pid);
+            if (!prob) return;
+
+            const a = document.createElement("a");
+            a.className = "mini-card";
+            // الرابط سيوجه لصفحة عرض المشكلة مع تمرير المعرف
+            a.href = "problem.html?id=" + encodeURIComponent(prob.id);
+
+            const t = document.createElement("h4");
+            t.textContent = prob.title;
+
+            const ex = document.createElement("p");
+            ex.textContent =
+              prob.excerpt ||
+              "تعرف على الأسباب والحلول العملية المقترحة لهذه الحالة...";
+
+            a.appendChild(t);
+            a.appendChild(ex);
+            grid.appendChild(a);
+          });
+
+          box.appendChild(h3);
+          box.appendChild(p);
+          box.appendChild(grid);
+          area.appendChild(box);
+        });
+      }
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
 </html>

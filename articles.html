@@ -3,30 +3,204 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>المشكلة | AL-Hossam Hassn</title>
+    <title id="pageTitle">المشكلة | Al-Hossam Hassan</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+      .article-container {
+        padding: 40px 0;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+        color: var(--accent-color);
+        font-weight: bold;
+        margin-bottom: 25px;
+        transition: var(--transition);
+      }
+      .back-link:hover {
+        transform: translateX(5px);
+      }
+
+      .article-header {
+        margin-bottom: 30px;
+        border-right: 4px solid var(--accent-color);
+        padding-right: 20px;
+      }
+      .article-header .badge {
+        background: var(--primary-color);
+        color: white;
+        padding: 5px 15px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        margin-bottom: 15px;
+        display: inline-block;
+      }
+      .article-header h1 {
+        font-size: 2.2rem;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+      }
+      .article-sub {
+        font-size: 1.1rem;
+        color: #666;
+        line-height: 1.6;
+      }
+
+      .article-hero {
+        width: 100%;
+        border-radius: 25px;
+        overflow: hidden;
+        margin-bottom: 35px;
+        box-shadow: var(--shadow);
+        height: 400px;
+      }
+      .article-hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Accordion Styles */
+      .acc-grid {
+        display: grid;
+        gap: 15px;
+        margin-top: 30px;
+      }
+      .acc-card {
+        background: var(--white);
+        border-radius: 20px;
+        border: 1px solid #eee;
+        overflow: hidden;
+        transition: var(--transition);
+      }
+      .acc-head {
+        width: 100%;
+        padding: 22px 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 1.15rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        text-align: right;
+      }
+      .acc-icon {
+        transition: 0.3s ease;
+        color: var(--accent-color);
+        font-size: 1.2rem;
+      }
+      .acc-body {
+        padding: 0 25px;
+        max-height: 0;
+        overflow: hidden;
+        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        color: #555;
+        line-height: 1.8;
+      }
+
+      /* Open State */
+      .acc-card.open {
+        border-color: var(--accent-color);
+        box-shadow: var(--shadow);
+      }
+      .acc-card.open .acc-body {
+        padding-bottom: 25px;
+        max-height: 1500px;
+      }
+      .acc-card.open .acc-icon {
+        transform: rotate(180deg);
+      }
+
+      .acc-body ul,
+      .acc-body ol {
+        padding-right: 25px;
+        margin: 15px 0;
+      }
+      .acc-body li {
+        margin-bottom: 12px;
+        position: relative;
+      }
+
+      .callout {
+        margin-top: 50px;
+        padding: 30px;
+        background: rgba(39, 174, 96, 0.05);
+        border-radius: 20px;
+        text-align: center;
+        border: 1px dashed var(--accent-color);
+      }
+
+      /* Dark Mode Overrides */
+      body.dark-theme .acc-card {
+        background: #1e1e1e;
+        border-color: #333;
+      }
+      body.dark-theme .acc-head {
+        color: #eee;
+      }
+      body.dark-theme .acc-body {
+        color: #bbb;
+      }
+      body.dark-theme .article-sub {
+        color: #999;
+      }
+      body.dark-theme .callout {
+        background: #1a1a1a;
+      }
+
+      @media (max-width: 768px) {
+        .article-hero {
+          height: 250px;
+        }
+        .article-header h1 {
+          font-size: 1.7rem;
+        }
+      }
+    </style>
   </head>
 
   <body>
     <header class="site-header">
-      <nav class="nav">
-        <a class="logo" href="index.html">AL-Hossam Hassn</a>
+      <nav class="nav container">
+        <a class="logo" href="index.html">Al-Hossam <span>Hassan</span></a>
         <ul class="nav-links">
           <li><a href="index.html">الرئيسية</a></li>
           <li><a href="stages.html">المراحل العمرية</a></li>
-          <li><a href="about.html">من أنا</a></li>
-          <li><a href="contact.html">تواصل</a></li>
+          <li><a href="pdfs.html">ملفات PDF</a></li>
+          <li>
+            <button class="theme-toggle" id="theme-toggle">
+              <i class="fas fa-moon"></i>
+            </button>
+          </li>
+          <li><a class="btn-contact-nav" href="contact.html">تواصل</a></li>
         </ul>
       </nav>
     </header>
 
-    <main>
-      <section class="section article">
-        <a class="back-link" href="javascript:history.back()">← رجوع</a>
+    <main class="container article-container">
+      <a class="back-link" href="stages.html"
+        ><i class="fas fa-arrow-right"></i> العودة للمراحل</a
+      >
 
+      <article class="section article-content">
         <div class="article-header">
-          <span class="badge" id="ageBadge">مرحلة</span>
-          <h1 id="problemTitle">عنوان المشكلة</h1>
+          <span class="badge" id="ageBadge">تحميل...</span>
+          <h1 id="problemTitle">عنوان المقال</h1>
           <p class="article-sub" id="problemExcerpt"></p>
         </div>
 
@@ -34,19 +208,30 @@
           <img id="problemImage" src="images/placeholder.jpg" alt="" />
         </div>
 
-        <!-- ✅ Accordion Cards -->
         <div class="acc-grid" id="accGrid"></div>
 
         <div class="callout">
-          <strong> سوف يتم انشاء مقالات خاصه بالأعمار قريبا</strong>
-
-          <a href="contact.html">تواصل</a>.
+          <i
+            class="fas fa-info-circle fa-2x"
+            style="color: var(--accent-color); margin-bottom: 15px"
+          ></i>
+          <p>
+            <strong
+              >سيتم إضافة المزيد من المقالات التخصصية لكل مرحلة قريباً.</strong
+            >
+          </p>
+          <p>إذا كان لديك سؤال محدد حول هذه المشكلة، يمكنك التواصل مباشرة.</p>
+          <a class="btn" href="contact.html" style="margin-top: 15px"
+            >طلب استشارة خاصة</a
+          >
         </div>
-      </section>
+      </article>
     </main>
 
-    <footer class="site-footer">
-      <p>© <span id="year"></span> AL-Hossam Hassn — جميع الحقوق محفوظة</p>
+    <footer class="main-footer">
+      <div class="container footer-content">
+        <p>© <span id="year"></span> Al-Hossam Hassan — جميع الحقوق محفوظة</p>
+      </div>
     </footer>
 
     <script src="js/problems-data.js"></script>
@@ -54,6 +239,19 @@
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
 
+      // Theme Toggle Logic
+      const themeToggle = document.getElementById("theme-toggle");
+      if (localStorage.getItem("theme") === "dark")
+        document.body.classList.add("dark-theme");
+      themeToggle.onclick = () => {
+        document.body.classList.toggle("dark-theme");
+        localStorage.setItem(
+          "theme",
+          document.body.classList.contains("dark-theme") ? "dark" : "light",
+        );
+      };
+
+      // Get Content ID
       const params = new URLSearchParams(window.location.search);
       const id = params.get("id");
 
@@ -64,128 +262,92 @@
       const accGrid = document.getElementById("accGrid");
 
       function escapeHtml(str) {
-        return String(str || "")
-          .replaceAll("&", "&amp;")
-          .replaceAll("<", "&lt;")
-          .replaceAll(">", "&gt;")
-          .replaceAll('"', "&quot;")
-          .replaceAll("'", "&#039;");
-      }
-
-      function notFound() {
-        document.title = "المحتوى غير موجود | AL-Hossam Hassn";
-        titleEl.textContent = "المحتوى غير موجود";
-        excerptEl.textContent = "الرابط غير صحيح أو المشكلة لم تُضف بعد.";
-        badgeEl.textContent = "—";
-        imageEl.src = "images/placeholder.jpg";
-        imageEl.alt = "صورة افتراضية";
-
-        accGrid.innerHTML = (
-          <div class="acc-card open">
-            <button class="acc-head" type="button">
-              <span>معلومة</span>
-              <span class="acc-icon">⌄</span>
-            </button>
-            <div class="acc-body">
-              <p>ارجع لصفحة المراحل واختر مشكلة من القائمة.</p>
-              <a class="btn" href="stages.html" style="margin-top:10px;">
-                صفحة المراحل
-              </a>
-            </div>
-          </div>
+        if (!str) return "";
+        return String(str).replace(
+          /[&<>"']/g,
+          (m) =>
+            ({
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#039;",
+            })[m],
         );
       }
 
-      function makeCard(title, bodyHtml, open) {
+      function makeCard(title, bodyHtml, isOpen) {
         const card = document.createElement("div");
-        card.className = "acc-card" + (open ? " open" : "");
-
-        const head = document.createElement("button");
-        head.className = "acc-head";
-        head.type = "button";
-
-        const t = document.createElement("span");
-        t.textContent = title;
-
-        const icon = document.createElement("span");
-        icon.className = "acc-icon";
-        icon.textContent = "⌄";
-
-        head.appendChild(t);
-        head.appendChild(icon);
-
-        const body = document.createElement("div");
-        body.className = "acc-body";
-        body.innerHTML = bodyHtml;
-
-        head.addEventListener("click", () => {
+        card.className = "acc-card" + (isOpen ? " open" : "");
+        card.innerHTML = `
+          <button class="acc-head" type="button">
+            <span>${title}</span>
+            <i class="fas fa-chevron-down acc-icon"></i>
+          </button>
+          <div class="acc-body">${bodyHtml}</div>
+        `;
+        card.querySelector(".acc-head").onclick = () =>
           card.classList.toggle("open");
-        });
-
-        card.appendChild(head);
-        card.appendChild(body);
         return card;
       }
 
-      if (!id || !Array.isArray(window.PROBLEMS)) {
-        notFound();
-      } else {
-        const problem = window.PROBLEMS.find((p) => p && p.id === id);
+      function init() {
+        if (!id || !window.PROBLEMS) {
+          show404();
+          return;
+        }
 
-        if (!problem) {
-          notFound();
-        } else {
-          document.title = problem.title + " | AL-Hossam Hassn";
-          titleEl.textContent = problem.title || "";
-          excerptEl.textContent = problem.excerpt || "";
-          badgeEl.textContent = problem.ageLabel || "";
-          imageEl.src = problem.image || "images/placeholder.jpg";
-          imageEl.alt = problem.title || "صورة المشكلة";
+        const data = window.PROBLEMS.find((p) => p.id == id);
+        if (!data) {
+          show404();
+          return;
+        }
 
-          // ✅ Build sections
-          const symptomsHtml =
-            Array.isArray(problem.symptoms) && problem.symptoms.length ? (
-              <ul>
-                $
-                {problem.symptoms
-                  .map((s) => <li>${escapeHtml(s)}</li>)
-                  .join("")}
-              </ul>
-            ) : (
-              <p>سيتم إضافة الأعراض قريبًا.</p>
-            );
+        // Fill Page Info
+        document.title = data.title + " | Al-Hossam Hassan";
+        titleEl.textContent = data.title;
+        excerptEl.textContent = data.excerpt || "";
+        badgeEl.textContent = data.ageLabel || "مرحلة تعليمية";
+        if (data.image) imageEl.src = data.image;
 
-          const causesHtml = problem.causes ? (
-            <p>${escapeHtml(problem.causes)}</p>
-          ) : (
-            <p>سيتم إضافة التفسير قريبًا.</p>
+        accGrid.innerHTML = "";
+
+        // 1. الأعراض
+        const symptomsHtml = Array.isArray(data.symptoms)
+          ? `<ul>${data.symptoms.map((s) => `<li>${escapeHtml(s)}</li>`).join("")}</ul>`
+          : `<p>سيتم تحديث هذا القسم قريباً.</p>`;
+        accGrid.appendChild(makeCard("الأعراض والعلامات", symptomsHtml, true));
+
+        // 2. الأسباب
+        const causesHtml = `<p>${escapeHtml(data.causes || "سيتم إضافة التفسير العلمي قريباً.")}</p>`;
+        accGrid.appendChild(makeCard("لماذا يحدث هذا؟", causesHtml, false));
+
+        // 3. الحل
+        const solutionHtml = Array.isArray(data.solution)
+          ? `<ol>${data.solution.map((s) => `<li>${escapeHtml(s)}</li>`).join("")}</ol>`
+          : `<p>نعمل حالياً على كتابة الحلول العملية لهذه المشكلة.</p>`;
+        accGrid.appendChild(makeCard("خطوات الحل العملي", solutionHtml, false));
+
+        // 4. ملاحظة
+        if (data.note) {
+          accGrid.appendChild(
+            makeCard(
+              "نصيحة Al-Hossam للمربي",
+              `<p>${escapeHtml(data.note)}</p>`,
+              false,
+            ),
           );
-
-          const solutionHtml =
-            Array.isArray(problem.solution) && problem.solution.length ? (
-              <ol>
-                $
-                {problem.solution
-                  .map((s) => <li>${escapeHtml(s)}</li>)
-                  .join("")}
-              </ol>
-            ) : (
-              <p>سيتم إضافة الحل قريبًا.</p>
-            );
-
-          const noteHtml = problem.note ? (
-            <p>${escapeHtml(problem.note)}</p>
-          ) : (
-            <p>—</p>
-          );
-
-          accGrid.innerHTML = "";
-          accGrid.appendChild(makeCard("الأعراض", symptomsHtml, true));
-          accGrid.appendChild(makeCard("ليه ده بيحصل؟", causesHtml, false));
-          accGrid.appendChild(makeCard("الحل العملي", solutionHtml, false));
-          accGrid.appendChild(makeCard("ملاحظة مهمة", noteHtml, false));
         }
       }
+
+      function show404() {
+        titleEl.textContent = "المقال غير موجود";
+        excerptEl.textContent =
+          "عذراً، الرابط غير صحيح أو لم يتم نشر المقال بعد.";
+        accGrid.innerHTML = `<a class="btn" href="stages.html">العودة لصفحة المراحل</a>`;
+      }
+
+      init();
     </script>
   </body>
 </html>

@@ -1,75 +1,80 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // سنة الفوتر
-  var yearEl = document.getElementById("year");
+  // 1. تحديث السنة تلقائياً
+  const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // عناصر الصفحة
-  var pdfGrid = document.getElementById("pdfGrid");
-  var viewer = document.getElementById("viewer");
-  var backBtn = document.getElementById("viewerBack");
-  var frame = document.getElementById("viewerFrame");
+  // 2. تعريف العناصر
+  const pdfGrid = document.getElementById("pdfGrid");
+  const viewer = document.getElementById("viewer");
+  const backBtn = document.getElementById("viewerBack");
+  const frame = document.getElementById("viewerFrame");
+  const viewerTitle = document.getElementById("viewerTitle");
 
-  // حماية: لو العناصر مش موجودة
-  if (!pdfGrid || !viewer || !backBtn) return;
+  if (!pdfGrid || !viewer) return;
 
-  // ====== دوال فتح/قفل ======
+  // ====== 3. وظيفة رسم الكروت تلقائياً من الـ Data ======
+  function renderPDFCards() {
+    if (!window.PDFS) return;
+
+    pdfGrid.innerHTML = window.PDFS.map(
+      (pdf) => `
+      <div class="pdf-card" data-aos="fade-up">
+        <div class="card-thumb">
+          <img src="${pdf.thumb}" alt="${pdf.title}" onerror="this.src='images/pdf/default-thumb.png'">
+        </div>
+        <div class="card-content">
+          <h3>${pdf.title}</h3>
+          <p>${pdf.desc}</p>
+          <div class="card-actions">
+            <a href="#" class="btn-view" data-pdf="${pdf.file}" data-title="${pdf.title}">عرض الملف</a>
+            <a href="${pdf.file}" download class="btn-download"><i class="fas fa-download"></i></a>
+          </div>
+        </div>
+      </div>
+    `,
+    ).join("");
+  }
+
+  // ====== 4. دوال التحكم في الـ Viewer ======
   function openViewer(pdfUrl, title) {
-    // اخفي الشبكة
     pdfGrid.style.display = "none";
-
-    // اعرض الـ viewer
+    viewer.classList.add("active"); // استخدم CSS classes أفضل للـ Animation
     viewer.style.display = "block";
 
-    // عنوان
-    var t = document.getElementById("viewerTitle");
-    if (t) t.textContent = title || "PDF Viewer";
-
-    // افتح داخل iframe لو موجود
-    if (frame) frame.src = pdfUrl || "";
-
-    // حدّث أزرار فتح/تحميل لو عندك
-    var openNew = document.getElementById("viewerOpenNew");
-    var download = document.getElementById("viewerDownload");
-    if (openNew) openNew.href = pdfUrl || "#";
-    if (download) download.href = pdfUrl || "#";
+    if (viewerTitle) viewerTitle.textContent = title;
+    if (frame) frame.src = pdfUrl;
 
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   function closeViewer() {
-    // اقفل الـ viewer
     viewer.style.display = "none";
-
-    // رجع الشبكة
-    pdfGrid.style.display = "grid"; // لو شبكتك grid
-    // لو شبكتك block بدل grid: استخدم "block"
-
-    // فضّي iframe
+    viewer.classList.remove("active");
+    pdfGrid.style.display = "grid";
     if (frame) frame.src = "";
-
-    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  // ====== 5. الـ Event Listeners ======
+
   // زر الرجوع
-  backBtn.addEventListener("click", function (e) {
-    e.preventDefault();
-    closeViewer();
-  });
+  if (backBtn) {
+    backBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      closeViewer();
+    });
+  }
 
-  // ====== مهم جداً ======
-  // لو عندك زر "عرض PDF" داخل كل كارت — لازم ينادي openViewer
-  // مثال: أي عنصر عليه data-pdf
+  // مستمع النقرات على كروت الـ PDF
   document.addEventListener("click", function (e) {
-    var btn = e.target.closest("[data-pdf]");
-    if (!btn) return;
-
-    e.preventDefault();
-    var url = btn.getAttribute("data-pdf");
-    var title = btn.getAttribute("data-title") || "PDF";
-    openViewer(url, title);
+    const btn = e.target.closest("[data-pdf]");
+    if (btn) {
+      e.preventDefault();
+      const url = btn.getAttribute("data-pdf");
+      const title = btn.getAttribute("data-title");
+      openViewer(url, title);
+    }
   });
 
-  // أول ما الصفحة تفتح: اعرض الشبكة واخفي الـ viewer
-  viewer.style.display = "none";
-  pdfGrid.style.display = "grid";
+  // تشغيل الوظائف الأساسية
+  renderPDFCards();
 });

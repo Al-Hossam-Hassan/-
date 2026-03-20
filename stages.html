@@ -3,45 +3,218 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>المراحل العمرية | Hossam Hassn</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <title>المراحل العمرية | Al-Hossam Hassan</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
     <style>
-      .stage-grid {
-        margin-top: 20px;
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        gap: 14px;
-      }
-      .stage-card {
-        grid-column: span 3;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 16px;
-        padding: 18px;
-        text-align: center;
-        transition: 200ms ease;
-      }
-      .stage-card:hover {
-        transform: translateY(-4px);
-        background: rgba(255, 255, 255, 0.1);
-      }
-      .stage-card h3 {
-        margin: 0 0 8px;
-      }
-      .stage-card p {
-        margin: 0;
-        font-size: 14px;
-        color: rgba(255, 255, 255, 0.7);
+      /* --- الإعدادات العامة والمتغيرات --- */
+      @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap");
+
+      :root {
+        --primary-color: #2c3e50;
+        --accent-color: #27ae60;
+        --light-bg: #f8fafc;
+        --text-main: #34495e;
+        --white: #ffffff;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      @media (max-width: 900px) {
-        .stage-card {
-          grid-column: span 6;
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Cairo", sans-serif;
+      }
+
+      body {
+        background-color: var(--light-bg);
+        color: var(--text-main);
+        line-height: 1.7;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* --- الهيدر --- */
+      .site-header {
+        background: var(--white);
+        padding: 15px 0;
+        box-shadow: var(--shadow);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-decoration: none;
+        color: var(--primary-color);
+      }
+
+      .logo span {
+        color: var(--accent-color);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 25px;
+        align-items: center;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-main);
+        font-weight: 500;
+        transition: var(--transition);
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--accent-color);
+      }
+
+      .btn-contact-nav {
+        background: var(--accent-color);
+        color: var(--white) !important;
+        padding: 8px 25px;
+        border-radius: 50px;
+        font-size: 0.9rem;
+      }
+
+      /* --- قسم المقدمة --- */
+      .stages-intro {
+        text-align: center;
+        padding: 60px 20px 40px;
+        animation: fadeInDown 0.8s ease;
+      }
+
+      .stages-intro h2 {
+        color: var(--primary-color);
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+
+      .stages-intro p {
+        color: #666;
+        font-size: 1.1rem;
+      }
+
+      /* --- شبكة المراحل --- */
+      .stage-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+        padding-bottom: 80px;
+        animation: fadeInUp 1s ease;
+      }
+
+      .stage-card {
+        background: var(--white);
+        border-radius: 20px;
+        padding: 30px 20px;
+        text-align: center;
+        text-decoration: none;
+        color: var(--text-main);
+        transition: var(--transition);
+        border: 1px solid rgba(0, 0, 0, 0.03);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+      }
+
+      .stage-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        border-color: var(--accent-color);
+      }
+
+      .age-num {
+        background: #f0fdf4;
+        color: var(--accent-color);
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+        border-radius: 50%;
+        margin: 0 auto 15px;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+
+      .stage-card:hover .age-num {
+        background: var(--accent-color);
+        color: var(--white);
+      }
+
+      .stage-card h3 {
+        color: var(--primary-color);
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+      }
+
+      .stage-card p {
+        font-size: 0.95rem;
+        color: #7f8c8d;
+        line-height: 1.6;
+      }
+
+      /* --- الفوتر --- */
+      .main-footer {
+        background: var(--white);
+        padding: 30px 0;
+        text-align: center;
+        border-top: 1px solid #eee;
+        margin-top: 40px;
+      }
+
+      /* الأنيميشن */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
       }
-      @media (max-width: 560px) {
-        .stage-card {
-          grid-column: span 12;
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+        .stages-intro h2 {
+          font-size: 2rem;
         }
       }
     </style>
@@ -49,125 +222,129 @@
 
   <body>
     <header class="site-header">
-      <nav class="nav">
-        <a class="logo" href="index.html">Hossam Hassn</a>
+      <nav class="nav container">
+        <a class="logo" href="index.html">Al-Hossam <span>Hassan</span></a>
         <ul class="nav-links">
           <li><a href="index.html">الرئيسية</a></li>
           <li><a href="stages.html" class="active">المراحل العمرية</a></li>
           <li><a href="activities.html">الأنشطة</a></li>
           <li><a href="about.html">من أنا</a></li>
-          <li><a href="contact.html">تواصل</a></li>
+          <li>
+            <a class="btn-contact-nav" href="contact.html">تواصل مباشر</a>
+          </li>
         </ul>
       </nav>
     </header>
 
-    <main>
-      <section class="section">
+    <main class="container">
+      <section class="stages-intro">
         <h2>اختر المرحلة العمرية</h2>
         <p>تقسيم بورتاج كل 6 شهور لضمان دقة التطور النمائي.</p>
-
-        <div class="stage-grid">
-          <a class="card" href="pages/0-6m.html">
-            <h3>من 0 إلى 6 شهور</h3>
-            <p>نوم – تهدئة – ارتباط – تحفيز حسي آمن.</p>
-          </a>
-
-          <a class="stage-card" href="pages/7-12m.html">
-            <h3>7 – 12 شهر</h3>
-            <p>الاستكشاف – قلق الانفصال – الأكل</p>
-          </a>
-
-          <a class="stage-card" href="pages/1-1_5.html">
-            <h3>1 – 1.5 سنة</h3>
-            <p>اللغة – السلوكيات الأولى</p>
-          </a>
-
-          <a class="stage-card" href="pages/1_5-2.html">
-            <h3>1.5 – 2 سنة</h3>
-            <p>نوبات الغضب – الحدود</p>
-          </a>
-
-          <a class="stage-card" href="pages/2-2_5.html">
-            <h3>2 – 2.5 سنة</h3>
-            <p>تدريب الحمام – العناد</p>
-          </a>
-
-          <a class="stage-card" href="pages/2_5-3.html">
-            <h3>2.5 – 3 سنوات</h3>
-            <p>الخوف – اللغة – اللعب</p>
-          </a>
-          <a class="stage-card" href="pages/3-3_5.html">
-            <h3>3 – 3.5 سنوات</h3>
-            <p>سلوك الحضانة – مشاركة – عدوانية</p>
-          </a>
-
-          <a class="stage-card" href="pages/3_5-4.html">
-            <h3>3.5 – 4 سنوات</h3>
-            <p>يسمع من أول مرة – قيم – حدود</p>
-          </a>
-
-          <a class="stage-card" href="pages/4-4_5.html">
-            <h3>4 – 4.5 سنوات</h3>
-            <p>تركيز – روتين صباح – طاقة</p>
-          </a>
-
-          <a class="stage-card" href="pages/4_5-5.html">
-            <h3>4.5 – 5 سنوات</h3>
-            <p>استعداد المدرسة – ثقة بالنفس</p>
-          </a>
-
-          <a class="stage-card" href="pages/5-5_5.html">
-            <h3>5 – 5.5 سنوات</h3>
-            <p>قواعد – مكافآت ذكية – بداية تعلم</p>
-          </a>
-
-          <a class="stage-card" href="pages/5_5-6.html">
-            <h3>5.5 – 6 سنوات</h3>
-            <p>المدرسة – الواجب – تقبل الخطأ</p>
-          </a>
-
-          <a class="stage-card" href="pages/6-6_5.html">
-            <h3>6 – 6.5 سنوات</h3>
-            <p>عادة المذاكرة – تقليل المشتتات</p>
-          </a>
-
-          <a class="stage-card" href="pages/6_5-7.html">
-            <h3>6.5 – 7 سنوات</h3>
-            <p>تنمر – غضب – صدق/كذب</p>
-          </a>
-
-          <a class="stage-card" href="pages/7-7_5.html">
-            <h3>7 – 7.5 سنوات</h3>
-            <p>دافعية – قلق الامتحان – مسؤولية</p>
-          </a>
-
-          <a class="stage-card" href="pages/7_5-8.html">
-            <h3>7.5 – 8 سنوات</h3>
-            <p>ضغط مدرسي – إدارة وقت</p>
-          </a>
-
-          <a class="stage-card" href="pages/8-8_5.html">
-            <h3>8 – 8.5 سنوات</h3>
-            <p>جدال – تحمل الإحباط – تركيز أطول</p>
-          </a>
-
-          <a class="stage-card" href="pages/8_5-9.html">
-            <h3>8.5 – 9 سنوات</h3>
-            <p>استقلال – شكوى المدرسة – نوم</p>
-          </a>
-
-          <a class="stage-card" href="pages/9-9_5.html">
-            <h3>9 – 9.5 سنوات</h3>
-            <p>قبل المراهقة – مذاكرة ذاتية – انفعالات</p>
-          </a>
-
-          <!-- كمل بنفس الشكل لباقي المراحل -->
-        </div>
       </section>
+
+      <div class="stage-grid">
+        <a class="stage-card" href="pages/0-6m.html">
+          <div class="age-num">01</div>
+          <h3>من 0 إلى 6 شهور</h3>
+          <p>نوم – تهدئة – ارتباط – تحفيز حسي آمن.</p>
+        </a>
+        <a class="stage-card" href="pages/7-12m.html">
+          <div class="age-num">02</div>
+          <h3>7 – 12 شهر</h3>
+          <p>الاستكشاف – قلق الانفصال – الأكل</p>
+        </a>
+        <a class="stage-card" href="pages/1-1_5.html">
+          <div class="age-num">03</div>
+          <h3>1 – 1.5 سنة</h3>
+          <p>اللغة – السلوكيات الأولى</p>
+        </a>
+        <a class="stage-card" href="pages/1_5-2.html">
+          <div class="age-num">04</div>
+          <h3>1.5 – 2 سنة</h3>
+          <p>نوبات الغضب – الحدود</p>
+        </a>
+        <a class="stage-card" href="pages/2-2_5.html">
+          <div class="age-num">05</div>
+          <h3>2 – 2.5 سنة</h3>
+          <p>تدريب الحمام – العناد</p>
+        </a>
+        <a class="stage-card" href="pages/2_5-3.html">
+          <div class="age-num">06</div>
+          <h3>2.5 – 3 سنوات</h3>
+          <p>الخوف – اللغة – اللعب</p>
+        </a>
+        <a class="stage-card" href="pages/3-3_5.html">
+          <div class="age-num">07</div>
+          <h3>3 – 3.5 سنوات</h3>
+          <p>سلوك الحضانة – مشاركة – عدوانية</p>
+        </a>
+        <a class="stage-card" href="pages/3_5-4.html">
+          <div class="age-num">08</div>
+          <h3>3.5 – 4 سنوات</h3>
+          <p>يسمع من أول مرة – قيم – حدود</p>
+        </a>
+        <a class="stage-card" href="pages/4-4_5.html">
+          <div class="age-num">09</div>
+          <h3>4 – 4.5 سنوات</h3>
+          <p>تركيز – روتين صباح – طاقة</p>
+        </a>
+        <a class="stage-card" href="pages/4_5-5.html">
+          <div class="age-num">10</div>
+          <h3>4.5 – 5 سنوات</h3>
+          <p>استعداد المدرسة – ثقة بالنفس</p>
+        </a>
+        <a class="stage-card" href="pages/5-5_5.html">
+          <div class="age-num">11</div>
+          <h3>5 – 5.5 سنوات</h3>
+          <p>قواعد – مكافآت ذكية – بداية تعلم</p>
+        </a>
+        <a class="stage-card" href="pages/5_5-6.html">
+          <div class="age-num">12</div>
+          <h3>5.5 – 6 سنوات</h3>
+          <p>المدرسة – الواجب – تقبل الخطأ</p>
+        </a>
+        <a class="stage-card" href="pages/6-6_5.html">
+          <div class="age-num">13</div>
+          <h3>6 – 6.5 سنوات</h3>
+          <p>عادة المذاكرة – تقليل المشتتات</p>
+        </a>
+        <a class="stage-card" href="pages/6_5-7.html">
+          <div class="age-num">14</div>
+          <h3>6.5 – 7 سنوات</h3>
+          <p>تنمر – غضب – صدق/كذب</p>
+        </a>
+        <a class="stage-card" href="pages/7-7_5.html">
+          <div class="age-num">15</div>
+          <h3>7 – 7.5 سنوات</h3>
+          <p>دافعية – قلق الامتحان – مسؤولية</p>
+        </a>
+        <a class="stage-card" href="pages/7_5-8.html">
+          <div class="age-num">16</div>
+          <h3>7.5 – 8 سنوات</h3>
+          <p>ضغط مدرسي – إدارة وقت</p>
+        </a>
+        <a class="stage-card" href="pages/8-8_5.html">
+          <div class="age-num">17</div>
+          <h3>8 – 8.5 سنوات</h3>
+          <p>جدال – تحمل الإحباط – تركيز أطول</p>
+        </a>
+        <a class="stage-card" href="pages/8_5-9.html">
+          <div class="age-num">18</div>
+          <h3>8.5 – 9 سنوات</h3>
+          <p>استقلال – شكوى المدرسة – نوم</p>
+        </a>
+        <a class="stage-card" href="pages/9-9_5.html">
+          <div class="age-num">19</div>
+          <h3>9 – 9.5 سنوات</h3>
+          <p>قبل المراهقة – مذاكرة ذاتية – انفعالات</p>
+        </a>
+      </div>
     </main>
 
-    <footer class="site-footer">
-      <p>© <span id="year"></span> AL-Hossam Hassn — جميع الحقوق محفوظة</p>
+    <footer class="main-footer">
+      <div class="container">
+        <p>© <span id="year"></span> Al-Hossam Hassan — جميع الحقوق محفوظة</p>
+      </div>
     </footer>
 
     <script>
